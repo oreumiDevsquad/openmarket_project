@@ -5,5 +5,283 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>주문 및 결제</title>
     </head>
-    <body></body>
+    <body>
+        <h1 class="payment-title">주문/결제하기</h1>
+
+        <main class="order__main">
+            <section class="order-list">
+                <table class="order-list__table">
+                    <thead>
+                        <th scope="col">상품정보</th>
+                        <th scope="col">할인</th>
+                        <th scope="col">배송비</th>
+                        <th scope="col">주문금액</th>
+                    </thead>
+                    <tbody>
+                        <!-- 예시 만들기 -->
+                    </tbody>
+                    <!-- 총 주문금액은 어떻게 구현하면 좋을까? -->
+                </table>
+            </section>
+
+            <section class="order-form">
+                <h2 class="order-form__title">배송정보</h2>
+                <hr class="order-form__divider-bold" />
+
+                <!-- 주문자 정보 -->
+                <h3 class="order-form__info">주문자 정보</h3>
+                <hr class="order-form__divider-bold" />
+                <div class="order-form__row">
+                    <label class="order-form__label" for="order-form__input"
+                        >이름</label
+                    >
+                    <input
+                        class="orderFormInput"
+                        type="text"
+                        id="orderFormInput"
+                    />
+                </div>
+                <hr class="order-form__divider" />
+                <div class="order-form__row">
+                    <label for="orderPhone1" class="order-form__label"
+                        >휴대폰</label
+                    >
+                    <input
+                        class="order-form__input order-form__input--phone"
+                        type="text"
+                        id="order-phone-1"
+                        name="order-phone-1"
+                        maxlength="3"
+                        pattern="\d{3}"
+                    />
+                    <span class="order-form__dash">-</span>
+                    <input
+                        class="order-form__input order-form__input--phone"
+                        type="text"
+                        id="order-phone-2"
+                        name="order-phone-2"
+                        maxlength="4"
+                        pattern="\d{3,4}"
+                    />
+                    <span class="order-form__dash">-</span>
+                    <input
+                        class="order-form__input order-form__input--phone"
+                        type="text"
+                        id="order-phone-3"
+                        name="order-phone-3"
+                        maxlength="4"
+                        pattern="\d{4}"
+                    />
+                </div>
+                <hr class="order-form__divider" />
+                <div class="order-form__row">
+                    <label for="order-email" class="order-form__label"
+                        >이메일</label
+                    >
+                    <input
+                        type="email"
+                        class="order-form__input"
+                        id="orderEmail"
+                    />
+                </div>
+                <hr class="order-form__divider" />
+
+                <h3 class="order-form__info">배송지 정보</h3>
+                <hr class="order-form__divider-bold" />
+                <div class="order-form__row">
+                    <label for="order-receiver" class="order-form__label"
+                        >수령인</label
+                    >
+                    <input
+                        type="text"
+                        id="order-receiver"
+                        class="order-form__input"
+                    />
+                </div>
+                <hr class="order-form__divider" />
+                <div class="order-form__row">
+                    <label for="receiver-phone-1" class="order-from__label"
+                        >휴대폰</label
+                    >
+                    <input
+                        class="order-form__input order-form__input--phone"
+                        type="text"
+                        id="recipient-phone-1"
+                        name="recipient-phone-1"
+                        maxlength="3"
+                        pattern="\d{3}"
+                    />
+                    <span class="order-form__dash">-</span>
+                    <input
+                        class="order-form__input order-form__input--phone"
+                        type="text"
+                        id="recipient-phone-2"
+                        name="recipient-phone-2"
+                        maxlength="4"
+                        pattern="\d{3,4}"
+                    />
+                    <span class="order-form__dash">-</span>
+                    <input
+                        class="order-form__input order-form__input--phone"
+                        type="text"
+                        id="recipient-phone-3"
+                        name="recipient-phone-3"
+                        maxlength="4"
+                        pattern="\d{4}"
+                    />
+                </div>
+                <hr class="order-form__divider" />
+                <div class="order-form__row order-form__input--address">
+                    <label for="postal-code" class="order-form__label"
+                        >배송주소</label
+                    >
+                    <input
+                        type="text"
+                        class="order-form__input order-form__input--address"
+                        id="postal-address"
+                        name="postal-address"
+                    />
+                    <button type="button" class="order-form__zipcode-btn">
+                        우편번호 조회
+                    </button>
+                </div>
+                <div class="order-form__row">
+                    <label for="streetAddress1" class="order-form sr-only"
+                        >상세 주소1</label
+                    >
+                    <input
+                        type="text"
+                        class="order-form__input order-form__input--address"
+                        id="streetAddress1"
+                        name="street-address-1"
+                    />
+                </div>
+                <div class="order-form__row">
+                    <label
+                        for="streetAddress2"
+                        class="order-form__label sr-only"
+                        >상세 주소2</label
+                    >
+                    <input
+                        type="text"
+                        class="order-form__input"
+                        id="streetAddress2"
+                        name="street-address-2"
+                    />
+                </div>
+                <hr class="order-form__divider" />
+                <div class="order-form__row">
+                    <label for="deliverMessage" class="order-form__label"
+                        >배송 메시지</label
+                    >
+                    <input
+                        type="text"
+                        class="order-form__input"
+                        id="deliverMessage"
+                        name="delivery-message"
+                    />
+                </div>
+                <hr class="order-form__divider" />
+            </section>
+
+            <!-- 결제 섹션 -->
+            <section class="order-form-payment">
+                <div class="order-form-payment_way">
+                    <h2 class="order-form__title">결제 수단</h2>
+                    <hr class="order-form-divider" />
+                    <div class="order-form__option">
+                        <input
+                            type="checkbox"
+                            name="신용카드"
+                            id="creditCard"
+                        />
+                        <label for="creditCard">신용/체크카드</label>
+
+                        <input type="checkbox" name="무통장 입금" id="cash" />
+                        <label for="cash">무통장 입금</label>
+
+                        <input
+                            type="checkbox"
+                            name="휴대폰 결제"
+                            id="smartphoneFee"
+                        />
+                        <label for="smartphoneFee">휴대폰 결제</label>
+
+                        <input
+                            type="checkbox"
+                            name="네이버페이"
+                            id="naverPay"
+                        />
+                        <label for="naverPay">네이버페이</label>
+
+                        <input
+                            type="checkbox"
+                            name="카카오페이"
+                            id="kakaoPay"
+                        />
+                        <label for="kakaoPay">Django</label>
+                        <hr class="order-form-divider" />
+                    </div>
+
+                    <!-- 이 부분 이름 뭘로하지? -->
+                    <!-- 이 부분이 생각보다 까다롭네 -->
+                    <article class="order-summary">
+                        <ul class="order-summary__list">
+                            <li class="order-summary__item">
+                                <span class="order-summary__label"
+                                    >- 상품금액</span
+                                >
+                                <span class="order-summary__value"
+                                    ><strong></strong>원</span
+                                >
+                            </li>
+                            <li class="order-summary__list">
+                                <span class="order-summary_label"
+                                    >-할인금액</span
+                                >
+                                <span class="order-summary__value"
+                                    ><strong></strong>원</span
+                                >
+                            </li>
+                            <li class="order-summary__list">
+                                <span class="order-summary_label">-배송비</span>
+                                <span class="order-summary__value"
+                                    ><strong></strong>원</span
+                                >
+                            </li>
+                        </ul>
+                        <hr />
+                        <div class="order-summary__total">
+                            <span class="order-summary__total-label"
+                                >결제금액</span
+                            >
+                            <span class="order-summary__total-value"
+                                ><strong></strong>원</span
+                            >
+                        </div>
+
+                        <div class="order-summary__agreement">
+                            <input
+                                type="checkbox"
+                                class="order-summary__agreement-checkbox"
+                                id="agreement"
+                            />
+                            <label for="agreement" class="order__summary__label"
+                                >주문 내용을 확인하였으며, 정보 제공 등에
+                                동의합니다.</label
+                            >
+                        </div>
+
+                        <button
+                            type="button"
+                            class="order-summary__submit"
+                            disabled
+                        >
+                            결제하기
+                        </button>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </body>
 </html>
