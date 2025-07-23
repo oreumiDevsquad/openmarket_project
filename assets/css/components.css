@@ -22,7 +22,7 @@ body {
   gap: 598px;
   box-shadow: var(--header-shadow);
   font-weight: 400;
-  background-color: var(--bg-color-white);
+  background-color: #fff;
 
   .header__container {
     display: flex;
