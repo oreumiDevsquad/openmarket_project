@@ -1,1 +1,25 @@
 /* Common styles for all pages */
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
+body {
+  font-family: 'Spoqa Han Sans Neo', serif;
+  font-weight: 400;
+  font-size: 16px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
