@@ -1,10 +1,8 @@
 /* Common styles for all pages */
-@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
-
-body {
-  font-family: 'Spoqa Han Sans Neo', serif;
-  font-weight: 400;
-  font-size: 16px;
+:root {
+  --main-color: #21bf48;
+  --sub-color: #767676;
+  --line-color: #c4c4c4;
 }
 .sr-only {
   position: absolute;
