@@ -13,6 +13,19 @@
 
 ## 작업 흐름
 
+### 📌 브랜치 구조
+
+| 브랜치명        | 용도                                     |
+| --------------- | ---------------------------------------- |
+| main            | 항상 배포 가능한 상태 유지 (완성된 코드) |
+| feature/기능명  | 새로운 기능 개발용                       |
+| fix/버그명      | 버그 수정용                              |
+| docs/문서명     | 문서 관련 작업                           |
+| refactor/모듈명 | 리팩토링 작업용                          |
+
+예시:
+`feature/login`, `fix/button-click`, `docs/readme`, `refactor/user-model`
+
 1. develop에서 feature 브랜치 생성
 
 ```bash
