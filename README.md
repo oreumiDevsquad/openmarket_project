@@ -4,8 +4,7 @@
 
 | 규칙 적용 대상       | 규칙             | 예시                                 |
 | -------------------- | ---------------- | ------------------------------------ |
-| HTML                 | kebab-case       | `product-card, user-info`            |
-| ID 아이디            | kebab-case       | `product-detail.html, user-utils.js` |
+| ID 아이디            | camelCase        | `userName, fetchProducts`            |
 | CSS 클래스           | BEM 방식         | `product-card__title, btn--primary`  |
 | JavaScript 변수/함수 | camelCase        | `userName, fetchProducts`            |
 | JavaScript 상수      | UPPER_SNAKE_CASE | `API_BASE_URL, MAX_ITEMS`            |
