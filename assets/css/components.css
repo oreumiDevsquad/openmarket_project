@@ -1,6 +1,18 @@
 /* Styles for reusable components */
+@import url('/assets/css/common.css');
+:root {
+  --header-shadow: 0px 4px 5px 0px #0000001a;
+  --footer-bg-color: #f2f2f2;
+}
 
-.global-header {
+html,
+body {
+  /* header의 sticky 사용 오류 방지용 */
+  width: auto;
+  height: auto;
+}
+
+.header {
   position: sticky;
   top: 0;
   display: flex;
@@ -8,22 +20,24 @@
   justify-content: space-between;
   align-items: center;
   gap: 598px;
-  box-shadow: 0px 4px 5px 0px #0000001a;
+  box-shadow: var(--header-shadow);
+  font-weight: 400;
+  background-color: var(--bg-color-white);
 
-  .global-header__inner {
+  .header__container {
     display: flex;
     gap: 30px;
 
-    .global-header__logo-img {
+    .header__logo-image {
       height: 38px;
     }
 
-    .global-header__search {
+    .header__search {
       display: flex;
       position: relative;
 
-      .global-header__search-input {
-        border: 2px solid #21bf48;
+      .header__search-input {
+        border: 2px solid var(--main-color);
         border-radius: 50px;
         padding: 13px 22px;
         padding-right: calc(22px + 28px);
@@ -33,27 +47,31 @@
           color: #767676;
         }
       }
-      button {
+
+      .header__search-button {
         position: absolute;
         right: 22px;
         top: 9px;
+
         img {
           width: 28px;
         }
       }
     }
   }
-  .global-header__nav ul {
+
+  .header__nav-list {
     display: flex;
 
-    .global-header__nav-item {
+    .header__nav-item {
       width: 56px;
+
       &:first-child {
         margin-right: 26px;
         width: 46px;
       }
 
-      .global-header__nav-link {
+      .header__nav-link {
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
@@ -61,16 +79,78 @@
         align-content: center;
         gap: 4px;
         width: inherit;
+
         img {
           width: 32px;
           align-self: center;
         }
       }
 
-      .global-header__nav-label {
+      .header__nav-text {
         font-size: 12px;
         line-height: calc(100% + 2px);
         text-align: center;
+      }
+    }
+  }
+}
+
+.footer {
+  background-color: var(--footer-bg-color);
+  padding: 60px 320px 63px;
+
+  .footer__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .footer__nav-list {
+      display: flex;
+      gap: 32px;
+
+      .footer__nav-item {
+        position: relative;
+
+        &:not(:first-child)::before {
+          content: '|';
+          position: absolute;
+          width: 4px;
+          left: -16px;
+        }
+      }
+    }
+
+    .footer__social-list {
+      display: flex;
+
+      .footer__social-item {
+        &:not(:first-child) {
+          margin-left: 14px;
+        }
+
+        img {
+          width: 32px;
+        }
+      }
+    }
+  }
+
+  .footer__divider {
+    height: 1px;
+    background-color: var(--line-color);
+    margin-top: 22px;
+    margin-bottom: 30px;
+  }
+
+  .footer__company-info {
+    p {
+      color: var(--sub-color);
+      line-height: 200%;
+      font-style: normal;
+      font-size: 14px;
+      font-weight: 400;
+      &:first-child {
+        font-weight: 700;
       }
     }
   }
