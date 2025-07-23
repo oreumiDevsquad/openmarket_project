@@ -5,68 +5,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>header</title>
-    <link rel="stylesheet" href="../assets/css/reset.css" />
     <link rel="stylesheet" href="../assets/css/components.css" />
-    <link rel="stylesheet" href="../assets/css/common.css" />
   </head>
   <body>
-    <header class="global-header">
-      <div class="global-header__inner">
-        <h1 class="global-header__logo">
-          <a href="/" class="global-header__logo-link">
+    <header class="header">
+      <div class="header__container">
+        <h1 class="header__logo">
+          <a href="/index.html" class="header__logo-link">
             <img
-              src="../assets/images/Logo-hodu.png"
+              src="/assets/images/Logo-hodu.png"
               alt="호두 로고"
-              class="global-header__logo-img"
+              class="header__logo-image"
             />
           </a>
         </h1>
 
-        <form
-          class="global-header__search"
-          role="search"
-          aria-label="상품 검색"
-        >
+        <form class="header__search" role="search" aria-label="상품 검색">
           <label for="searchProduct" class="sr-only">상품 검색</label>
           <input
             type="search"
             name="searchProduct"
             id="searchProduct"
-            class="global-header__search-input"
+            class="header__search-input"
             placeholder="상품을 검색해보세요!"
           />
-          <button type="submit">
-            <img src="../assets/icons/icon-search.svg" alt="" />
+          <button type="submit" class="header__search-button">
+            <img src="/assets/icons/icon-search.svg" alt="" />
           </button>
         </form>
       </div>
 
-      <nav class="global-header__nav" aria-label="사용자 메뉴">
-        <ul class="global-header__nav-list">
-          <li class="global-header__nav-item">
-            <a href="/pages/cart" class="global-header__nav-link" role="button">
+      <nav class="header__nav" aria-label="사용자 메뉴">
+        <ul class="header__nav-list">
+          <li class="header__nav-item">
+            <a href="/pages/cart.html" class="header__nav-link" role="button">
               <img
-                src="../assets/icons/icon-shopping-cart.svg"
+                src="/assets/icons/icon-shopping-cart.svg"
                 alt=""
-                class="global-header__nav-icon"
+                class="header__nav-icon"
                 aria-hidden="true"
               />
-              <p class="global-header__nav-label">장바구니</p>
+              <p class="header__nav-text">장바구니</p>
             </a>
           </li>
-          <li class="global-header__nav-item">
-            <a
-              href="/pages/login"
-              class="global-header__nav-link"
-              role="button"
-            >
+          <li class="header__nav-item">
+            <a href="/pages/login.html" class="header__nav-link" role="button">
               <img
-                src="../assets/icons/icon-user.svg"
+                src="/assets/icons/icon-user.svg"
                 alt=""
-                class="global-header__nav-icon"
+                class="header__nav-icon"
                 aria-hidden="true"
               />
-              <p class="global-header__nav-label">로그인</p>
+              <p class="header__nav-text">로그인</p>
             </a>
           </li>
         </ul>
