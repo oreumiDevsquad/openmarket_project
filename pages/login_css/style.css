@@ -21,15 +21,12 @@
 .login-page {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
 .login-page__header {
     margin: 40px 0 20px;
-}
-
-.login-page__logo-wrapper {
-    text-align: center;
 }
 
 .login-page__logo {
@@ -43,6 +40,104 @@
     background-color: #fff;
     width: 100%;
     max-width: 550px;
-    border: 2px solid #c4c4c4;
-    border-radius: 16px;
+    border: 1px solid #c4c4c4;
+    border-radius: 10px;
+}
+
+/* ========= 탭 영역 ========== */
+/* 당면과제:
+tab active 효과 추가하기, 피그마 속 처럼 두개가 합쳐진 효과 구현하기
+*/
+
+.login-box__tabs {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 0px solid #c4c4c4;
+    border-radius: 10px 10px 0 0;
+    background-color: pink;
+}
+
+.login-box__tab-item {
+    width: 50%;
+}
+
+.login-box__tab {
+    display: block;
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 10px 10px 0 0;
+    transition: background-color 0.2s ease;
+}
+
+/* active 기능 추가할 것 */
+.login-box__tab--active {
+    background-color: #fff;
+}
+
+/* ========= 로그인 폼 ========= */
+/* 확인할 사항: focus 되었을때, hover 되었을때 어떤 효과를 주는게 좋을지. 
+적절한 색감 및 효과 논의
+*/
+
+.login-box__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.login-box__input {
+    border: none;
+    border-bottom: 1px solid #c4c4c4;
+    font-size: 16px;
+    padding: 20px 0px;
+    margin-top: 14px;
+    margin-left: 35px;
+    margin-right: 35px;
+    background-color: transparent;
+    transition: border-color 0.2s ease;
+}
+
+.login-box__input:focus {
+    background-color: #c2c2c2;
+}
+
+/* ======== 로그인 버튼 ========= */
+
+.login-box__submit {
+    margin-top: 36px;
+    padding: 19px 215px;
+    color: #fff;
+    background-color: #21bf48;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 36px 35px;
+
+    /*cursor*/
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.login-box__submit:hover {
+    background-color: #6ae26e;
+}
+
+/* ====== 회원가입 및 비밀번호 찾기 ======== */
+
+.login-box__links {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+
+    margin-top: 30px;
+}
+
+.login-box__divider,
+.login-box__link {
+    color: #333333;
 }
