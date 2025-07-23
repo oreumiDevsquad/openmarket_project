@@ -1,3 +1,5 @@
+@import url(./common.css);
+
 body {
   width: 100vw;
   height: 100vh;
@@ -23,7 +25,7 @@ body {
 
 .not-found__text {
   font-size: 16px;
-  color: #767676;
+  color: var(--sub-color);
   margin-bottom: 40px;
 }
 
@@ -43,11 +45,11 @@ body {
 }
 
 .not-found__button--primary {
-  background-color: #21bf48;
+  background-color: var(--main-color);
   color: #fff;
 }
 
 .not-found__button--secondary {
-  border: 1px solid #c4c4c4;
-  color: #767676;
+  border: 1px solid var(--line-color);
+  color: var(--sub-color);
 }
