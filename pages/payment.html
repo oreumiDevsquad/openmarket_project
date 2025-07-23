@@ -4,6 +4,8 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>주문 및 결제</title>
+        <link rel="stylesheet" href="./payment/reset.css" />
+        <link rel="stylesheet" href="./payment/style.css" />
     </head>
     <body>
         <h1 class="payment-title">주문/결제하기</h1>
@@ -12,10 +14,12 @@
             <section class="order-list">
                 <table class="order-list__table">
                     <thead>
-                        <th scope="col">상품정보</th>
-                        <th scope="col">할인</th>
-                        <th scope="col">배송비</th>
-                        <th scope="col">주문금액</th>
+                        <tr>
+                            <th scope="col">상품정보</th>
+                            <th scope="col">할인</th>
+                            <th scope="col">배송비</th>
+                            <th scope="col">주문금액</th>
+                        </tr>
                     </thead>
                     <tbody>
                         <!-- 예시 만들기 -->
@@ -24,12 +28,14 @@
                 </table>
             </section>
 
+            <!-- 배송 정보 폼 -->
             <section class="order-form">
                 <h2 class="order-form__title">배송정보</h2>
                 <hr class="order-form__divider-bold" />
 
                 <!-- 주문자 정보 -->
-                <h3 class="order-form__info">주문자 정보</h3>
+                <!-- 이름 -->
+                <h3 class="order-form__section-title">주문자 정보</h3>
                 <hr class="order-form__divider-bold" />
                 <div class="order-form__row">
                     <label class="order-form__label" for="order-form__input"
@@ -42,6 +48,8 @@
                     />
                 </div>
                 <hr class="order-form__divider" />
+
+                <!-- 휴대폰 -->
                 <div class="order-form__row">
                     <label for="orderPhone1" class="order-form__label"
                         >휴대폰</label
@@ -49,7 +57,7 @@
                     <input
                         class="order-form__input order-form__input--phone"
                         type="text"
-                        id="order-phone-1"
+                        id="orderPhone1"
                         name="order-phone-1"
                         maxlength="3"
                         pattern="\d{3}"
@@ -58,7 +66,7 @@
                     <input
                         class="order-form__input order-form__input--phone"
                         type="text"
-                        id="order-phone-2"
+                        id="orderPhone2"
                         name="order-phone-2"
                         maxlength="4"
                         pattern="\d{3,4}"
@@ -67,15 +75,17 @@
                     <input
                         class="order-form__input order-form__input--phone"
                         type="text"
-                        id="order-phone-3"
+                        id="orderPhone3"
                         name="order-phone-3"
                         maxlength="4"
                         pattern="\d{4}"
                     />
                 </div>
                 <hr class="order-form__divider" />
+
+                <!-- 이메일 -->
                 <div class="order-form__row">
-                    <label for="order-email" class="order-form__label"
+                    <label for="orderEmail" class="order-form__label"
                         >이메일</label
                     >
                     <input
@@ -86,27 +96,32 @@
                 </div>
                 <hr class="order-form__divider" />
 
-                <h3 class="order-form__info">배송지 정보</h3>
+                <!-- 배송지 정보 -->
+                <h3 class="order-form__section-title">배송지 정보</h3>
                 <hr class="order-form__divider-bold" />
+
+                <!-- 이름 -->
                 <div class="order-form__row">
-                    <label for="order-receiver" class="order-form__label"
+                    <label for="recipientName" class="order-form__label"
                         >수령인</label
                     >
                     <input
                         type="text"
-                        id="order-receiver"
+                        id="recipientName"
                         class="order-form__input"
                     />
                 </div>
                 <hr class="order-form__divider" />
+
+                <!-- 휴대폰 -->
                 <div class="order-form__row">
-                    <label for="receiver-phone-1" class="order-from__label"
+                    <label for="recipientPhone1" class="order-from__label"
                         >휴대폰</label
                     >
                     <input
                         class="order-form__input order-form__input--phone"
                         type="text"
-                        id="recipient-phone-1"
+                        id="recipientPhone1"
                         name="recipient-phone-1"
                         maxlength="3"
                         pattern="\d{3}"
@@ -115,7 +130,7 @@
                     <input
                         class="order-form__input order-form__input--phone"
                         type="text"
-                        id="recipient-phone-2"
+                        id="recipientPhone2"
                         name="recipient-phone-2"
                         maxlength="4"
                         pattern="\d{3,4}"
@@ -124,13 +139,15 @@
                     <input
                         class="order-form__input order-form__input--phone"
                         type="text"
-                        id="recipient-phone-3"
+                        id="recipientPhone3"
                         name="recipient-phone-3"
                         maxlength="4"
                         pattern="\d{4}"
                     />
                 </div>
                 <hr class="order-form__divider" />
+
+                <!-- 배송주소 -->
                 <div class="order-form__row order-form__input--address">
                     <label for="postal-code" class="order-form__label"
                         >배송주소</label
@@ -145,6 +162,8 @@
                         우편번호 조회
                     </button>
                 </div>
+
+                <!-- 상세 주소 -->
                 <div class="order-form__row">
                     <label for="streetAddress1" class="order-form sr-only"
                         >상세 주소1</label
@@ -170,6 +189,8 @@
                     />
                 </div>
                 <hr class="order-form__divider" />
+
+                <!-- 배송 메시지 -->
                 <div class="order-form__row">
                     <label for="deliverMessage" class="order-form__label"
                         >배송 메시지</label
@@ -185,11 +206,13 @@
             </section>
 
             <!-- 결제 섹션 -->
-            <section class="order-form-payment">
-                <div class="order-form-payment_way">
-                    <h2 class="order-form__title">결제 수단</h2>
-                    <hr class="order-form-divider" />
-                    <div class="order-form__option">
+            <!-- 결제 수단 -->
+            <!-- input type을 radio? checkbox? -->
+            <section class="order-payment">
+                <div class="order-payment_way">
+                    <h2 class="order-payment__title">결제 수단</h2>
+                    <hr class="order-payment-divider" />
+                    <div class="order-payment__option">
                         <input
                             type="checkbox"
                             name="신용카드"
@@ -197,15 +220,11 @@
                         />
                         <label for="creditCard">신용/체크카드</label>
 
-                        <input type="checkbox" name="무통장 입금" id="cash" />
-                        <label for="cash">무통장 입금</label>
+                        <input type="checkbox" name="무통장 입금" id="bank" />
+                        <label for="bank">무통장 입금</label>
 
-                        <input
-                            type="checkbox"
-                            name="휴대폰 결제"
-                            id="smartphoneFee"
-                        />
-                        <label for="smartphoneFee">휴대폰 결제</label>
+                        <input type="checkbox" name="휴대폰 결제" id="mobile" />
+                        <label for="mobile">휴대폰 결제</label>
 
                         <input
                             type="checkbox"
