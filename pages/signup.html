@@ -6,8 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>회원가입</title>
     <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/common.css" />
+    <link rel="stylesheet" href="../assets/css/pages/signup.css" />
   </head>
   <body>
+    <header class="header">
+      <h1 class="header__logo">
+        <a href="/index.html" class="header__logo-link">
+          <img
+            src="/assets/images/Logo-hodu.png"
+            alt="호두 로고"
+            class="header__logo-image"
+          />
+        </a>
+      </h1>
+    </header>
     <section class="signup__content" aria-labelledby="signupHeading">
       <h2 id="signupHeading" class="sr-only">회원가입</h2>
 
@@ -16,11 +29,11 @@
         <ul class="signup__tabs-list" role="tablist">
           <li class="signup__tabs-item">
             <button
-              class="signup__tabs-button signup__tabs-button--active"
+              class="signup__tabs-button signup__tabs-button--active left"
               role="tab"
               aria-selected="true"
-              aria-controls="buyerSignup"
-              id="buyerTab"
+              aria-controls="userSignup"
+              id="userTab"
             >
               구매회원가입
             </button>
@@ -43,8 +56,8 @@
       <form
         class="signup__form"
         role="tabpanel"
-        aria-labelledby="buyerTab"
-        id="buyerSignup"
+        aria-labelledby="userTab"
+        id="userSignup"
       >
         <fieldset class="signup__fieldset">
           <legend class="sr-only">기본 정보 입력</legend>
@@ -149,10 +162,7 @@
           </div>
 
           <!-- 판매자 전용 필드 (조건부 렌더링) -->
-          <div
-            class="signup__group signup__group--seller"
-            style="display: none"
-          >
+          <div class="signup__group signup__group--seller hide">
             <div class="signup__field">
               <label for="businessNumber" class="signup__label"
                 >사업자 등록번호</label
@@ -198,23 +208,26 @@
             />
             <label for="termsAgreement" class="signup__checkbox-label">
               호두샵의
-              <a href="#" class="signup__link">
-                <strong class="signup__link-text">이용약관</strong>
-              </a>
-              및
-              <a href="#" class="signup__link">
-                <strong class="signup__link-text">개인정보처리방침</strong>
-              </a>
-              에 대한 내용을 확인하였고 동의합니다.
+              <a href="#" class="signup__link"
+                ><strong class="signup__link-text">이용약관</strong> </a
+              >및<a href="#" class="signup__link"
+                ><strong class="signup__link-text">개인정보처리방침</strong></a
+              >에 대한 내용을 확인하였고 동의합니다.
             </label>
           </div>
         </fieldset>
 
         <!-- 제출 버튼 -->
-        <button type="submit" class="signup__button signup__button--primary">
+        <button
+          type="submit"
+          class="signup__button signup__button--primary"
+          disabled
+        >
           가입하기
         </button>
       </form>
     </section>
+
+    <script src="../assets/js/pages/signup.js"></script>
   </body>
 </html>
