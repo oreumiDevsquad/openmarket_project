@@ -1,211 +1,215 @@
 @import url('../common.css');
 
 :root {
-  --default-radius: 10px;
+    --default-radius: 10px;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 70px 0;
-  .header__logo-image {
-    width: 238px;
-    height: 74px;
-  }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 0;
+    .header__logo-image {
+        width: 238px;
+        height: 74px;
+    }
 }
 
 .signup__content {
-  width: 550px;
-  margin: 0 auto;
-  padding-bottom: 110px;
+    width: 550px;
+    margin: 0 auto;
+    padding-bottom: 110px;
 }
 
 .signup__tabs {
-  width: inherit;
-  .signup__tabs-list {
-    display: flex;
+    width: inherit;
+    .signup__tabs-list {
+        display: flex;
 
-    .signup__tabs-button {
-      background-color: #fff;
-      width: 275px;
-      height: 80px;
-      box-sizing: border-box;
-      padding-bottom: 18px;
-      border: 1px solid var(--line-color);
-      border-radius: var(--default-radius) var(--default-radius) 0 0;
-      position: relative;
+        .signup__tabs-button {
+            background-color: #fff;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: calc(100% + 4px);
+            width: 275px;
+            height: 80px;
+            box-sizing: border-box;
+            padding-bottom: 18px;
+            border: 1px solid var(--line-color);
+            border-radius: var(--default-radius) var(--default-radius) 0 0;
+            position: relative;
 
-      &:not(.signup__tabs-button--active) {
-        background-color: #f2f2f2;
-      }
-      &.signup__tabs-button--active {
-        border-bottom: none;
-        z-index: 20;
+            &:not(.signup__tabs-button--active) {
+                background-color: #f2f2f2;
+            }
+            &.signup__tabs-button--active {
+                border-bottom: none;
+                z-index: 20;
 
-        &.right {
-          border-left: none;
+                &.right {
+                    border-left: none;
+                }
+                &.left {
+                    border-right: none;
+                }
+            }
         }
-        &.left {
-          border-right: none;
-        }
-      }
     }
-  }
 }
 
 .signup__form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 34px;
-
-  input,
-  button,
-  select {
-    border: 1px solid var(--line-color);
-    border-radius: var(--default-radius);
-    &:focus {
-      outline: 1px solid var(--input-outline-color);
-      outline-offset: -1px;
-      border: none;
-    }
-  }
-  input {
-    padding: 17px;
-    height: 54px;
-  }
-  button {
-    background-color: var(--main-color);
-    border-radius: 5px;
-    width: 122px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
-  }
-
-  .signup__fieldset {
-    position: relative;
-    background-color: #fff;
-    border: 1px solid var(--line-color);
-    border-radius: var(--default-radius);
-    z-index: 10;
-    transform: translateY(-18px);
-    padding: 38px 34px 36px;
     display: flex;
     flex-direction: column;
-    gap: 50px;
+    align-items: center;
+    gap: 34px;
 
-    .signup__label {
-      color: var(--sub-color);
+    input,
+    button,
+    select {
+        border: 1px solid var(--line-color);
+        border-radius: var(--default-radius);
+        &:focus {
+            outline: 1px solid var(--input-outline-color);
+            outline-offset: -1px;
+            border: none;
+        }
+    }
+    input {
+        padding: 17px;
+        height: 54px;
+    }
+    button {
+        background-color: var(--main-color);
+        border-radius: 5px;
+        border: none;
+        width: 122px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
     }
 
-    .signup__group {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .signup__field {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-
-      .signup__input-group {
+    .signup__fieldset {
+        position: relative;
+        background-color: #fff;
+        border: 1px solid var(--line-color);
+        border-radius: var(--default-radius);
+        z-index: 10;
+        transform: translateY(-18px);
+        padding: 38px 34px 36px;
         display: flex;
-        gap: 12px;
+        flex-direction: column;
+        gap: 50px;
 
-        .signup__input {
-          width: 346px;
-        }
-      }
-
-      .signup__phone-fieldset {
         .signup__label {
-          margin-bottom: 12px;
+            color: var(--sub-color);
         }
-        .signup__phone-group {
-          display: flex;
-          gap: 12px;
 
-          select,
-          input {
-            width: 152px;
-            border-radius: var(--default-radius);
-            text-align: center;
-          }
+        .signup__group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
 
-          .signup__select {
-            appearance: none;
-            background: url('../../icons/icon-down-arrow.svg') no-repeat right
-              22px center;
+        .signup__field {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
 
-            &:open {
-              background-image: url('../../icons/icon-up-arrow.svg');
+            .signup__input-group {
+                display: flex;
+                gap: 12px;
+
+                .signup__input {
+                    width: 346px;
+                }
             }
 
-            option {
-              font-weight: 500;
-              font-size: 16px;
-              text-align: center;
-            }
-          }
-        }
-      }
-    }
-  }
+            .signup__phone-fieldset {
+                .signup__label {
+                    margin-bottom: 12px;
+                }
+                .signup__phone-group {
+                    display: flex;
+                    gap: 12px;
 
-  .signup__group--seller {
-    &.hide {
-      display: none;
+                    select,
+                    input {
+                        width: 152px;
+                        border-radius: var(--default-radius);
+                        text-align: center;
+                    }
+
+                    .signup__select {
+                        appearance: none;
+                        background: url('../../icons/icon-down-arrow.svg')
+                            no-repeat right 22px center;
+
+                        &:open {
+                            background-image: url('../../icons/icon-up-arrow.svg');
+                        }
+
+                        option {
+                            font-weight: 500;
+                            font-size: 16px;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
     }
-  }
+
+    .signup__group--seller {
+        &.hide {
+            display: none;
+        }
+    }
 }
 
 .signup__terms {
-  .signup__checkbox-group {
-    color: var(--sub-color);
-    width: 480px;
-    display: flex;
-    gap: 10px;
+    .signup__checkbox-group {
+        color: var(--sub-color);
+        width: 480px;
+        display: flex;
+        gap: 10px;
 
-    .signup__checkbox {
-      all: unset;
-      appearance: none;
-      width: 16px;
-      height: 16px;
-      content: url('../../icons/icon-check-box.svg');
+        .signup__checkbox {
+            all: unset;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            content: url('../../icons/icon-check-box.svg');
 
-      &:focus {
-        outline: 1px solid var(--input-outline-color);
-      }
+            &:focus {
+                outline: 1px solid var(--input-outline-color);
+            }
 
-      &:checked {
-        content: url('../../icons/icon-check-fill-box.svg');
-      }
+            &:checked {
+                content: url('../../icons/icon-check-fill-box.svg');
+            }
+        }
+
+        .signup__checkbox-label {
+            .signup__link {
+                text-decoration: underline;
+                display: inline;
+                text-align: start;
+            }
+        }
     }
-
-    .signup__checkbox-label {
-      .signup__link {
-        text-decoration: underline;
-        display: inline;
-        text-align: start;
-      }
-    }
-  }
 }
 
 .signup__button[type='submit'] {
-  width: 480px;
-  height: 60px;
-  font-size: 18px;
-  font-weight: 700;
+    width: 480px;
+    height: 60px;
+    font-size: 18px;
+    font-weight: 700;
 
-  &:disabled {
-    background-color: var(--line-color);
-  }
+    &:disabled {
+        background-color: var(--line-color);
+    }
 }

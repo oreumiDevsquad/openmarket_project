@@ -1,233 +1,252 @@
 <!-- User Signup Page -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>회원가입</title>
-    <link rel="stylesheet" href="../assets/css/reset.css" />
-    <link rel="stylesheet" href="../assets/css/common.css" />
-    <link rel="stylesheet" href="../assets/css/pages/signup.css" />
-  </head>
-  <body>
-    <header class="header">
-      <h1 class="header__logo">
-        <a href="/index.html" class="header__logo-link">
-          <img
-            src="/assets/images/Logo-hodu.png"
-            alt="호두 로고"
-            class="header__logo-image"
-          />
-        </a>
-      </h1>
-    </header>
-    <section class="signup__content" aria-labelledby="signupHeading">
-      <h2 id="signupHeading" class="sr-only">회원가입</h2>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>회원가입</title>
+        <link rel="stylesheet" href="../assets/css/reset.css" />
+        <link rel="stylesheet" href="../assets/css/common.css" />
+        <link rel="stylesheet" href="../assets/css/pages/signup.css" />
+    </head>
+    <body>
+        <header class="header">
+            <h1 class="header__logo">
+                <a href="/index.html" class="header__logo-link">
+                    <img
+                        src="/assets/images/Logo-hodu.png"
+                        alt="호두 로고"
+                        class="header__logo-image"
+                    />
+                </a>
+            </h1>
+        </header>
+        <section class="signup__content" aria-labelledby="signupHeading">
+            <h2 id="signupHeading" class="sr-only">회원가입</h2>
 
-      <!-- 탭 네비게이션 -->
-      <nav class="signup__tabs">
-        <ul class="signup__tabs-list" role="tablist">
-          <li class="signup__tabs-item">
-            <button
-              class="signup__tabs-button signup__tabs-button--active left"
-              role="tab"
-              aria-selected="true"
-              aria-controls="userSignup"
-              id="userTab"
+            <!-- 탭 네비게이션 -->
+            <nav class="signup__tabs">
+                <ul class="signup__tabs-list" role="tablist">
+                    <li class="signup__tabs-item">
+                        <button
+                            class="signup__tabs-button signup__tabs-button--active left"
+                            role="tab"
+                            aria-selected="true"
+                            aria-controls="userSignup"
+                            id="userTab"
+                        >
+                            구매회원가입
+                        </button>
+                    </li>
+                    <li class="signup__tabs-item">
+                        <button
+                            class="signup__tabs-button"
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="sellerSignup"
+                            id="sellerTab"
+                        >
+                            판매회원가입
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- 회원가입 폼 -->
+            <form
+                class="signup__form"
+                role="tabpanel"
+                aria-labelledby="userTab"
+                id="userSignup"
             >
-              구매회원가입
-            </button>
-          </li>
-          <li class="signup__tabs-item">
-            <button
-              class="signup__tabs-button"
-              role="tab"
-              aria-selected="false"
-              aria-controls="sellerSignup"
-              id="sellerTab"
-            >
-              판매회원가입
-            </button>
-          </li>
-        </ul>
-      </nav>
+                <fieldset class="signup__fieldset">
+                    <legend class="sr-only">기본 정보 입력</legend>
 
-      <!-- 회원가입 폼 -->
-      <form
-        class="signup__form"
-        role="tabpanel"
-        aria-labelledby="userTab"
-        id="userSignup"
-      >
-        <fieldset class="signup__fieldset">
-          <legend class="sr-only">기본 정보 입력</legend>
+                    <!-- 아이디/비밀번호 그룹 -->
+                    <div class="signup__group">
+                        <div class="signup__field">
+                            <label for="userId" class="signup__label"
+                                >아이디</label
+                            >
+                            <div class="signup__input-group">
+                                <input
+                                    type="text"
+                                    name="userId"
+                                    id="userId"
+                                    class="signup__input"
+                                    required
+                                />
+                                <button
+                                    type="button"
+                                    class="signup__button signup__button--secondary"
+                                >
+                                    중복확인
+                                </button>
+                            </div>
+                        </div>
 
-          <!-- 아이디/비밀번호 그룹 -->
-          <div class="signup__group">
-            <div class="signup__field">
-              <label for="userId" class="signup__label">아이디</label>
-              <div class="signup__input-group">
-                <input
-                  type="text"
-                  name="userId"
-                  id="userId"
-                  class="signup__input"
-                  required
-                />
+                        <div class="signup__field">
+                            <label for="userPassword" class="signup__label"
+                                >비밀번호</label
+                            >
+                            <input
+                                type="password"
+                                name="password"
+                                id="userPassword"
+                                class="signup__input"
+                                required
+                            />
+                        </div>
+
+                        <div class="signup__field">
+                            <label
+                                for="userPasswordConfirm"
+                                class="signup__label"
+                                >비밀번호 재확인</label
+                            >
+                            <input
+                                type="password"
+                                name="passwordConfirm"
+                                id="userPasswordConfirm"
+                                class="signup__input"
+                                required
+                            />
+                        </div>
+                    </div>
+
+                    <!-- 개인정보 그룹 -->
+                    <div class="signup__group">
+                        <div class="signup__field">
+                            <label for="userName" class="signup__label"
+                                >이름</label
+                            >
+                            <input
+                                type="text"
+                                name="userName"
+                                id="userName"
+                                class="signup__input"
+                                required
+                            />
+                        </div>
+
+                        <div class="signup__field">
+                            <fieldset class="signup__phone-fieldset">
+                                <legend class="signup__label">
+                                    휴대폰번호
+                                </legend>
+                                <div class="signup__phone-group">
+                                    <select
+                                        id="phonePrefix"
+                                        name="phonePrefix"
+                                        class="signup__select"
+                                        required
+                                    >
+                                        <option value="010">010</option>
+                                        <option value="011">011</option>
+                                        <option value="016">016</option>
+                                        <option value="017">017</option>
+                                        <option value="018">018</option>
+                                        <option value="019">019</option>
+                                    </select>
+                                    <input
+                                        type="tel"
+                                        name="phoneMiddle"
+                                        id="phoneMiddle"
+                                        class="signup__input signup__input--phone"
+                                        maxlength="4"
+                                        required
+                                        aria-label="전화번호 가운데 자리"
+                                    />
+                                    <input
+                                        type="tel"
+                                        name="phoneLast"
+                                        id="phoneLast"
+                                        class="signup__input signup__input--phone"
+                                        maxlength="4"
+                                        required
+                                        aria-label="전화번호 마지막 자리"
+                                    />
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+
+                    <!-- 판매자 전용 필드 (조건부 렌더링) -->
+                    <div class="signup__group signup__group--seller hide">
+                        <div class="signup__field">
+                            <label for="businessNumber" class="signup__label"
+                                >사업자 등록번호</label
+                            >
+                            <div class="signup__input-group">
+                                <input
+                                    type="text"
+                                    name="businessNumber"
+                                    id="businessNumber"
+                                    class="signup__input"
+                                />
+                                <button
+                                    type="button"
+                                    class="signup__button signup__button--secondary"
+                                >
+                                    인증
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="signup__field">
+                            <label for="storeName" class="signup__label"
+                                >스토어 이름</label
+                            >
+                            <input
+                                type="text"
+                                name="storeName"
+                                id="storeName"
+                                class="signup__input"
+                            />
+                        </div>
+                    </div>
+                </fieldset>
+
+                <!-- 이용약관 동의 -->
+                <fieldset class="signup__terms">
+                    <legend class="sr-only">이용약관 동의</legend>
+                    <div class="signup__checkbox-group">
+                        <input
+                            type="checkbox"
+                            id="termsAgreement"
+                            name="terms"
+                            class="signup__checkbox"
+                            required
+                        />
+                        <label
+                            for="termsAgreement"
+                            class="signup__checkbox-label"
+                        >
+                            호두샵의
+                            <a href="#" class="signup__link"
+                                ><strong class="signup__link-text"
+                                    >이용약관</strong
+                                > </a
+                            >및<a href="#" class="signup__link"
+                                ><strong class="signup__link-text"
+                                    >개인정보처리방침</strong
+                                ></a
+                            >에 대한 내용을 확인하였고 동의합니다.
+                        </label>
+                    </div>
+                </fieldset>
+
+                <!-- 제출 버튼 -->
                 <button
-                  type="button"
-                  class="signup__button signup__button--secondary"
+                    type="submit"
+                    class="signup__button signup__button--primary"
+                    disabled
                 >
-                  중복확인
+                    가입하기
                 </button>
-              </div>
-            </div>
+            </form>
+        </section>
 
-            <div class="signup__field">
-              <label for="userPassword" class="signup__label">비밀번호</label>
-              <input
-                type="password"
-                name="password"
-                id="userPassword"
-                class="signup__input"
-                required
-              />
-            </div>
-
-            <div class="signup__field">
-              <label for="userPasswordConfirm" class="signup__label"
-                >비밀번호 재확인</label
-              >
-              <input
-                type="password"
-                name="passwordConfirm"
-                id="userPasswordConfirm"
-                class="signup__input"
-                required
-              />
-            </div>
-          </div>
-
-          <!-- 개인정보 그룹 -->
-          <div class="signup__group">
-            <div class="signup__field">
-              <label for="userName" class="signup__label">이름</label>
-              <input
-                type="text"
-                name="userName"
-                id="userName"
-                class="signup__input"
-                required
-              />
-            </div>
-
-            <div class="signup__field">
-              <fieldset class="signup__phone-fieldset">
-                <legend class="signup__label">휴대폰번호</legend>
-                <div class="signup__phone-group">
-                  <select
-                    id="phonePrefix"
-                    name="phonePrefix"
-                    class="signup__select"
-                    required
-                  >
-                    <option value="010">010</option>
-                    <option value="011">011</option>
-                    <option value="016">016</option>
-                    <option value="017">017</option>
-                    <option value="018">018</option>
-                    <option value="019">019</option>
-                  </select>
-                  <input
-                    type="tel"
-                    name="phoneMiddle"
-                    id="phoneMiddle"
-                    class="signup__input signup__input--phone"
-                    maxlength="4"
-                    required
-                    aria-label="전화번호 가운데 자리"
-                  />
-                  <input
-                    type="tel"
-                    name="phoneLast"
-                    id="phoneLast"
-                    class="signup__input signup__input--phone"
-                    maxlength="4"
-                    required
-                    aria-label="전화번호 마지막 자리"
-                  />
-                </div>
-              </fieldset>
-            </div>
-          </div>
-
-          <!-- 판매자 전용 필드 (조건부 렌더링) -->
-          <div class="signup__group signup__group--seller hide">
-            <div class="signup__field">
-              <label for="businessNumber" class="signup__label"
-                >사업자 등록번호</label
-              >
-              <div class="signup__input-group">
-                <input
-                  type="text"
-                  name="businessNumber"
-                  id="businessNumber"
-                  class="signup__input"
-                />
-                <button
-                  type="button"
-                  class="signup__button signup__button--secondary"
-                >
-                  인증
-                </button>
-              </div>
-            </div>
-
-            <div class="signup__field">
-              <label for="storeName" class="signup__label">스토어 이름</label>
-              <input
-                type="text"
-                name="storeName"
-                id="storeName"
-                class="signup__input"
-              />
-            </div>
-          </div>
-        </fieldset>
-
-        <!-- 이용약관 동의 -->
-        <fieldset class="signup__terms">
-          <legend class="sr-only">이용약관 동의</legend>
-          <div class="signup__checkbox-group">
-            <input
-              type="checkbox"
-              id="termsAgreement"
-              name="terms"
-              class="signup__checkbox"
-              required
-            />
-            <label for="termsAgreement" class="signup__checkbox-label">
-              호두샵의
-              <a href="#" class="signup__link"
-                ><strong class="signup__link-text">이용약관</strong> </a
-              >및<a href="#" class="signup__link"
-                ><strong class="signup__link-text">개인정보처리방침</strong></a
-              >에 대한 내용을 확인하였고 동의합니다.
-            </label>
-          </div>
-        </fieldset>
-
-        <!-- 제출 버튼 -->
-        <button
-          type="submit"
-          class="signup__button signup__button--primary"
-          disabled
-        >
-          가입하기
-        </button>
-      </form>
-    </section>
-
-    <script src="../assets/js/pages/signup.js"></script>
-  </body>
+        <script src="../assets/js/pages/signup.js"></script>
+    </body>
 </html>
