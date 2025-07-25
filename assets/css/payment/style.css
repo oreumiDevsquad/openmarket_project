@@ -195,8 +195,8 @@ body {
     padding: 18px 0px;
 }
 
-.order-payment__option input[type="radio"],
-.order-payment__option input[type="checkbox"] {
+.order-payment__option input[type='radio'],
+.order-payment__option input[type='checkbox'] {
     margin-right: 6px;
     accent-color: #258c1c;
 }
