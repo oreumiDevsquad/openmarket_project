@@ -50,11 +50,8 @@ main {
     background-color: #000;
 }
 
-.main-slide__controls-btn-prev {
-}
-
 /* slide control btn */
-.main-slide__controls .main-slide__controls-btn-prev {
+.controls-btn {
     width: 16px;
     height: 16px;
     border: solid #000 2px;
@@ -62,18 +59,14 @@ main {
     border-right: none;
     position: absolute;
     top: 50%;
+}
+
+.main-slide__controls .main-slide__controls-btn-prev {
     left: 56px;
     transform: translateY(-50%) rotate(-45deg);
 }
 
 .main-slide__controls .main-slide__controls-btn-next {
-    width: 16px;
-    height: 16px;
-    border: solid #000 2px;
-    border-bottom: none;
-    border-right: none;
-    position: absolute;
-    top: 50%;
     right: 56px;
     transform: translateY(-50%) rotate(135deg);
 }
