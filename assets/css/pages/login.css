@@ -23,10 +23,13 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 }
 
+/* ======== 헤더, 로고 ======== */
+
 .login-page__header {
-    margin: 40px 0 20px;
+    margin: 100px 0 70px;
 }
 
 .login-page__logo {
@@ -54,7 +57,7 @@ tab active 효과 추가하기, 피그마 속 처럼 두개가 합쳐진 효과 
     justify-content: space-around;
     border-bottom: 0px solid #c4c4c4;
     border-radius: 10px 10px 0 0;
-    background-color: pink;
+    background-color: #f2f2f2;
 }
 
 .login-box__tab-item {
@@ -93,7 +96,7 @@ tab active 효과 추가하기, 피그마 속 처럼 두개가 합쳐진 효과 
     border: none;
     border-bottom: 1px solid #c4c4c4;
     font-size: 16px;
-    padding: 20px 0px;
+    padding: 20px 10px;
     margin-top: 14px;
     margin-left: 35px;
     margin-right: 35px;
@@ -102,7 +105,8 @@ tab active 효과 추가하기, 피그마 속 처럼 두개가 합쳐진 효과 
 }
 
 .login-box__input:focus {
-    background-color: #c2c2c2;
+    outline: 1px solid #21bf48;
+    border-radius: 5px;
 }
 
 /* ======== 로그인 버튼 ========= */
