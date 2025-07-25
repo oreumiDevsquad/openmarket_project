@@ -75,7 +75,8 @@ body * {
   margin-bottom: 32px;
 }
 
-.quantity > * {
+.quantity__input,
+.quantity__button {
   width: 50px;
   height: 50px;
   display: flex;
