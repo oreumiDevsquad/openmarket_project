@@ -1,12 +1,29 @@
 <!-- 404 Not Found Page -->
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Not Found Page</title>
-  </head>
-  <body>
-    <!-- 여기에 404 파일 퍼블리싱 -->
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Not Found Page</title>
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link rel="stylesheet" href="./assets/css/404.css">
+</head>
+
+<body>
+  <!-- 여기에 404 파일 퍼블리싱 -->
+
+  <section class="not-found">
+    <img class="not-found__image" src="./assets/images/icon-404.png" alt="404 에러">
+    <div class="not-found__content">
+      <h1 class="not-found__title">페이지를 찾을 수 없습니다.</h1>
+      <p class="not-found__text">페이지가 존재하지 않거나 사용할 수 없는 페이지입니다.<br>웹 주소가 올바른지 확인해 주세요.</p>
+      <div class="not-found__buttons">
+        <a href="#" class="not-found__button not-found__button--primary">메인으로</a>
+        <a href="#" class="not-found__button not-found__button--secondary">이전 페이지</a>
+      </div>
+    </div>
+  </section>
+</body>
+
 </html>
