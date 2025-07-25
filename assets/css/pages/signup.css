@@ -33,6 +33,9 @@
 
         .signup__tabs-button {
             background-color: #fff;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: calc(100% + 4px);
             width: 275px;
             height: 80px;
             box-sizing: border-box;
@@ -83,6 +86,7 @@
     button {
         background-color: var(--main-color);
         border-radius: 5px;
+        border: none;
         width: 122px;
         color: #fff;
         font-size: 16px;
