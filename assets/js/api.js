@@ -21,6 +21,11 @@ const OPTIONS = {
     },
 };
 
+const postOption = (data) => ({
+    ...OPTIONS.post,
+    body: JSON.stringify(data),
+});
+
 export const API = {
     getProducts: async () => fetchAPI(URL.products, OPTIONS.get),
 
@@ -28,37 +33,29 @@ export const API = {
         fetchAPI(URL.productDetail + `${productID}/`, OPTIONS.get),
 
     login: async (id, password) =>
-        fetchAPI(URL.login, {
-            ...OPTIONS.post,
-            body: JSON.stringify({
-                username: id,
-                password,
-            }),
-        }),
+        fetchAPI(URL.login, postOption({ username: id, password })),
+
     refreshToken: async (refreshToken) =>
-        fetchAPI(URL.refresh, {
-            ...OPTIONS.post,
-            body: JSON.stringify({
+        fetchAPI(
+            URL.refresh,
+            postOption({
                 refresh: refreshToken,
-            }),
-        }),
+            })
+        ),
+
     validateId: async (id) =>
-        fetchAPI(URL.validateUserName, {
-            ...OPTIONS.post,
-            body: JSON.stringify({
-                username: id,
-            }),
-        }),
+        fetchAPI(URL.validateUserName, postOption({ username: id })),
+
     signupBuyer: async (id, password, name, phoneNumber) =>
-        fetchAPI(URL.signupBuyer, {
-            ...OPTIONS.post,
-            body: JSON.stringify({
+        fetchAPI(
+            URL.signupBuyer,
+            postOption({
                 username: id,
                 password,
                 name,
                 phone_number: phoneNumber,
-            }),
-        }),
+            })
+        ),
 };
 
 async function fetchAPI(url, option) {
