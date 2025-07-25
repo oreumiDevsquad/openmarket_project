@@ -100,11 +100,14 @@ body {
     height: 100%;
 }
 
-* {
-    font-family: "Spoqa Han Sans Neo", "sans-serif";
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 body {
+    font-family: 'Spoqa Han Sans Neo', sans-serif;
     line-height: 1;
 }
 
@@ -130,7 +133,7 @@ ol {
 }
 ul:after,
 ol:after {
-    content: "";
+    content: '';
     display: block;
     clear: both;
 }
@@ -163,7 +166,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: "";
+    content: '';
     content: none;
 }
 table {
@@ -193,5 +196,5 @@ dialog {
 }
 
 img {
-    display: block;
+    display: inline-block;
 }

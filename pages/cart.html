@@ -1,1 +1,274 @@
 <!-- Shopping Cart Page -->
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./../assets/css/reset.css" />
+        <link rel="stylesheet" href="./../assets/css/common.css" />
+        <link rel="stylesheet" href="./../assets/css/pages/cart.css" />
+
+        <title>장바구니 | HODU</title>
+    </head>
+    <body>
+        <main>
+            <section class="cart">
+                <h2 class="cart__title">장바구니</h2>
+                <table class="cart__table">
+                    <caption class="sr-only">
+                        장바구니 상품 목록
+                    </caption>
+                    <thead class="cart__header">
+                        <tr>
+                            <th
+                                class="cart__header-product-checkbox"
+                                scope="col"
+                            >
+                                <label for="productCheckAll" class="sr-only"
+                                    >전체 상품 선택</label
+                                >
+                                <input type="checkbox" id="productCheckAll" />
+                            </th>
+                            <th class="cart__header-product" scope="col">
+                                상품정보
+                            </th>
+                            <th class="cart__header-product" scope="col">
+                                수량
+                            </th>
+                            <th class="cart__header-product" scope="col">
+                                상품금액
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="cart__body">
+                        <tr class="cart__empty">
+                            <td colspan="4">
+                                <div class="cart__empty-content">
+                                    <p class="cart__empty-text">
+                                        장바구니에 담긴 상품이 없습니다.
+                                    </p>
+                                    <p class="cart__empty-sub-text">
+                                        원하는 상품을 장바구니에 담아보세요!
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="cart__product">
+                            <td class="cart__product-checkbox">
+                                <label for="productCheck1" class="sr-only"
+                                    >딥러닝 개발자 무릎 담요 선택</label
+                                >
+                                <input type="checkbox" id="productCheck1" />
+                            </td>
+                            <td class="cart__product-details">
+                                <img
+                                    src="./../assets/images/cart_img_1.png"
+                                    alt="딥러닝 개발자 무릎 담요"
+                                />
+
+                                <div class="cart__product-info">
+                                    <div class="cart__product-wapper">
+                                        <p class="cart__product-brand">
+                                            백엔드글로벌
+                                        </p>
+                                        <h3 class="cart__product-title">
+                                            딥러닝 개발자 무릎 담요
+                                        </h3>
+                                        <p class="cart__product-price">
+                                            17,500원
+                                        </p>
+                                    </div>
+                                    <p class="cart__product-delivery">
+                                        택배배송 / &nbsp;무료배송
+                                    </p>
+                                </div>
+                            </td>
+                            <td class="cart__quantity">
+                                <div class="cart__quantity-control">
+                                    <button
+                                        type="button"
+                                        class="quantity-control__minus-btn"
+                                        aria-label="수량 감소"
+                                    >
+                                        <img
+                                            src="./../assets/icons/icon-minus-line.svg"
+                                            alt=""
+                                        />
+                                    </button>
+                                    <input
+                                        type="number"
+                                        value="1"
+                                        min="1"
+                                        max="99"
+                                        class="quantity-control__input"
+                                        aria-label="상품 수량"
+                                        readonly
+                                    />
+                                    <button
+                                        type="button"
+                                        class="quantity-control__plus-btn"
+                                        aria-label="수량 증가"
+                                    >
+                                        <img
+                                            src="./../assets/icons/icon-plus-line.svg"
+                                            alt=""
+                                        />
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="cart__product-order">
+                                <button
+                                    type="button"
+                                    class="cart__delete-btn"
+                                    aria-label="상품 삭제"
+                                >
+                                    <img
+                                        src="./../assets/icons/icon-delete.svg"
+                                        alt=""
+                                    />
+                                </button>
+
+                                <p class="cart__product-total-price">
+                                    17,500원
+                                </p>
+                                <button
+                                    type="button"
+                                    class="cart__product-order-btn"
+                                    aria-label="개별 상품 주문"
+                                >
+                                    주문하기
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <table class="cart__footer-table">
+                    <tfoot class="cart__footer">
+                        <tr>
+                            <td class="cart__footer-product">
+                                <strong>총 상품금액</strong>
+                                <p>46,500<span>원</span></p>
+                            </td>
+                            <td class="cart__footer-product">
+                                <strong>상품 할인</strong>
+                                <p>0<span>원</span></p>
+                            </td>
+                            <td class="cart__footer-product">
+                                <strong>배송비</strong>
+                                <p>0 <span>원</span></p>
+                            </td>
+                            <td class="cart__footer-product-total">
+                                <strong>결제 예정 금액</strong>
+                                <p>46,500<span>원</span></p>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <button type="button" class="cart__order-all-btn">
+                    주문하기
+                </button>
+            </section>
+        </main>
+
+        <!-- 모달 전체 오버레이 -->
+        <div
+            class="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
+        >
+            <div class="modal__quantity modal-content">
+                <button
+                    type="button"
+                    class="modal__close-btn"
+                    aria-label="닫기"
+                >
+                    <img src="./../assets/icons/icon-delete.svg" alt="" />
+                </button>
+
+                <div class="modal__quantity-con">
+                    <button
+                        type="button"
+                        class="quantity-btn"
+                        aria-label="수량 감소"
+                    >
+                        <img
+                            src="./../assets/icons/icon-minus-line.svg"
+                            alt=""
+                        />
+                    </button>
+                    <input
+                        type="number"
+                        value="1"
+                        min="1"
+                        max="99"
+                        readonly
+                        aria-label="수량"
+                    />
+                    <button
+                        type="button"
+                        class="quantity-btn"
+                        aria-label="수량 증가"
+                    >
+                        <img
+                            src="./../assets/icons/icon-plus-line.svg"
+                            alt=""
+                        />
+                    </button>
+                </div>
+
+                <!-- 하단 버튼 -->
+                <div class="modal__actions">
+                    <button type="button" class="btn btn--cancel">취소</button>
+                    <button type="button" class="btn btn--confirm">수정</button>
+                </div>
+            </div>
+
+            <div class="modal__delete modal-content">
+                <button
+                    type="button"
+                    class="modal__close-btn"
+                    aria-label="닫기"
+                >
+                    <img src="./../assets/icons/icon-delete.svg" alt="" />
+                </button>
+
+                <div class="modal__delete-con">
+                    <p>상품을 삭제하시겠습니까?</p>
+                </div>
+
+                <!-- 하단 버튼 -->
+                <div class="modal__actions">
+                    <button type="button" class="btn btn--cancel">취소</button>
+                    <button type="button" class="btn btn--confirm">확인</button>
+                </div>
+            </div>
+
+            <div class="modal__login-msg modal-content">
+                <button
+                    type="button"
+                    class="modal__close-btn"
+                    aria-label="닫기"
+                >
+                    <img src="./../assets/icons/icon-delete.svg" alt="" />
+                </button>
+
+                <div class="modal__login-msg-con">
+                    <p>
+                        로그인이 필요한 서비스입니다.<br />
+                        로그인 하시겠습니까?
+                    </p>
+                </div>
+
+                <!-- 하단 버튼 -->
+                <div class="modal__actions">
+                    <button type="button" class="btn btn--cancel">
+                        아니오
+                    </button>
+                    <button type="button" class="btn btn--confirm">예</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
