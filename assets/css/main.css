@@ -1,1 +1,72 @@
 /* Styles for the main page */
+@import url(./common.css);
+
+main {
+    width: 100%;
+}
+
+/* slide */
+.main-slide__container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.main-slide__wrapper {
+    display: flex;
+    width: 500%;
+    height: 100%;
+}
+.main-slide__item {
+    width: 100%;
+    height: 100%;
+}
+
+.main-slide__item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* slide nav */
+.main-slide__nav {
+    display: flex;
+    gap: 6px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%);
+}
+.main-slide__nav-item {
+    width: 6px;
+    height: 6px;
+    background-color: #fff;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.nav-item-active {
+    background-color: #000;
+}
+
+/* slide control btn */
+.controls-btn {
+    width: 16px;
+    height: 16px;
+    border: solid #000 2px;
+    border-bottom: none;
+    border-right: none;
+    position: absolute;
+    top: 50%;
+}
+
+.main-slide__controls .main-slide__controls-btn-prev {
+    left: 56px;
+    transform: translateY(-50%) rotate(-45deg);
+}
+
+.main-slide__controls .main-slide__controls-btn-next {
+    right: 56px;
+    transform: translateY(-50%) rotate(135deg);
+}
