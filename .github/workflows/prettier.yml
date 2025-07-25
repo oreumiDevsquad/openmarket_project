@@ -19,13 +19,15 @@ jobs:
           node-version: '18'
 
       - name: Install dependencies
-        run: npm ci
-
-      - name: Check prettier binary
-        run: |
-          ls -l ./node_modules/.bin/prettier
-          file ./node_modules/.bin/prettier || true
-          head -n 1 ./node_modules/.bin/prettier || true
+        run: npm install
 
       - name: Run Prettier
         run: npx prettier --write .
+
+      - name: Commit changes
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Format code with Prettier" || echo "No changes to commit"
+          git push
