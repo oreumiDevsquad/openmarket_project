@@ -1,33 +1,31 @@
 name: Prettier on Pull Request to dev
 
 on:
-    pull_request:
-        branches:
-            - dev
+  pull_request:
+    branches:
+      - dev
 
 jobs:
-    prettier:
-        runs-on: ubuntu-latest
+  prettier:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v3
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-            - name: Set up Node.js
-              uses: actions/setup-node@v3
-              with:
-                  node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-            - name: Install dependencies
-              run: npm install
+      - name: Install dependencies
+        run: npm ci
 
-            - name: Run Prettier
-              run: npm run format
+      - name: Check prettier binary
+        run: |
+          ls -l ./node_modules/.bin/prettier
+          file ./node_modules/.bin/prettier || true
+          head -n 1 ./node_modules/.bin/prettier || true
 
-            - name: Commit changes
-              run: |
-                  git config --local user.name "github-actions[bot]"
-                  git config --local user.email "github-actions[bot]@users.noreply.github.com"
-                  git add .
-                  git commit -m "Format code with Prettier" || echo "No changes to commit"
-                  git push
+      - name: Run Prettier
+        run: npx prettier --write .
