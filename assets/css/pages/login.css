@@ -1,21 +1,4 @@
-/* common */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    border: 0;
-    clip: rect(0 0 0 0);
-}
-
-.clearfix::after {
-    content: '';
-    display: block;
-    clear: both;
-}
+@import url('../common.css');
 
 /* ========= 전체 레이아웃 ========= */
 .login-page {
@@ -43,8 +26,10 @@
     background-color: #fff;
     width: 100%;
     max-width: 550px;
-    border: 1px solid #c4c4c4;
+    /* border: 1px solid var(--line-color); */
     border-radius: 10px;
+
+    position: relative;
 }
 
 /* ========= 탭 영역 ========== */
@@ -55,9 +40,8 @@ tab active 효과 추가하기, 피그마 속 처럼 두개가 합쳐진 효과 
 .login-box__tabs {
     display: flex;
     justify-content: space-around;
-    border-bottom: 0px solid #c4c4c4;
+    border-bottom: 0px solid var(--line-color);
     border-radius: 10px 10px 0 0;
-    background-color: #f2f2f2;
 }
 
 .login-box__tab-item {
@@ -72,8 +56,11 @@ tab active 효과 추가하기, 피그마 속 처럼 두개가 합쳐진 효과 
     font-size: 18px;
     font-weight: 500;
     cursor: pointer;
+    border: 1px solid var(--line-color);
+    border-bottom: none;
     border-radius: 10px 10px 0 0;
     transition: background-color 0.2s ease;
+    background-color: #f2f2f2;
 }
 
 /* active 기능 추가할 것 */
@@ -90,37 +77,38 @@ tab active 효과 추가하기, 피그마 속 처럼 두개가 합쳐진 효과 
     display: flex;
     flex-direction: column;
     gap: 1px;
+    padding: 14px 35px 36px;
+    border: 1px solid var(--line-color);
+    border-top: none;
+    border-radius: 0px 0px 10px 10px;
 }
 
 .login-box__input {
     border: none;
-    border-bottom: 1px solid #c4c4c4;
+    border-bottom: 1px solid var(--line-color);
     font-size: 16px;
     padding: 20px 10px;
-    margin-top: 14px;
-    margin-left: 35px;
-    margin-right: 35px;
     background-color: transparent;
     transition: border-color 0.2s ease;
 }
 
 .login-box__input:focus {
-    outline: 1px solid #21bf48;
+    outline: 1px solid var(--input-outline-color);
     border-radius: 5px;
 }
 
 /* ======== 로그인 버튼 ========= */
 
 .login-box__submit {
-    margin-top: 36px;
     padding: 19px 215px;
+    margin-top: 36px;
     color: #fff;
-    background-color: #21bf48;
+    background-color: var(--main-color);
     border: none;
     border-radius: 5px;
     font-size: 18px;
     font-weight: 700;
-    margin: 36px 35px;
+    word-break: keep-all;
 
     /*cursor*/
     cursor: pointer;
