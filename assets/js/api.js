@@ -9,6 +9,7 @@ const URL = {
     validateUserName: `${BASE_URL}/accounts/validate-username/`,
     signupBuyer: `${BASE_URL}/accounts/buyer/signup/`,
     cart: `${BASE_URL}/cart/`,
+    order: `${BASE_URL}/order/`,
 };
 
 const options = ({ method, data = null, token = null }) => ({
@@ -101,6 +102,9 @@ export const API = {
     getCartList: async (token) =>
         fetchAPI(URL.cart, options({ method: 'GET', token })),
 
+    getCartDetail: async (id, token) =>
+        fetchAPI(URL.cart + `${id}/`, options({ method: 'GET', token })),
+
     addCartItem: async (data, token) =>
         fetchAPI(URL.cart, options({ method: 'POST', data, token })),
 
@@ -110,6 +114,8 @@ export const API = {
     clearCart: async (token) =>
         fetchAPI(URL.cart, options({ method: 'DELETE', token })),
 
-    getCartDetail: async (id, token) =>
-        fetchAPI(URL.cart + `${id}/`, options({ method: 'GET', token })),
+    directOrder: async (data, token) =>
+        fetchAPI(URL.order, options({ method: 'POST', data, token })),
+    cartOrder: async (data, token) =>
+        fetchAPI(URL.order, options({ method: 'POST', data, token })),
 };
