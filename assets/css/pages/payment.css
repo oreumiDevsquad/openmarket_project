@@ -1,16 +1,11 @@
-/* common */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    border: 0;
-    clip: rect(0 0 0 0);
+@import url('../common.css');
+
+:root {
+    --hover-color: #258c1c;
+    --unactive-color: #c4c4c4;
 }
 
+/* ===== 전체 레이아웃 ===== */
 body {
     background: #fff;
     margin: 0;
@@ -24,7 +19,33 @@ body {
     margin-top: 54px;
 }
 
-/* --- 주문 상품 목록 --- */
+/* === 공통 구분선 및 라디오/ 체크박스 스타일 === */
+.order-form__divider-bold {
+    border: none;
+    border-bottom: 2px solid var(--line-color);
+    margin-top: 8px;
+}
+
+.order-form__divider {
+    border: none;
+    border-bottom: 1px solid var(--line-color);
+    margin-top: 8px;
+}
+
+.order-payment__divider {
+    border: none;
+    border-bottom: 2px solid var(--line-color);
+}
+
+.order-payment__option input[type='radio'],
+.order-summary__agreement-box input[type='checkbox'] {
+    margin-right: 6px;
+    accent-color: var(--main-color);
+    appearance: auto;
+    width: auto;
+}
+
+/* === 주문 상품 목록 === */
 .order__main {
     width: 1280px;
     margin: 0 auto;
@@ -35,7 +56,7 @@ body {
     /* top 마진으로 정하는게 좋을 듯 */
 }
 
-/* --- 주문 상품 테이블 --- */
+/* === 주문 상품 테이블 === */
 .order-list {
     width: 100%;
     max-width: 1280px;
@@ -57,35 +78,28 @@ body {
     background-color: #f2f2f2;
 }
 
-/* --- 배송정보/폼 --- */
+/* === 배송정보/폼 === */
 .order-form {
     width: 100%;
     max-width: 1280px;
     margin-top: 98px;
 }
 
-.order-form__title {
+.order-form__section-title {
     font-size: 24px;
     font-weight: 500px;
     margin-bottom: 18px;
 }
 
-.order-form__divider-bold {
-    border: none;
-    border-bottom: 2px solid #c4c4c4;
-    margin-top: 8px;
+.order-form__title {
+    padding-top: 40px;
 }
 
-.order-form__divider {
-    border: none;
-    border-bottom: 1px solid #c4c4c4;
-    margin-top: 8px;
-}
-
-/* row(세로 정렬)과 label / input */
+/* === row(세로 정렬)과 label / input === */
 .order-form__row {
     display: flex;
     align-items: center;
+    padding-top: 8px;
 }
 
 .order-form__label {
@@ -97,18 +111,23 @@ body {
 }
 .order-form__input {
     padding: 10px 8px;
-    border: 1px solid #c4c4c4;
+    border: 1px solid var(--line-color);
     font-size: 16px;
     width: 334px;
 }
 
 .order-form__input:focus {
-    /* focus 및 hover 되었을떄 효과 처리 */
+    /* focus되었을때 처리 */
     outline: none;
-    border-color: #21bf48;
+    border-color: var(--input-outline-color);
 }
 
-/*휴대폰 번호 input*/
+/* === 휴대폰 번호 input === */
+.order-form__phone {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
 
 .order-form__input--phone3 {
     width: 80px;
@@ -118,7 +137,7 @@ body {
     width: 100px;
 }
 
-/* 배송주소 */
+/* === 배송주소 === */
 
 .order-form__row--address {
     display: flex;
@@ -144,7 +163,7 @@ body {
 }
 
 .order-form__zipcode-btn {
-    background: #21bf48;
+    background: var(--main-color);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -158,11 +177,12 @@ body {
 }
 
 .order-form__zipcode-btn:hover {
-    background-color: #258c1c;
+    background-color: var(--hover-color);
 }
 
-/* --- 결제수단, 결제정보 요약(우측 박스) */
-/* 결제수단 하나만 고를 수 있도록 설정 */
+/* === 결제수단, 결제정보 요약(우측 박스) === */
+
+/* === 결제 수단 === */
 .order-payment {
     width: 100%;
     max-width: 1280px;
@@ -179,26 +199,16 @@ body {
     margin-bottom: 18px;
 }
 
-.order-payment__divider {
-    border: none;
-    border-bottom: 2px solid #c4c4c4;
-}
-
 .order-payment__option {
     display: flex;
     justify-content: flex-start;
-    /* 여기 왼쪽으로 붙이고 싶은데 어떻게 해야하지? */
     gap: 40px;
 }
 
-.order-payment__item {
+.order-payment__option-item {
+    display: flex;
+    justify-content: flex-start;
     padding: 18px 0px;
-}
-
-.order-payment__option input[type='radio'],
-.order-payment__option input[type='checkbox'] {
-    margin-right: 6px;
-    accent-color: #258c1c;
 }
 
 .order-payment__item label {
@@ -207,7 +217,7 @@ body {
     cursor: pointer;
 }
 
-/* 결제정보 요약 */
+/* === 결제정보 요약 === */
 .order-summary {
     width: 100%;
     max-width: 480px;
@@ -225,7 +235,7 @@ body {
     width: 480px;
     max-width: 480px;
     min-height: 400px;
-    border: 2px solid #258c1c;
+    border: 2px solid var(--hover-color);
     border-radius: 10px;
     margin-top: 0;
     box-sizing: border-box;
@@ -256,13 +266,15 @@ body {
     justify-content: space-between;
 }
 
-.order-summary__total-value {
+.order-summary__total-value,
+.order-summary__total-value strong {
     color: #eb5757;
     font-size: 24px;
     font-weight: 700;
     vertical-align: middle;
 }
 
+/* 정보 제공 동의 및 제출 */
 .order-summary__agreement {
     background-color: #f2f2f2;
     display: flex;
@@ -277,7 +289,7 @@ body {
 .order-summary__submit {
     width: 220px;
     height: 68px;
-    background-color: #c4c4c4;
+    background-color: var(--unactive-color);
     color: #fff;
     border-radius: 5px;
     font-weight: 700;
@@ -286,5 +298,5 @@ body {
 
 /* checkbox 표시 시 색깔 변경 및 disable 속성 제거하기 */
 .order-summary__submit--active {
-    background-color: #21bf48;
+    background-color: var(--main-color);
 }
