@@ -8,59 +8,28 @@ const URL = {
     refresh: `${BASE_URL}/accounts/token/refresh/`,
     validateUserName: `${BASE_URL}/accounts/validate-username/`,
     signupBuyer: `${BASE_URL}/accounts/buyer/signup/`,
-};
-const OPTIONS = {
-    get: {
-        method: 'GET',
-    },
-    post: {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    },
+    cart: `${BASE_URL}/cart/`,
 };
 
-const postOption = (data) => ({
-    ...OPTIONS.post,
-    body: JSON.stringify(data),
+const options = ({ method, data = null, token = null }) => ({
+    method: method,
+    headers: {
+        'Content-Type': 'application/json',
+        ...(token && { Authorization: `Bearer ${token}` }),
+    },
+    ...(data && { body: JSON.stringify(data) }),
 });
-
-export const API = {
-    getProducts: async () => fetchAPI(URL.products, OPTIONS.get),
-
-    getProductDetail: async (productID) =>
-        fetchAPI(URL.productDetail + `${productID}/`, OPTIONS.get),
-
-    login: async (id, password) =>
-        fetchAPI(URL.login, postOption({ username: id, password })),
-
-    refreshToken: async (refreshToken) =>
-        fetchAPI(
-            URL.refresh,
-            postOption({
-                refresh: refreshToken,
-            })
-        ),
-
-    validateId: async (id) =>
-        fetchAPI(URL.validateUserName, postOption({ username: id })),
-
-    signupBuyer: async (id, password, name, phoneNumber) =>
-        fetchAPI(
-            URL.signupBuyer,
-            postOption({
-                username: id,
-                password,
-                name,
-                phone_number: phoneNumber,
-            })
-        ),
-};
 
 async function fetchAPI(url, option) {
     try {
         const response = await fetch(url, option);
+
+        if (response.status === 204)
+            return {
+                isSuccessful: true,
+                detail: '삭제되었습니다.',
+            };
+
         const data = await response.json();
 
         if (!response.ok) {
@@ -74,6 +43,7 @@ async function fetchAPI(url, option) {
                     .filter(([_, v]) => v.length)
                     .map(([k, v]) => `${k}: ${v}`)
                     .join('\n');
+            customError.messages = data;
             throw customError;
         }
 
@@ -82,3 +52,64 @@ async function fetchAPI(url, option) {
         throw error;
     }
 }
+
+export const API = {
+    getProducts: async () => fetchAPI(URL.products, options({ method: 'GET' })),
+
+    getProductDetail: async (productID) =>
+        fetchAPI(
+            URL.productDetail + `${productID}/`,
+            options({ method: 'GET' })
+        ),
+
+    login: async (id, password) =>
+        fetchAPI(
+            URL.login,
+            options({ method: 'POST', data: { username: id, password } })
+        ),
+
+    refreshToken: async (refreshToken) =>
+        fetchAPI(
+            URL.refresh,
+            options({
+                method: 'POST',
+                data: {
+                    refresh: refreshToken,
+                },
+            })
+        ),
+
+    validateId: async (id) =>
+        fetchAPI(
+            URL.validateUserName,
+            options({ method: 'POST', data: { username: id } })
+        ),
+
+    signupBuyer: async (id, password, name, phoneNumber) =>
+        fetchAPI(
+            URL.signupBuyer,
+            options({
+                method: 'POST',
+                data: {
+                    username: id,
+                    password,
+                    name,
+                    phone_number: phoneNumber,
+                },
+            })
+        ),
+    getCartList: async (token) =>
+        fetchAPI(URL.cart, options({ method: 'GET', token })),
+
+    addCartItem: async (data, token) =>
+        fetchAPI(URL.cart, options({ method: 'POST', data, token })),
+
+    deleteCartItem: async (id, token) =>
+        fetchAPI(URL.cart + `${id}`, options({ method: 'DELETE', token })),
+
+    clearCart: async (token) =>
+        fetchAPI(URL.cart, options({ method: 'DELETE', token })),
+
+    getCartDetail: async (id, token) =>
+        fetchAPI(URL.cart + `${id}/`, options({ method: 'GET', token })),
+};
