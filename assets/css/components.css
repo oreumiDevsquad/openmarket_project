@@ -166,6 +166,14 @@ body {
     left: 50%;
     bottom: -120px;
     transform: translateX(-50%);
+    transition: all 0.5s;
+    visibility: hidden;
+    opacity: 0;
+
+    .active {
+        visibility: visible;
+        opacity: 1;
+    }
 
     .dropdown-menu {
         position: relative;
