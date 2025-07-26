@@ -1,23 +1,22 @@
 // 변수 선언
-const LOGIN_BOX_SUBMIT = document.querySelector('.login-box__submit');
+const btn = document.querySelector('.login-box__submit');
 
-// 유효성 검사 (입력값 없음): 아이디나 비밀번호가 비어있는 상태로 로그인 시도 시, 비어있는 입력창에 focus 처리
-// form action을 뭐로 줘야하지? GET? POST?
-function validateLogin() {
-    const LOGINID = document.querySelector('#login-id').value.trim();
-    const LOGINPW = document.querySelector('#login-box-password').value.trim();
+btn.addEventListener('click', (e) => {
+    e.preventDefault();
 
-    if (LOGINID === '') {
-        document.querySelector('#login-id').focus();
-        return false;
+    const loginId = document.getElementById('login-id').value;
+    const loginPw = document.getElementById('login-password').value;
+
+    if (loginId.trim() === '') {
+        console.error('아이디가 입력되지 않았습니다.');
+        alert('아이디를 입력해주세요.');
     }
 
-    if (LOGINPW === '') {
-        document.querySelector('#login-password').focus();
-        return false;
+    if (loginPw.trim() === '') {
+        console.error('비밀번호가 입력되지 않았습니다.');
+        alert('비밀번호를 입력해주세요.');
     }
 
-    // 여기서 추가 유효성 검사 가능
-
-    return true;
-}
+    console.log('아이디 :', loginId);
+    console.log('비밀번호 :', loginPw);
+});

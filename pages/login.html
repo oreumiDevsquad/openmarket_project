@@ -45,7 +45,7 @@
                         </ul>
                     </nav>
 
-                    <form action="" class="login-box__form" method="POST">
+                    <form action="" class="login-box__form" method="GET">
                         <label for="login-id" class="sr-only">아이디</label>
                         <input
                             type="text"
@@ -53,7 +53,7 @@
                             name="login-id"
                             class="login-box__input"
                             placeholder="아이디"
-                            required
+                            autocomplete="username"
                         />
 
                         <label for="login-password" class="sr-only"
@@ -65,7 +65,7 @@
                             name="login-password"
                             class="login-box__input"
                             placeholder="비밀번호"
-                            required
+                            autocomplete="current-password"
                         />
                         <button type="submit" class="login-box__submit">
                             로그인
@@ -80,5 +80,7 @@
                 </div>
             </main>
         </div>
+
+        <script src="../assets/js/pages/login.js"></script>
     </body>
 </html>
