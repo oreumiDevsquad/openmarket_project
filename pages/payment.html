@@ -4,13 +4,15 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>주문 및 결제</title>
-        <link rel="stylesheet" href="../assets/css/payment/reset.css" />
-        <link rel="stylesheet" href="../assets/css/payment/style.css" />
+        <link rel="stylesheet" href="../assets/css/reset.css" />
+        <link rel="stylesheet" href="../assets/css/common.css" />
+        <link rel="stylesheet" href="../assets/css/pages/payment.css" />
     </head>
     <body>
         <h1 class="payment-title">주문/결제하기</h1>
 
         <main class="order__main">
+            <!-- 상품 목록 및 상품 정보 -->
             <section class="order-list">
                 <table class="order-list__table">
                     <thead>
@@ -30,12 +32,12 @@
 
             <!-- 배송 정보 폼 -->
             <section class="order-form">
-                <h2 class="order-form__title">배송정보</h2>
+                <h2 class="order-form__section-title">배송정보</h2>
                 <hr class="order-form__divider-bold" />
 
                 <!-- 주문자 정보 -->
                 <!-- 이름 -->
-                <h3 class="order-form__section-title">주문자 정보</h3>
+                <h3 class="order-form__title">주문자 정보</h3>
                 <hr class="order-form__divider-bold" />
                 <div class="order-form__row">
                     <label class="order-form__label" for="order-form__input"
@@ -50,12 +52,11 @@
                 <hr class="order-form__divider" />
 
                 <!-- 휴대폰 -->
-                <!-- 여기 휴대폰 번호 submit 문제 -->
                 <div class="order-form__row">
                     <label for="orderPhone1" class="order-form__label"
                         >휴대폰</label
                     >
-                    <div class="order-form__input-phone">
+                    <div class="order-form__phone">
                         <input
                             class="order-form__input order-form__input--phone3"
                             type="text"
@@ -100,7 +101,7 @@
                 <hr class="order-form__divider" />
 
                 <!-- 배송지 정보 -->
-                <h3 class="order-form__section-title">배송지 정보</h3>
+                <h3 class="order-form__title">배송지 정보</h3>
                 <hr class="order-form__divider-bold" />
 
                 <!-- 이름 -->
@@ -209,14 +210,13 @@
                 <hr class="order-form__divider" />
 
                 <!-- 결제 섹션 -->
-                <!-- 결제 수단 -->
-                <!-- 섹션 안에 섹션 구조? 괜찮나? 구분선 길이 안에 맞추려다 보니 이렇게 됬네  -->
+                <!-- 결제 수단 선택 -->
                 <section class="order-payment">
-                    <div class="order-payment__way">
+                    <div class="order-payment__box">
                         <h2 class="order-payment__title">결제 수단</h2>
                         <hr class="order-payment__divider" />
                         <div class="order-payment__option">
-                            <div class="order-payment__item">
+                            <div class="order-payment__option-item">
                                 <input
                                     type="radio"
                                     name="payment"
@@ -225,12 +225,12 @@
                                 <label for="creditCard">신용/체크카드</label>
                             </div>
 
-                            <div class="order-payment__item">
+                            <div class="order-payment__option-item">
                                 <input type="radio" name="payment" id="bank" />
                                 <label for="bank">무통장 입금</label>
                             </div>
 
-                            <div class="order-payment__item">
+                            <div class="order-payment__option-item">
                                 <input
                                     type="radio"
                                     name="payment"
@@ -239,7 +239,7 @@
                                 <label for="mobile">휴대폰 결제</label>
                             </div>
 
-                            <div class="order-payment__item">
+                            <div class="order-payment__option-item">
                                 <input
                                     type="radio"
                                     name="payment"
@@ -248,7 +248,7 @@
                                 <label for="naverPay">네이버페이</label>
                             </div>
 
-                            <div class="order-payment__item">
+                            <div class="order-payment__option-item">
                                 <input
                                     type="radio"
                                     name="payment"
@@ -260,7 +260,7 @@
                         <hr class="order-payment__divider" />
                     </div>
 
-                    <!-- 이 부분이 생각보다 까다롭네 -->
+                    <!-- 결제 정보 요약 -->
                     <article class="order-summary">
                         <h3>최종결제 정보</h3>
                         <div class="order-summary__box">
@@ -270,15 +270,17 @@
                                         >- 상품금액</span
                                     >
                                     <span class="order-summary__value"
-                                        ><strong></strong>원</span
-                                    >
+                                        ><strong
+                                            ><!-- 이 부분에 상품 가격 구현할 예정 --></strong
+                                        >원
+                                    </span>
                                 </li>
                                 <li class="order-summary__item">
                                     <span class="order-summary_label"
                                         >- 할인금액</span
                                     >
                                     <span class="order-summary__value"
-                                        ><strong></strong>원</span
+                                        ><strong></strong> 원</span
                                     >
                                 </li>
                                 <li class="order-summary__item">
@@ -286,7 +288,7 @@
                                         >- 배송비</span
                                     >
                                     <span class="order-summary__value"
-                                        ><strong></strong>원</span
+                                        ><strong></strong> 원</span
                                     >
                                 </li>
                             </ul>
@@ -296,12 +298,13 @@
                                     >- 결제금액</span
                                 >
                                 <span class="order-summary__total-value"
-                                    ><strong></strong>원</span
+                                    ><strong></strong> 원</span
                                 >
                             </div>
 
+                            <!-- 정보 제공 동의 -->
                             <div class="order-summary__agreement">
-                                <div class="order-summary-__agreement-checkbox">
+                                <div class="order-summary__agreement-box">
                                     <input
                                         type="checkbox"
                                         class="order-summary__agreement-checkbox"
