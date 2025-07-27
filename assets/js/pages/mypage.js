@@ -4,6 +4,7 @@ export function mypageDropdown() {
         '.header__nav-item:last-child .header__nav-link'
     );
     const $dropdownMenu = document.querySelector('.dropdown-menu-container');
+    const $logoutBtn = document.querySelector('.dropdown-menu__button');
 
     if (!$dropdownBtn || !$dropdownMenu) {
         return; // 요소가 없으면 함수 종료
@@ -27,4 +28,13 @@ export function mypageDropdown() {
             toggleDropdown();
         }
     });
+
+    // 로그아웃 버튼이 있을 때 로그아웃,메인 리다이렉트
+    if ($logoutBtn) {
+        $logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('access');
+            localStorage.removeItem('refresh');
+            window.location = '/';
+        });
+    }
 }
