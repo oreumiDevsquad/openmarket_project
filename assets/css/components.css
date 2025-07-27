@@ -72,9 +72,24 @@ body {
                 width: 46px;
             }
 
-            /* 드롭다운 포지션 지정 추가 */
-            &:nth-child(2) {
+            /* 클릭시 아이콘 활성화 */
+            &:last-child {
                 position: relative;
+
+                .header__nav-link {
+                    &.active {
+                        img {
+                            filter: invert(48%) sepia(81%) saturate(514%)
+                                hue-rotate(82deg) brightness(106%) contrast(82%);
+                            transition: all 0.5s;
+                        }
+
+                        .header__nav-text {
+                            color: var(--main-color);
+                            transition: all 0.5s;
+                        }
+                    }
+                }
             }
 
             .header__nav-link {
@@ -173,7 +188,7 @@ body {
     visibility: hidden;
     opacity: 0;
 
-    .active {
+    &.active {
         visibility: visible;
         opacity: 1;
     }
