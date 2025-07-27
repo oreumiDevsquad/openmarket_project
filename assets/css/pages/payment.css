@@ -19,7 +19,7 @@ body {
     margin-top: 54px;
 }
 
-/* === 공통 구분선 및 라디오/ 체크박스 스타일 === */
+/* === 공통 구분선 및 라디오 / 체크박스 스타일 === */
 .order-form__divider-bold {
     border: none;
     border-bottom: 2px solid var(--line-color);
@@ -37,12 +37,17 @@ body {
     border-bottom: 2px solid var(--line-color);
 }
 
+.order-summary__divider {
+    border: none;
+    border-bottom: 1px solid var(--line-color);
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
 .order-payment__option input[type='radio'],
 .order-summary__agreement-box input[type='checkbox'] {
-    margin-right: 6px;
+    appearance: none;
     accent-color: var(--main-color);
-    appearance: auto;
-    width: auto;
 }
 
 /* === 주문 상품 목록 === */
@@ -71,6 +76,7 @@ body {
     border-spacing: 0;
     box-shadow: 0;
     font-size: 18px;
+    font-weight: 400;
 }
 
 .order-list__table th {
@@ -211,6 +217,24 @@ body {
     padding: 18px 0px;
 }
 
+.order-payment__option-radio {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    outline: none;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.order-payment__option-radio:checked {
+    background-color: var(--main-color);
+    border: 3px solid white;
+    box-shadow: 0 0 0 1.6px var(--main-color);
+}
+
 .order-payment__item label {
     margin-right: 12px;
     font-size: 16px;
@@ -235,7 +259,7 @@ body {
     width: 480px;
     max-width: 480px;
     min-height: 400px;
-    border: 2px solid var(--hover-color);
+    border: 2px solid var(--main-color);
     border-radius: 10px;
     margin-top: 0;
     box-sizing: border-box;
@@ -264,6 +288,7 @@ body {
 
 .order-summary__total {
     justify-content: space-between;
+    align-items: center;
 }
 
 .order-summary__total-value,
@@ -271,7 +296,6 @@ body {
     color: #eb5757;
     font-size: 24px;
     font-weight: 700;
-    vertical-align: middle;
 }
 
 /* 정보 제공 동의 및 제출 */
@@ -284,6 +308,18 @@ body {
     padding: 30px 30px 34px;
     margin-bottom: 0;
     border-radius: 0px 0px 10px 10px;
+}
+
+.order-summary__agreement-checkbox {
+    width: 16px;
+    height: 16px;
+    content: url(../../icons/icon-check-box.svg);
+}
+.order-summary__agreement-checkbox:focus {
+    outline: 1px solid var(--input-outline-color);
+}
+.order-summary__agreement-checkbox:checked {
+    content: url(../../icons/icon-check-fill-box.svg);
 }
 
 .order-summary__submit {

@@ -49,9 +49,11 @@ tab active 효과 추가하기, 피그마 속 처럼 두개가 합쳐진 효과 
 }
 
 .login-box__tab {
+    position: relative;
+    height: 80px;
     display: block;
     width: 100%;
-    padding: 20px 0;
+    padding: 0 0 18px;
     text-align: center;
     font-size: 18px;
     font-weight: 500;
@@ -61,11 +63,19 @@ tab active 효과 추가하기, 피그마 속 처럼 두개가 합쳐진 효과 
     border-radius: 10px 10px 0 0;
     transition: background-color 0.2s ease;
     background-color: #f2f2f2;
-}
 
-/* active 기능 추가할 것 */
-.login-box__tab--active {
-    background-color: #fff;
+    /* active 속성을 이용해 tab 구현 */
+    &.login-box__tab--active {
+        background-color: #fff;
+        z-index: 20;
+
+        &.tab-left {
+            border-right: none;
+        }
+        &.tab-right {
+            border-left: none;
+        }
+    }
 }
 
 /* ========= 로그인 폼 ========= */
@@ -74,13 +84,17 @@ tab active 효과 추가하기, 피그마 속 처럼 두개가 합쳐진 효과 
 */
 
 .login-box__form {
+    background-color: #fff;
+    position: relative;
+    z-index: 10;
+    transform: translateY(-18px);
     display: flex;
     flex-direction: column;
     gap: 1px;
-    padding: 14px 35px 36px;
+    padding: 28px 35px 36px;
     border: 1px solid var(--line-color);
-    border-top: none;
-    border-radius: 0px 0px 10px 10px;
+    /* border-top: none; */
+    border-radius: 10px;
 }
 
 .login-box__input {
