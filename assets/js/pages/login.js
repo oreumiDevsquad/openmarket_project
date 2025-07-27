@@ -9,14 +9,11 @@ btn.addEventListener('click', (e) => {
 
     if (loginId.trim() === '') {
         console.error('아이디가 입력되지 않았습니다.');
-        alert('아이디를 입력해주세요.');
+        document.getElementById('login-id').focus();
     }
 
     if (loginPw.trim() === '') {
         console.error('비밀번호가 입력되지 않았습니다.');
-        alert('비밀번호를 입력해주세요.');
+        document.getElementById('login-password').focus();
     }
-
-    console.log('아이디 :', loginId);
-    console.log('비밀번호 :', loginPw);
 });
