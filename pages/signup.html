@@ -89,13 +89,15 @@
                             <label for="userPassword" class="signup__label"
                                 >비밀번호</label
                             >
-                            <input
-                                type="password"
-                                name="password"
-                                id="userPassword"
-                                class="signup__input"
-                                required
-                            />
+                            <div class="password-wrapper">
+                                <input
+                                    type="password"
+                                    name="password"
+                                    id="userPassword"
+                                    class="signup__input"
+                                    required
+                                />
+                            </div>
                         </div>
 
                         <div class="signup__field">
@@ -104,13 +106,15 @@
                                 class="signup__label"
                                 >비밀번호 재확인</label
                             >
-                            <input
-                                type="password"
-                                name="passwordConfirm"
-                                id="userPasswordConfirm"
-                                class="signup__input"
-                                required
-                            />
+                            <div class="password-wrapper">
+                                <input
+                                    type="password"
+                                    name="passwordConfirm"
+                                    id="userPasswordConfirm"
+                                    class="signup__input"
+                                    required
+                                />
+                            </div>
                         </div>
                     </div>
 
@@ -247,6 +251,6 @@
             </form>
         </section>
 
-        <script src="../assets/js/pages/signup.js"></script>
+        <script type="module" src="../assets/js/pages/signup.js"></script>
     </body>
 </html>
