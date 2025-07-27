@@ -1,6 +1,4 @@
 // API related functions
-<<<<<<< HEAD
-=======
 const BASE_URL = 'https://api.wenivops.co.kr/services/open-market';
 
 const URL = {
@@ -185,4 +183,3 @@ export const API = {
     cartOrder: async (data, token) =>
         fetchAPI(URL.order, options({ method: 'POST', data, token })),
 };
->>>>>>> cf1dfe2 (feat: api 이용 편의성을 위해 JSDoc 주석 추가)
