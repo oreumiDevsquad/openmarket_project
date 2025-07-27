@@ -72,6 +72,7 @@ body {
                 width: 46px;
             }
 
+            /* 드롭다운 포지션 지정 추가 */
             &:nth-child(2) {
                 position: relative;
             }
@@ -160,6 +161,8 @@ body {
         }
     }
 }
+
+/* 드롭다운 메뉴 추가 */
 
 .dropdown-menu-container {
     position: absolute;
