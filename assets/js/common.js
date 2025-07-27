@@ -1,3 +1,5 @@
+import { mypageDropdown } from './pages/mypage.js';
+
 (async () => {})();
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. data-component 속성을 가진 모든 요소는 컴포넌트로 간주하고 모으기
@@ -30,4 +32,5 @@ document.addEventListener('DOMContentLoaded', async () => {
             component.innerHTML = `<p>Error loading ${componentName}</p>`;
         }
     }
+    mypageDropdown();
 });
