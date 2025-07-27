@@ -37,6 +37,13 @@ body {
     border-bottom: 2px solid var(--line-color);
 }
 
+.order-summary__divider {
+    border: none;
+    border-bottom: 1px solid var(--line-color);
+    margin-left: 24px;
+    margin-right: 24px;
+}
+
 .order-payment__option input[type='radio'],
 .order-summary__agreement-box input[type='checkbox'] {
     appearance: none;
@@ -69,6 +76,7 @@ body {
     border-spacing: 0;
     box-shadow: 0;
     font-size: 18px;
+    font-weight: 400;
 }
 
 .order-list__table th {
@@ -280,6 +288,7 @@ body {
 
 .order-summary__total {
     justify-content: space-between;
+    align-items: center;
 }
 
 .order-summary__total-value,
@@ -287,7 +296,6 @@ body {
     color: #eb5757;
     font-size: 24px;
     font-weight: 700;
-    vertical-align: middle;
 }
 
 /* 정보 제공 동의 및 제출 */
