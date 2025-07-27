@@ -287,6 +287,7 @@ $duplicateCheckBtn.addEventListener('click', async (e) => {
             renderData.isGreen = false;
             inputStatus.userid = false;
             renderMsg(renderData);
+            $target.focus();
         }
     }
     allGreen();
