@@ -59,3 +59,26 @@ $form.addEventListener('submit', async function (e) {
 });
 
 // 구매자 탭 활성화
+(() => {
+    const $tabs = document.querySelector('.login-box__nav');
+    const $btns = $tabs.querySelectorAll('button');
+
+    $tabs.addEventListener('click', (e) => {
+        if (e.target.tagName !== 'BUTTON') return;
+        $btns.forEach((btn, idx) => {
+            btn.classList.remove(
+                'tab-left',
+                'tab-right',
+                'login-box__tab--active'
+            );
+        });
+
+        if (e.target === $btns[0]) {
+            $btns[0].classList.add('tab-left', 'login-box__tab--active');
+            $btns[1].classList.add('tab-right');
+        } else {
+            $btns[1].classList.add('tab-right', 'login-box__tab--active');
+            $btns[0].classList.add('tab-left');
+        }
+    });
+})();

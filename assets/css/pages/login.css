@@ -61,7 +61,6 @@ tab active 효과 추가하기, 피그마 속 처럼 두개가 합쳐진 효과 
     border: 1px solid var(--line-color);
     border-bottom: none;
     border-radius: 10px 10px 0 0;
-    transition: background-color 0.2s ease;
     background-color: #f2f2f2;
 
     /* active 속성을 이용해 tab 구현 */
