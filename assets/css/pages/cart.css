@@ -76,7 +76,8 @@ input[type='checkbox']:checked::after {
 .cart__empty {
     width: 100%;
     text-align: center;
-    /* display: none; */
+
+    display: none;
 }
 
 .cart__empty-content {
@@ -98,7 +99,14 @@ input[type='checkbox']:checked::after {
 
 /* 장바구니에 상품 있을때 */
 .cart__product {
-    display: none;
+    /* display: none; */
+}
+.cart__footer-table {
+    /* display: none; */
+}
+.cart__order-all-btn {
+    /* display: none; */
+    display: block;
 }
 
 .cart__product td {
@@ -241,8 +249,6 @@ input[type='checkbox']:checked::after {
     border-radius: 10px;
     overflow: hidden;
     margin: 62.5px 0 40px;
-
-    display: none;
 }
 
 .cart__footer td {
@@ -309,7 +315,6 @@ input[type='checkbox']:checked::after {
 
 /* 주문 버튼 */
 .cart__order-all-btn {
-    display: block;
     margin: 0 auto;
     width: 220px;
     height: 68px;
@@ -320,8 +325,6 @@ input[type='checkbox']:checked::after {
     font-weight: 500;
     line-height: 100%;
     color: #fff;
-
-    display: none;
 }
 
 /* modal창 */
