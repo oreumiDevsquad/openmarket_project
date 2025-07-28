@@ -152,15 +152,15 @@
                             </td>
                             <td class="cart__footer-product">
                                 <strong>상품 할인</strong>
-                                <p>0<span>원</span></p>
+                                <p id="productDiscout">0<span>원</span></p>
                             </td>
                             <td class="cart__footer-product">
                                 <strong>배송비</strong>
-                                <p>0 <span>원</span></p>
+                                <p id="deliveryFee">0 <span>원</span></p>
                             </td>
                             <td class="cart__footer-product-total">
                                 <strong>결제 예정 금액</strong>
-                                <p>46,500<span>원</span></p>
+                                <p id="finalPrice">46,500<span>원</span></p>
                             </td>
                         </tr>
                     </tfoot>
@@ -244,7 +244,12 @@
                 <!-- 하단 버튼 -->
                 <div class="modal__actions">
                     <button type="button" class="btn btn--cancel">취소</button>
-                    <button type="button" class="btn btn--confirm">확인</button>
+                    <button
+                        type="button"
+                        class="btn btn--confirm delete-confirm-btn"
+                    >
+                        확인
+                    </button>
                 </div>
             </div>
 
@@ -269,7 +274,12 @@
                     <button type="button" class="btn btn--cancel">
                         아니오
                     </button>
-                    <button type="button" class="btn btn--confirm">예</button>
+                    <button
+                        type="button"
+                        class="btn btn--confirm login-move-btn"
+                    >
+                        예
+                    </button>
                 </div>
             </div>
         </div>
