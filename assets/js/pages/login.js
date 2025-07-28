@@ -1,4 +1,4 @@
-import { API } from '../api.js';
+import { AuthAPI } from '../api.js';
 
 // 변수 선언
 const $form = document.querySelector('.login-box__form');
@@ -21,6 +21,8 @@ function validatation1(loginId, loginPw) {
         alert('비밀번호가 입력되지 않았습니다.');
         return false;
     }
+
+    return true;
 }
 
 $form.addEventListener('submit', async function (e) {
@@ -39,7 +41,7 @@ $form.addEventListener('submit', async function (e) {
     if (!isValid) return;
     // 유효성 검사 (불일치)
     try {
-        const result = await API.login(loginId, loginPw);
+        const result = await AuthAPI.login(loginId, loginPw);
         console.log(result);
         // 성공 시
         if (window.history.length > 1) {
