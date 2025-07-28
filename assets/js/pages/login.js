@@ -37,6 +37,7 @@ $form.addEventListener('submit', async function (e) {
 
     // 아이디 비밀번호 유효성검사 (입력값 없음))
     if (!isValid) return;
+
     // 유효성 검사 (불일치)
     try {
         const result = await API.login(loginId, loginPw);
