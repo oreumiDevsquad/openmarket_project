@@ -72,6 +72,26 @@ body {
                 width: 46px;
             }
 
+            /* 클릭시 아이콘 활성화 */
+            &:last-child {
+                position: relative;
+
+                .header__nav-link {
+                    &.active {
+                        img {
+                            filter: invert(48%) sepia(81%) saturate(514%)
+                                hue-rotate(82deg) brightness(106%) contrast(82%);
+                            transition: all 0.5s;
+                        }
+
+                        .header__nav-text {
+                            color: var(--main-color);
+                            transition: all 0.5s;
+                        }
+                    }
+                }
+            }
+
             .header__nav-link {
                 display: flex;
                 flex-wrap: wrap;
@@ -152,6 +172,61 @@ body {
             font-weight: 400;
             &:first-child {
                 font-weight: 700;
+            }
+        }
+    }
+}
+
+/* 드롭다운 메뉴 추가 */
+
+.dropdown-menu-container {
+    position: absolute;
+    left: 50%;
+    bottom: -120px;
+    transform: translateX(-50%);
+    transition: all 0.5s;
+    visibility: hidden;
+    opacity: 0;
+
+    &.active {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .dropdown-menu {
+        position: relative;
+        padding: 10px;
+        background: #fff;
+        border-radius: 10px;
+        filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.25));
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+            border-bottom-color: #fff;
+            border-top: 0;
+            margin-left: -10px;
+            margin-top: -10px;
+        }
+        .dropdown-menu__link,
+        .dropdown-menu__button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 110px;
+            height: 40px;
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--sub-color);
+            &:hover {
+                color: #000;
+                border: 1px solid var(--sub-color);
+                border-radius: 5px;
             }
         }
     }
