@@ -4,12 +4,15 @@ const modalMinusBtn = document.querySelector('.modal-minus-btn');
 const modalQuantity = document.querySelector('.modal__quantity');
 const modalDelete = document.querySelector('.modal__delete');
 const modalLoginMsg = document.querySelector('.modal__login-msg');
-const modalCloseBtn = document.querySelector('.modal__close-btn');
-const modalCancelBtn = document.querySelector('.btn--cancel');
 const modificationBtn = document.querySelector('.btn--modification');
 const modalNumInput = document.getElementById('modalInput');
 const confirmBtn = document.querySelector('.delete-confirm-btn');
 const checkAllBox = document.getElementById('productCheckAll');
+// const modalCloseBtn = document.querySelector('.modal__close-btn');
+// const modalCancelBtn = document.querySelector('.btn--cancel');
+const allModalCloseBtns = document.querySelectorAll(
+    '.modal__close-btn, .btn--cancel'
+);
 
 // 장바구니 여러 상품
 const cartProducts = document.querySelectorAll('.cart__product');
@@ -237,21 +240,15 @@ function closeModal() {
 }
 // 모달창 닫기 이벤트리스너
 function closeEvents() {
-    modalCloseBtn.addEventListener('click', () => {
-        if (modalQuantity.classList.contains('quantity-show')) {
-            closeModal(); // 수량 모달 닫기
-        } else if (modalDelete.classList.contains('delete-show')) {
-            productToDelete = null; // 삭제 모달 닫기
-            closeModal();
-        }
-    });
-    modalCancelBtn.addEventListener('click', () => {
-        if (modalQuantity.classList.contains('quantity-show')) {
-            closeModal(); // 수량 모달 닫기
-        } else if (modalDelete.classList.contains('delete-show')) {
-            productToDelete = null; // 삭제 모달 닫기
-            closeModal();
-        }
+    allModalCloseBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            if (modalQuantity.classList.contains('quantity-show')) {
+                closeModal(); // 수량 모달 닫기
+            } else if (modalDelete.classList.contains('delete-show')) {
+                productToDelete = null; // 삭제 모달 닫기
+                closeModal();
+            }
+        });
     });
 }
 
@@ -346,6 +343,12 @@ cartProducts.forEach((productItem, index) => {
 
 closeEvents();
 ModalQuantityBtnEvents();
+
+// 페이지 로드시 전체상품체크박스 선택
+if (checkAllBox) {
+    checkAllBox.checked = true; // 전체 선택 체크박스 체크
+    handleCheckAll(); // 전체 선택 함수 실행
+}
 
 // 페이지 로드 시 초기 체크 상태 확인
 updateCheckAllState();
