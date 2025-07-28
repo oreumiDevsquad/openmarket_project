@@ -90,18 +90,29 @@ tab active 효과 추가하기, 피그마 속 처럼 두개가 합쳐진 효과 
     transform: translateY(-18px);
     display: flex;
     flex-direction: column;
-    gap: 1px;
     padding: 28px 35px 36px;
     border: 1px solid var(--line-color);
     /* border-top: none; */
     border-radius: 10px;
 }
 
+.login-box__input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-box__input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    padding-bottom: 26px;
+}
+
 .login-box__input {
     border: none;
     border-bottom: 1px solid var(--line-color);
     font-size: 16px;
-    padding: 20px 10px;
+    padding: 20px 0;
     background-color: transparent;
     transition: border-color 0.2s ease;
 }
@@ -111,11 +122,17 @@ tab active 효과 추가하기, 피그마 속 처럼 두개가 합쳐진 효과 
     border-radius: 5px;
 }
 
+/* ======== 결과 출력 ========= */
+.login-box__input-container span {
+    margin-bottom: 16px;
+    color: #eb5758;
+}
+
 /* ======== 로그인 버튼 ========= */
 
 .login-box__submit {
     padding: 19px 215px;
-    margin-top: 36px;
+    margin-top: 10px;
     color: #fff;
     background-color: var(--main-color);
     border: none;
