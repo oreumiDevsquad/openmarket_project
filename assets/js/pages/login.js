@@ -4,7 +4,7 @@ import { API } from '../api.js';
 const $form = document.querySelector('.login-box__form');
 
 // 구매탭 클릭 시 상태 반영 -> 토글로 구현할 생각.
-const $loginBoxTab = document.getElementsByClassName;
+// const $loginBoxTab = document.getElementsByClassName;
 
 // 아이디 비밀번호 유효성검사 (입력값 없음))
 function validatation1(loginId, loginPw) {
