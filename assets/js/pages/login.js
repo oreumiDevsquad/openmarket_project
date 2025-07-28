@@ -11,13 +11,15 @@ function validatation1(loginId, loginPw) {
     if (loginId.trim() === '') {
         console.error('아이디가 입력되지 않았습니다.');
         document.getElementById('loginId').focus();
-        return;
+        alert('아이디가 입력되지 않았습니다.');
+        return false;
     }
 
     if (loginPw.trim() === '') {
         console.error('비밀번호가 입력되지 않았습니다.');
         document.getElementById('loginPassword').focus();
-        return;
+        alert('비밀번호가 입력되지 않았습니다.');
+        return false;
     }
 }
 
@@ -31,10 +33,10 @@ $form.addEventListener('submit', async function (e) {
 
     const loginId = formData.get('login-id');
     const loginPw = formData.get('login-password');
+    const isValid = validatation1($loginId.value, $loginPw.value);
 
     // 아이디 비밀번호 유효성검사 (입력값 없음))
-    validatation1($loginId.value, $loginPw.value);
-
+    if (!isValid) return;
     // 유효성 검사 (불일치)
     try {
         const result = await API.login(loginId, loginPw);
