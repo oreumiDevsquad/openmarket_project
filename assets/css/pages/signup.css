@@ -82,6 +82,10 @@
     input {
         padding: 17px;
         height: 54px;
+
+        &.valid-fail {
+            border-color: var(--input-color-red);
+        }
     }
     button {
         background-color: var(--main-color);
@@ -91,6 +95,18 @@
         color: #fff;
         font-size: 16px;
         font-weight: 500;
+    }
+
+    p {
+        font-size: 16px;
+        font-weight: 400;
+
+        &.valid-success {
+            color: var(--main-color);
+        }
+        &.valid-fail {
+            color: var(--input-color-red);
+        }
     }
 
     .signup__fieldset {
@@ -128,8 +144,25 @@
                     width: 346px;
                 }
             }
+            .password-wrapper {
+                position: relative;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 28px;
+                    height: 28px;
+                    background: url('../../icons/icon-check-off.svg');
+                    transform: translate(calc(-100% - 16px), 50%);
+                }
+                &.valid::after {
+                    background: url('../../icons/icon-check-on.svg');
+                }
+            }
 
             .signup__phone-fieldset {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
                 .signup__label {
                     margin-bottom: 12px;
                 }
