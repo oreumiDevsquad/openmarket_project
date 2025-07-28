@@ -122,10 +122,15 @@ tab active 효과 추가하기, 피그마 속 처럼 두개가 합쳐진 효과 
     border-radius: 5px;
 }
 
-/* ======== 결과 출력 ========= */
+/* ========에러 출력 ========= */
 .login-box__error {
+    display: none;
     margin-bottom: 16px;
     color: #eb5758;
+}
+
+.active {
+    display: block;
 }
 
 /* ======== 로그인 버튼 ========= */
