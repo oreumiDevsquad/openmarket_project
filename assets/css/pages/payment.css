@@ -57,8 +57,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* 간격 정하기, 상품 정보와 배송정보, 배송 정보와 결제 수단 까지의 거리가 달라 */
-    /* top 마진으로 정하는게 좋을 듯 */
 }
 
 /* === 주문 상품 테이블 === */
@@ -66,22 +64,106 @@ body {
     width: 100%;
     max-width: 1280px;
     margin: 52px auto;
-}
 
-.order-list__table {
-    width: 100%;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    border-collapse: separate;
-    border-spacing: 0;
-    box-shadow: 0;
-    font-size: 18px;
-    font-weight: 400;
-}
+    .order-list__table {
+        width: 100%;
+        border-spacing: 0 16px;
+        box-shadow: 0;
+        thead {
+            th {
+                padding: 19px 0 18px 0;
+                background-color: #f2f2f2;
+                font-size: 18px;
+                font-weight: 400;
 
-.order-list__table th {
-    padding: 19px 0 18px 0;
-    background-color: #f2f2f2;
+                &:first-child {
+                    border-radius: 10px 0 0 10px;
+                }
+                &:last-child {
+                    border-radius: 0 10px 10px 0;
+                }
+                &:not(&:first-child, &:last-child) {
+                    border-radius: 0;
+                }
+            }
+        }
+        tbody {
+            tr {
+                height: 130px;
+                padding-bottom: 9px;
+                border-bottom: 1px solid #c4c4c4;
+                box-sizing: border-box;
+
+                td {
+                    vertical-align: middle;
+                    text-align: center;
+                }
+
+                .order-list__product-info {
+                    padding: 8px;
+                    width: 590px;
+
+                    .order-list__item {
+                        display: flex;
+                        align-items: center;
+                        gap: 36px;
+
+                        img {
+                            width: 104px;
+                            aspect-ratio: 1/1;
+                            border-radius: 10px;
+                        }
+
+                        .order-list__details {
+                            display: flex;
+                            flex-direction: column;
+                            gap: 6px;
+                            font-weight: 400;
+                            font-size: 14px;
+                            color: #767676;
+
+                            .order-list__name {
+                                color: #000;
+                                font-size: 18px;
+                                font-weight: 400;
+                                line-height: calc(100% + 4px);
+                            }
+                            .order-list__quantity {
+                                padding-top: 4px;
+                                font-weight: 400;
+                            }
+                        }
+                    }
+                }
+                .order-list__discount-value {
+                    color: #767676;
+                }
+                .order-list__shipping-value {
+                    color: #767676;
+                }
+                .order-list__price {
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+    .order-list__total-price {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 30px;
+        p {
+            font-weight: 500;
+            font-size: 18px;
+
+            span {
+                font-weight: 700;
+                font-size: 24px;
+                margin-left: 10px;
+                color: #eb5757;
+            }
+        }
+    }
 }
 
 /* === 배송정보/폼 === */
