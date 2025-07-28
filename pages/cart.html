@@ -148,7 +148,7 @@
                         <tr>
                             <td class="cart__footer-product">
                                 <strong>총 상품금액</strong>
-                                <p>46,500<span>원</span></p>
+                                <p id="totalProduct">46,500<span>원</span></p>
                             </td>
                             <td class="cart__footer-product">
                                 <strong>상품 할인</strong>
@@ -190,7 +190,7 @@
                 <div class="modal__quantity-con">
                     <button
                         type="button"
-                        class="quantity-btn"
+                        class="modal-minus-btn quantity-btn"
                         aria-label="수량 감소"
                     >
                         <img
@@ -205,10 +205,11 @@
                         max="99"
                         readonly
                         aria-label="수량"
+                        id="modalInput"
                     />
                     <button
                         type="button"
-                        class="quantity-btn"
+                        class="modal-plus-btn quantity-btn"
                         aria-label="수량 증가"
                     >
                         <img
@@ -221,7 +222,9 @@
                 <!-- 하단 버튼 -->
                 <div class="modal__actions">
                     <button type="button" class="btn btn--cancel">취소</button>
-                    <button type="button" class="btn btn--confirm">수정</button>
+                    <button type="button" class="btn btn--modification">
+                        수정
+                    </button>
                 </div>
             </div>
 
@@ -270,5 +273,7 @@
                 </div>
             </div>
         </div>
+
+        <script src="./../assets/js/pages/cart.js"></script>
     </body>
 </html>
