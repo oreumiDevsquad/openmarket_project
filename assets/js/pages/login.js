@@ -1,6 +1,5 @@
 import { AuthAPI } from '../auth.js';
 
-
 // 변수 선언
 const $form = document.querySelector('.login-box__form');
 
