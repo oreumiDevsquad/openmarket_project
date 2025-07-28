@@ -56,6 +56,7 @@ $form.addEventListener('submit', async function (e) {
                 '.login-box__input-container'
             );
             let $span = document.createElement('span');
+            $span.className = 'login-box__error';
             $span.textContent = '아이디 또는 비밀번호가 일치하지 않습니다.';
             $inputContainer.appendChild($span);
             throw new Error('아이디 또는 비밀번호가 일치하지 않습니다.');
