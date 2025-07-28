@@ -28,7 +28,7 @@ const decodeToken = (token) => {
         const parts = token.split('.');
         if (parts.length !== 3) return null;
 
-        const decoded = base64UrlDecode(part[1]);
+        const decoded = base64UrlDecode(parts[1]);
         const payload = JSON.parse(decoded);
         return payload;
     } catch (error) {
