@@ -9,7 +9,7 @@ const $loginBoxTab = document.getElementsByClassName;
 // 아이디 비밀번호 유효성검사 (입력값 없음))
 function validatation1() {
     const loginId = document.getElementById('loginId').value;
-    const loginPw = document.getElementById('login-password').value;
+    const loginPw = document.getElementById('loginPassword').value;
 
     if (loginId.trim() === '') {
         console.error('아이디가 입력되지 않았습니다.');
@@ -19,7 +19,7 @@ function validatation1() {
 
     if (loginPw.trim() === '') {
         console.error('비밀번호가 입력되지 않았습니다.');
-        document.getElementById('login-password').focus();
+        document.getElementById('loginPassword').focus();
         return;
     }
 }
@@ -32,11 +32,6 @@ $form.addEventListener('submit', async function (e) {
     const loginId = formData.get('login-id');
     const loginPw = formData.get('login-password');
 
-    // console.log(loginId, loginPw)
-
-    // const loginId = document.getElementById('loginId').value;
-    // const loginPw = document.getElementById('login-password').value;
-
     if (loginId.trim() === '') {
         console.error('아이디가 입력되지 않았습니다.');
         document.getElementById('loginId').focus();
@@ -45,25 +40,34 @@ $form.addEventListener('submit', async function (e) {
 
     if (loginPw.trim() === '') {
         console.error('비밀번호가 입력되지 않았습니다.');
-        document.getElementById('login-password').focus();
+        document.getElementById('loginPassword').focus();
         return;
     }
 
     // 유효성 검사 (불일치)
-    // try {
-    //     const result = await API.login(id, password);
-    //     console.log(result)
-    //     if(!result) {
-    //         document.getElementById("login-password").value.trim() = "";
-    //         document.getElementById("login-password").focus() = "";
-    //         throw new Error("아이디나 비밀번호가 일치하지 않습니다.")
-    //     } else if (window.history.length > 1) {
-    //         window.history.back();
-    //     } else {
-    //         window.location = "/"
-    //     }
-    // } catch {
-    //     console.error("에러가 발생했습니다.", error.message);
-    //     alert(error.message)
-    // }
+    try {
+        const result = await API.login(loginId, loginPw);
+        console.log(result);
+        if (!result) {
+            // 불일치 시
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('loginPassword').focus();
+            let $inputContainer = document.querySelector(
+                '.login-box__input-container'
+            );
+            let $span = document.createElement('span');
+            $span.textContent = '아이디 또는 비밀번호가 일치하지 않습니다.';
+            $inputContainer.appendChild($span);
+            throw new Error('아이디 또는 비밀번호가 일치하지 않습니다.');
+        }
+        // 성공 시
+        if (window.history.length > 1) {
+            window.history.back();
+        } else {
+            window.location = '/';
+        }
+    } catch (error) {
+        console.error('에러가 발생했습니다.', error.message);
+        return;
+    }
 });

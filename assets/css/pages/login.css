@@ -123,7 +123,7 @@ tab active 효과 추가하기, 피그마 속 처럼 두개가 합쳐진 효과 
 }
 
 /* ======== 결과 출력 ========= */
-.login-box__input-container span {
+.login-box__error {
     margin-bottom: 16px;
     color: #eb5758;
 }
