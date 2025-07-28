@@ -1,4 +1,4 @@
-import { AuthAPI } from '../api.js';
+import { AuthAPI } from '../auth.js';
 
 // 변수 선언
 const $form = document.querySelector('.login-box__form');
@@ -21,7 +21,6 @@ function validatation1(loginId, loginPw) {
         alert('비밀번호가 입력되지 않았습니다.');
         return false;
     }
-
     return true;
 }
 
