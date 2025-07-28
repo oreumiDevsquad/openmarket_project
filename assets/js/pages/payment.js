@@ -47,14 +47,14 @@ import { formatPrice } from '../utils.js';
                             <td class="order-list__shipping">
                                 <div class="order-list__wrapper">
                                     <span class="order-list__shipping-value"
-                                        >${shipping_fee > 0 ? shipping_fee + '원' : '무료배송'}</span
+                                        >${shipping_fee > 0 ? formatPrice(shipping_fee) + '원' : '무료배송'}</span
                                     >
                                 </div>
                             </td>
                             <td class="order-list__amount">
                                 <div class="order-list__wrapper">
                                     <strong class="order-list__price"
-                                        >${amount + shipping_fee}원</strong
+                                        >${formatPrice(amount + shipping_fee)}원</strong
                                     >
                                 </div>
                             </td>`;
