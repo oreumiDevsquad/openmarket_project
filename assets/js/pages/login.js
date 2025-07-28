@@ -21,6 +21,7 @@ function validatation1(loginId, loginPw) {
         alert('비밀번호가 입력되지 않았습니다.');
         return false;
     }
+
     return true;
 }
 
