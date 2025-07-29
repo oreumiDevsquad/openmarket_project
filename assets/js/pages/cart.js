@@ -1,6 +1,7 @@
 import { API } from './../api.js';
 import { AuthAPI } from './../auth.js';
 import { openModal } from './../common.js';
+import { formatPrice } from '../utils.js';
 
 const $checkAllBox = document.getElementById('productCheckAll');
 // 장바구니 여러 상품
@@ -275,8 +276,13 @@ function initializeCartEvents() {
 }
 
 // 렌더링하는 부분
-// 렌더링 하는 부분
+// 페이지 접속 시 첫 렌더링은 즉시 실행 함수로 수행
 (async () => {
+    renderList();
+})();
+
+// 렌더링 함수
+async function renderList() {
     const $productWrapper = document.querySelector('.cart__body');
     try {
         // 기존 하드코딩된 상품들 제거 (빈 장바구니 메시지 제외)
@@ -320,7 +326,8 @@ function initializeCartEvents() {
                                         </p>
                                     </div>
                                     <p class="cart__product-delivery">
-                                        택배배송 / &nbsp;무료배송
+                                        택배배송 / &nbsp;
+                                        ${product.shipping_fee > 0 ? `${formatPrice(product.shipping_fee)}원` : '무료배송'}
                                     </p>
                                 </div>
                             </td>
@@ -402,4 +409,4 @@ function initializeCartEvents() {
         // 에러 발생 시 빈 장바구니 상태 표시
         checkEmptyCart();
     }
-})();
+}
