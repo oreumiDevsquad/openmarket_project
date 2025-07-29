@@ -92,7 +92,8 @@ export function openModal({
     cancelBtn.classList.add('btn', 'btn--cancel');
 
     confirmBtn.addEventListener('click', () => {
-        confirmAction();
+        if (type === 'quantity') confirmAction(count);
+        else confirmAction();
         modal.remove();
     });
     cancelBtn.addEventListener('click', (e) => {
