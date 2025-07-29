@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     mypageDropdown();
 
+    // 장바구니 버튼 로그인 여부 확인 및 모달 출력
     const $cartBtn = document.querySelector('.header__nav-link:first-child');
 
     $cartBtn.addEventListener('click', async function (e) {
