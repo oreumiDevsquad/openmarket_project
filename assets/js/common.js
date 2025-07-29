@@ -53,6 +53,20 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
         } catch (error) {}
     });
+
+    // login시 GNB 이미지 변경
+    const isLoggedIn = AuthAPI.isLoggedIn();
+    const $cartImg = document.querySelector(
+        '.header__nav-item:first-child img'
+    );
+    const $loginImg = document.querySelector(
+        '.header__nav-item:last-child img'
+    );
+
+    if (isLoggedIn) {
+        $cartImg.setAttribute('src', '/assets/icons/icon-shopping-cart-2.svg');
+        $loginImg.setAttribute('src', '/assets/icons/icon-user-2.svg');
+    }
 });
 
 /**
