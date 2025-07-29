@@ -221,6 +221,14 @@ export function openModal({
             cancelBtn.textContent = '아니오';
             break;
 
+        case 'alertAddCart':
+            container.classList.add('modal__delete');
+            contentBox.classList.add('modal__delete-con');
+            contentBox.innerHTML = `<p>상품을 장바구니에 담았습니다.</p>`;
+            confirmBtn.textContent = '확인';
+            cancelBtn.textContent = '닫기';
+            break;
+
         default:
             console.error(
                 '모달의 타입을 확인하세요, login, delete, quantity, stock_exceeded, duplicate_item 중 하나여야 합니다.'
