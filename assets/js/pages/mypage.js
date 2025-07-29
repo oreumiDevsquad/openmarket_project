@@ -1,3 +1,5 @@
+import { isLoggedIn } from '../auth.js';
+
 export function mypageDropdown() {
     // HTML 요소 변수 저장
     const $dropdownBtn = document.querySelector(
@@ -18,8 +20,7 @@ export function mypageDropdown() {
 
     // 버튼 클릭시 드롭다운 기능 추가
     $dropdownBtn.addEventListener('click', (e) => {
-        const isToken = localStorage.getItem('access');
-        if (isToken) {
+        if (isLoggedIn()) {
             e.preventDefault();
             e.stopPropagation();
             toggleDropdown();
