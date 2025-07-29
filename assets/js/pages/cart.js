@@ -60,7 +60,7 @@ function updateTotalSum() {
 
         // 체크박스가 체크되어 있고, 해당 상품의 가격이 존재하면 합산
         if ($checkbox && $checkbox.checked && itemPrices[itemId]) {
-            totalSum += itemPrices[itemId] + itemFees[itemId];
+            totalSum += itemPrices[itemId];
             totalFee += itemFees[itemId];
         }
     });
