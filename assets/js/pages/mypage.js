@@ -18,8 +18,12 @@ export function mypageDropdown() {
 
     // 버튼 클릭시 드롭다운 기능 추가
     $dropdownBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // 클릭 이벤트 부모 요소 전달 방지
-        toggleDropdown();
+        const isToken = localStorage.getItem('access');
+        if (isToken) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleDropdown();
+        }
     });
 
     // 다른 DOM 요소 클릭시 드롭다운 닫기
