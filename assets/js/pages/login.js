@@ -42,7 +42,6 @@ $form.addEventListener('submit', async function (e) {
     // 유효성 검사 (불일치)
     try {
         const result = await AuthAPI.login(loginId, loginPw);
-        const result = await AuthAPI.login(loginId, loginPw);
         console.log(result);
         // 성공 시
         if (window.history.length > 1) {
