@@ -138,6 +138,10 @@ input[type='checkbox']:checked::after {
     display: flex;
     justify-content: left;
     gap: 36px;
+    img {
+        width: 160px;
+        aspect-ratio: 1/1;
+    }
 }
 
 .cart__product-info {
