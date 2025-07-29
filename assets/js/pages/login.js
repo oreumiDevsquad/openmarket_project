@@ -1,4 +1,5 @@
 import { AuthAPI } from '../auth.js';
+import { openModal } from '../common.js';
 
 // 변수 선언
 const $form = document.querySelector('.login-box__form');
@@ -44,10 +45,20 @@ $form.addEventListener('submit', async function (e) {
         const result = await AuthAPI.login(loginId, loginPw);
         console.log(result);
         // 성공 시
-        if (window.history.length > 1) {
-            window.history.back();
+        // if (window.history.length > 1) {
+        //     window.history.back();
+        // } else {
+        //     window.location = '/';
+        // }
+
+        if (result) {
+            if (window.history.length > 1) {
+                window.history.back();
+            } else {
+                window.location = '/';
+            }
         } else {
-            window.location = '/';
+            throw new Error();
         }
     } catch (error) {
         console.error('에러가 발생했습니다 :', error.message);

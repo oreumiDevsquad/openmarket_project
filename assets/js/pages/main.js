@@ -10,14 +10,16 @@ import { formatPrice } from '../utils.js';
     // results: [{item...}, ...]
     const frag = document.createDocumentFragment();
 
+    console.log(products.results);
+
     for (let product of products.results) {
-        const format = await formatPrice(product.price);
+        const format = formatPrice(product.price);
         const li = document.createElement('li');
         li.classList.add('product-list__item');
         li.innerHTML = '';
 
         li.innerHTML = `
-            <a href="#" class="product-card">
+            <a href="./pages/product_detail.html?id=${product.id}" class="product-card">
                 <img
                     src="${product.image}"
                     alt="${product.name}"
