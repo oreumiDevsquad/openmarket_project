@@ -65,10 +65,8 @@ function updateTotalSum() {
         }
     });
 
-    $totalPrice.innerHTML = `${totalSum.toLocaleString()}
-    <span>원</span>`;
-    $deliveryFee.innerHTML = `${totalFee.toLocaleString()}
-    <span>원</span>`;
+    $totalPrice.innerHTML = `${totalSum.toLocaleString()}<span>원</span>`;
+    $deliveryFee.innerHTML = `${totalFee.toLocaleString()}<span>원</span>`;
 }
 
 //// 결제예정금액 업데이트 ////
