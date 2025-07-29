@@ -1,0 +1,55 @@
+@import url(./common.css);
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.not-found__image {
+    width: 276px;
+}
+
+.not-found__title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.not-found__text {
+    font-size: 16px;
+    color: var(--sub-color);
+    margin-bottom: 40px;
+}
+
+.not-found__buttons {
+    display: flex;
+    gap: 14px;
+}
+
+.not-found__button {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.not-found__button--primary {
+    background-color: var(--main-color);
+    color: #fff;
+}
+
+.not-found__button--secondary {
+    border: 1px solid var(--line-color);
+    color: var(--sub-color);
+}

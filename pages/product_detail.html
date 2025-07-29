@@ -1,1 +1,215 @@
 <!-- Product Detail Page -->
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>상품 상세 페이지</title>
+        <link rel="stylesheet" href="../assets/css/reset.css" />
+        <link rel="stylesheet" href="../assets/css/pages/product_detail.css" />
+    </head>
+
+    <body>
+        <div data-component="header"></div>
+        <main class="product-detail">
+            <section class="product-detail__main">
+                <figure class="product-detail__image-wrapper">
+                    <img
+                        class="product-detail__image hide"
+                        src="../assets/images/product-detail-img.png"
+                        alt="딥러닝 개발자 무릎 담요"
+                    />
+                </figure>
+
+                <div class="product-detail__info-wrapper">
+                    <div class="product-detail__top-area">
+                        <p class="product-detail__seller-name">백엔드글로벌</p>
+                        <h2 class="product-detail__name">
+                            딥러닝 개발자 무릎 담요
+                        </h2>
+                        <p class="product-detail__price-box">
+                            <span class="product-detail__price">17,500</span>원
+                        </p>
+                    </div>
+
+                    <div class="product-detail__bottom-area">
+                        <p class="product-detail__delivery">
+                            택배배송 / 무료배송
+                        </p>
+
+                        <div class="quantity">
+                            <button
+                                type="button"
+                                class="quantity__button quantity__button--minus"
+                                aria-label="수량 내리기"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 20 20"
+                                    fill="none"
+                                >
+                                    <path
+                                        d="M0 10H20"
+                                        stroke="#c4c4c4"
+                                        stroke-width="2"
+                                    />
+                                </svg>
+                            </button>
+                            <!-- 텍스트 가운데 정렬을 위해 type number => text로 변경 -->
+                            <input
+                                type="text"
+                                class="quantity__input"
+                                value="1"
+                                readonly
+                            />
+                            <button
+                                type="button"
+                                class="quantity__button quantity__button--plus"
+                                aria-label="수량 올리기"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="20"
+                                    height="20"
+                                    viewBox="0 0 20 20"
+                                    fill="none"
+                                >
+                                    <path
+                                        d="M0 9.5H20"
+                                        stroke="#c4c4c4"
+                                        stroke-width="2"
+                                    />
+                                    <path
+                                        d="M10 20L10 0"
+                                        stroke="#c4c4c4"
+                                        stroke-width="2"
+                                    />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div
+                            class="product-detail__total-section total-section"
+                        >
+                            <p class="total-section__label">총 상품 금액</p>
+                            <div class="total-section__summary">
+                                <p class="total-section__quantity">
+                                    총 수량
+                                    <span class="total-section__quantity-value"
+                                        >1</span
+                                    >개
+                                </p>
+                                <p class="total-section__price-box">
+                                    <span class="total-section__price"
+                                        >17,500</span
+                                    >원
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="product-detail__actions">
+                            <button
+                                type="button"
+                                class="product-detail__button product-detail__button--primary"
+                            >
+                                바로 구매
+                            </button>
+                            <button
+                                type="button"
+                                class="product-detail__button product-detail__button--secondary"
+                            >
+                                장바구니
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 탭 -->
+            <nav class="product-nav">
+                <ul class="product-nav__list" role="tablist">
+                    <li class="product-nav__item" role="presentation">
+                        <a
+                            href="#panelDetail"
+                            id="tabDetail"
+                            class="product-nav__link product-nav__link--active"
+                            role="tab"
+                            aria-selected="true"
+                            aria-controls="panelDetail"
+                            >상품 상세</a
+                        >
+                    </li>
+                    <li class="product-nav__item" role="presentation">
+                        <a
+                            href="#panelReview"
+                            id="tabReview"
+                            class="product-nav__link"
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="panelReview"
+                            >리뷰</a
+                        >
+                    </li>
+                    <li class="product-nav__item" role="presentation">
+                        <a
+                            href="#panelQna"
+                            id="tabQna"
+                            class="product-nav__link"
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="panelQna"
+                            >Q&A</a
+                        >
+                    </li>
+                    <li class="product-nav__item" role="presentation">
+                        <a
+                            href="#panelExchange"
+                            id="tabExchange"
+                            class="product-nav__link"
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="panelExchange"
+                            >반품/교환정보</a
+                        >
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="product-content">
+                <div
+                    id="panelDetail"
+                    role="tabpanel"
+                    tabindex="0"
+                    aria-labelledby="tabDetail"
+                ></div>
+                <div
+                    id="panelReview"
+                    role="tabpanel"
+                    tabindex="0"
+                    aria-labelledby="tabReview"
+                    hidden
+                ></div>
+                <div
+                    id="panelQna"
+                    role="tabpanel"
+                    tabindex="0"
+                    aria-labelledby="tabQna"
+                    hidden
+                ></div>
+                <div
+                    id="panelExchange"
+                    role="tabpanel"
+                    tabindex="0"
+                    aria-labelledby="tabExchange"
+                    hidden
+                ></div>
+            </div>
+        </main>
+        <div data-component="footer"></div>
+        <script type="module" src="assets/js/common.js"></script>
+        <script type="module" src="../assets/js/pages/products.js"></script>
+    </body>
+</html>

@@ -1,0 +1,169 @@
+@import url('../common.css');
+
+/* ========= 전체 레이아웃 ========= */
+.login-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+/* ======== 헤더, 로고 ======== */
+
+.login-page__header {
+    margin: 100px 0 70px;
+}
+
+.login-page__logo {
+    width: 238px;
+    height: auto;
+}
+
+/* ========= 메인 로그인 박스 ========= */
+
+.login-box {
+    background-color: #fff;
+    width: 100%;
+    max-width: 550px;
+    /* border: 1px solid var(--line-color); */
+    border-radius: 10px;
+
+    position: relative;
+}
+
+/* ========= 탭 영역 ========== */
+/* 당면과제:
+tab active 효과 추가하기, 피그마 속 처럼 두개가 합쳐진 효과 구현하기
+*/
+
+.login-box__tabs {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 0px solid var(--line-color);
+    border-radius: 10px 10px 0 0;
+}
+
+.login-box__tab-item {
+    width: 50%;
+}
+
+.login-box__tab {
+    position: relative;
+    height: 80px;
+    display: block;
+    width: 100%;
+    padding: 0 0 18px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--line-color);
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+    background-color: #f2f2f2;
+
+    /* active 속성을 이용해 tab 구현 */
+    &.login-box__tab--active {
+        background-color: #fff;
+        z-index: 20;
+
+        &.tab-left {
+            border-right: none;
+        }
+        &.tab-right {
+            border-left: none;
+        }
+    }
+}
+
+/* ========= 로그인 폼 ========= */
+/* 확인할 사항: focus 되었을때, hover 되었을때 어떤 효과를 주는게 좋을지. 
+적절한 색감 및 효과 논의
+*/
+
+.login-box__form {
+    background-color: #fff;
+    position: relative;
+    z-index: 10;
+    transform: translateY(-18px);
+    display: flex;
+    flex-direction: column;
+    padding: 28px 35px 36px;
+    border: 1px solid var(--line-color);
+    /* border-top: none; */
+    border-radius: 10px;
+}
+
+.login-box__input-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-box__input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    padding-bottom: 26px;
+}
+
+.login-box__input {
+    border: none;
+    border-bottom: 1px solid var(--line-color);
+    font-size: 16px;
+    padding: 20px 0;
+    background-color: transparent;
+    transition: border-color 0.2s ease;
+}
+
+.login-box__input:focus {
+    outline: 1px solid var(--input-outline-color);
+    border-radius: 5px;
+}
+
+/* ========에러 출력 ========= */
+.login-box__error {
+    display: none;
+    margin-bottom: 16px;
+    color: #eb5758;
+}
+
+.active {
+    display: block;
+}
+
+/* ======== 로그인 버튼 ========= */
+
+.login-box__submit {
+    padding: 19px 215px;
+    margin-top: 10px;
+    color: #fff;
+    background-color: var(--main-color);
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: 700;
+    word-break: keep-all;
+
+    /*cursor*/
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.login-box__submit:hover {
+    background-color: #6ae26e;
+}
+
+/* ====== 회원가입 및 비밀번호 찾기 ======== */
+
+.login-box__links {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+
+    margin-top: 30px;
+}
+
+.login-box__divider,
+.login-box__link {
+    color: #333333;
+}

@@ -1,1 +1,93 @@
 <!-- Header Component -->
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>header</title>
+        <link rel="stylesheet" href="../assets/css/components.css" />
+    </head>
+
+    <body>
+        <header class="header">
+            <div class="header__container">
+                <h1 class="header__logo">
+                    <a href="/" class="header__logo-link">
+                        <img
+                            src="/assets/images/Logo-hodu.png"
+                            alt="호두 로고"
+                            class="header__logo-image"
+                        />
+                    </a>
+                </h1>
+
+                <form
+                    class="header__search"
+                    role="search"
+                    aria-label="상품 검색"
+                >
+                    <label for="searchProduct" class="sr-only">상품 검색</label>
+                    <input
+                        type="search"
+                        name="searchProduct"
+                        id="searchProduct"
+                        class="header__search-input"
+                        placeholder="상품을 검색해보세요!"
+                    />
+                    <button type="submit" class="header__search-button">
+                        <img src="/assets/icons/icon-search.svg" alt="" />
+                    </button>
+                </form>
+            </div>
+
+            <nav class="header__nav" aria-label="사용자 메뉴">
+                <ul class="header__nav-list">
+                    <li class="header__nav-item">
+                        <a
+                            href="/pages/cart.html"
+                            class="header__nav-link"
+                            role="button"
+                        >
+                            <img
+                                src="/assets/icons/icon-shopping-cart.svg"
+                                alt=""
+                                class="header__nav-icon"
+                                aria-hidden="true"
+                            />
+                            <p class="header__nav-text">장바구니</p>
+                        </a>
+                    </li>
+                    <li class="header__nav-item">
+                        <a
+                            href="/pages/login.html"
+                            class="header__nav-link"
+                            role="button"
+                        >
+                            <img
+                                src="/assets/icons/icon-user.svg"
+                                alt=""
+                                class="header__nav-icon"
+                                aria-hidden="true"
+                            />
+                            <p class="header__nav-text">로그인</p>
+                        </a>
+                        <div class="dropdown-menu-container">
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-menu__item">
+                                    <a href="#" class="dropdown-menu__link"
+                                        >마이페이지</a
+                                    >
+                                </li>
+                                <li class="dropdown-menu__item">
+                                    <button class="dropdown-menu__button">
+                                        로그아웃
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    </body>
+</html>

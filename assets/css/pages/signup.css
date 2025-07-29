@@ -1,0 +1,249 @@
+@import url('../common.css');
+
+:root {
+    --default-radius: 10px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.header {
+    display: flex;
+    z-index: 10;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 0;
+    .header__logo-image {
+        width: 238px;
+        height: 74px;
+    }
+}
+
+.signup__content {
+    width: 550px;
+    margin: 0 auto;
+    padding-bottom: 110px;
+}
+
+.signup__tabs {
+    width: inherit;
+    .signup__tabs-list {
+        display: flex;
+
+        .signup__tabs-button {
+            background-color: #fff;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: calc(100% + 4px);
+            width: 275px;
+            height: 80px;
+            box-sizing: border-box;
+            padding-bottom: 18px;
+            border: 1px solid var(--line-color);
+            border-radius: var(--default-radius) var(--default-radius) 0 0;
+            position: relative;
+
+            &:not(.signup__tabs-button--active) {
+                background-color: #f2f2f2;
+            }
+            &.signup__tabs-button--active {
+                border-bottom: none;
+                z-index: 20;
+
+                &.right {
+                    border-left: none;
+                }
+                &.left {
+                    border-right: none;
+                }
+            }
+        }
+    }
+}
+
+.signup__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 34px;
+
+    input,
+    button,
+    select {
+        border: 1px solid var(--line-color);
+        border-radius: var(--default-radius);
+        &:focus {
+            outline: 1px solid var(--input-outline-color);
+            outline-offset: -1px;
+            border: none;
+        }
+    }
+    input {
+        padding: 17px;
+        height: 54px;
+
+        &.valid-fail {
+            border-color: var(--input-color-red);
+        }
+    }
+    button {
+        background-color: var(--main-color);
+        border-radius: 5px;
+        border: none;
+        width: 122px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    p {
+        font-size: 16px;
+        font-weight: 400;
+
+        &.valid-success {
+            color: var(--main-color);
+        }
+        &.valid-fail {
+            color: var(--input-color-red);
+        }
+    }
+
+    .signup__fieldset {
+        position: relative;
+        background-color: #fff;
+        border: 1px solid var(--line-color);
+        border-radius: var(--default-radius);
+        z-index: 10;
+        transform: translateY(-18px);
+        padding: 38px 34px 36px;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+
+        .signup__label {
+            color: var(--sub-color);
+        }
+
+        .signup__group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .signup__field {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            .signup__input-group {
+                display: flex;
+                gap: 12px;
+
+                .signup__input {
+                    width: 346px;
+                }
+            }
+            .password-wrapper {
+                position: relative;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    width: 28px;
+                    height: 28px;
+                    background: url('../../icons/icon-check-off.svg');
+                    transform: translate(calc(-100% - 16px), 50%);
+                }
+                &.valid::after {
+                    background: url('../../icons/icon-check-on.svg');
+                }
+            }
+
+            .signup__phone-fieldset {
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                .signup__label {
+                    margin-bottom: 12px;
+                }
+                .signup__phone-group {
+                    display: flex;
+                    gap: 12px;
+
+                    select,
+                    input {
+                        width: 152px;
+                        border-radius: var(--default-radius);
+                        text-align: center;
+                    }
+
+                    .signup__select {
+                        appearance: none;
+                        background: url('../../icons/icon-down-arrow.svg')
+                            no-repeat right 22px center;
+
+                        &:open {
+                            background-image: url('../../icons/icon-up-arrow.svg');
+                        }
+
+                        option {
+                            font-weight: 500;
+                            font-size: 16px;
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .signup__group--seller {
+        &.hide {
+            display: none;
+        }
+    }
+}
+
+.signup__terms {
+    .signup__checkbox-group {
+        color: var(--sub-color);
+        width: 480px;
+        display: flex;
+        gap: 10px;
+
+        .signup__checkbox {
+            all: unset;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            content: url('../../icons/icon-check-box.svg');
+
+            &:focus {
+                outline: 1px solid var(--input-outline-color);
+            }
+
+            &:checked {
+                content: url('../../icons/icon-check-fill-box.svg');
+            }
+        }
+
+        .signup__checkbox-label {
+            .signup__link {
+                text-decoration: underline;
+                display: inline;
+                text-align: start;
+            }
+        }
+    }
+}
+
+.signup__button[type='submit'] {
+    width: 480px;
+    height: 60px;
+    font-size: 18px;
+    font-weight: 700;
+
+    &:disabled {
+        background-color: var(--line-color);
+    }
+}
