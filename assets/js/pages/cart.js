@@ -136,13 +136,10 @@ function openQuantityModal(productItem) {
     const controlInput = productItem.querySelector('.quantity-control__input');
 
     // 클로저로 productItem과 controlInput을 캡처하는 함수 생성
-    const modifyQuantityForThisProduct = () => {
-        const modalInput = document.querySelector(
-            '#commonModal .modal-content input[type="number"]'
-        );
-        if (modalInput && controlInput) {
+    const modifyQuantityForThisProduct = (count) => {
+        if (controlInput) {
             // 모달창의 수량을 해당 상품의 input에 반영
-            controlInput.value = modalInput.value;
+            controlInput.value = count;
 
             // 해당 상품의 금액 다시 계산
             updateIndividualPrice(productItem);
