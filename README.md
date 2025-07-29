@@ -1,6 +1,6 @@
 
 
-<img src="./assets/images/title.png" width=150%>
+<img src="./assets/images/title.png" width=860px>
 
 ## 📋 프로젝트 개요
 
