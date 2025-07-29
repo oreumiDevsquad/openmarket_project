@@ -1,6 +1,18 @@
-# 🛒 오픈마켓 프로젝트 (OpenMarket Project)
+<div align="center" style="margin:50px 0 30px">
+  <img src="./assets/images/Logo-hodu.png" alt="프로젝트 로고" width="320">
+  <div style="margin-top:50px;">
+  <strong align="center" style="display:block; font-size: 34px; color:#21bf48;">오픈마켓 프로젝트 (OpenMarket Project)</strong>
+  <p style="color:#555;">데브스쿼드팀이 개발한 웹 기반 오픈마켓 플랫폼입니다. 순수 HTML, CSS, JavaScript를 사용하여 구현된 전자상거래 웹사이트입니다.</p>
+  </div>
+</div>
 
-데브스쿼드팀이 개발한 웹 기반 오픈마켓 플랫폼입니다. 순수 HTML, CSS, JavaScript를 사용하여 구현된 전자상거래 웹사이트입니다.
+---
+
+<div align="center" style="margin:30px 0 85px;">
+<img src="./assets/images/team.png" style="display:inline-block; margin:0;padding:0;">
+<img src="./assets/images/PR.png" style="display:inline-block; margin:0 10px;padding:0;">
+<img src="./assets/images/issues.png" style="display:inline-block; margin:0;padding:0;">
+</div>
 
 ## 📋 프로젝트 개요
 
@@ -171,4 +183,6 @@ chore: 기타 작업
 
 ---
 
-**프로젝트에 대한 문의사항이 있으시면 이슈를 통해 연락해 주세요! 🙋‍♀️🙋‍♂️**
+<div style="margin-top: 20px;">
+<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='40' style="display:inline-block; vertical-align:middle;margin-right:10px;"> <span style="display:inline-block; background-color:rgb(0,0,0,0.2); width:40px; text-align:center; border-radius:5px;">URL</span> https://github.com/oreumiDevsquad/openmarket_project.git
+</div>
