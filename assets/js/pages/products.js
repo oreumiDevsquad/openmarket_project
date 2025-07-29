@@ -2,6 +2,7 @@
 import { API } from '../api.js';
 import { formatPrice, calculatePrice } from '../utils.js';
 import { AuthAPI } from `../auth.js`;
+import { openModal } from '../common.js';
 
 // 상품 렌더링
 (async () => {
@@ -56,6 +57,7 @@ import { AuthAPI } from `../auth.js`;
         $totalQuantityLabel.textContent = quantity;
     }
 
+    // 버튼 클릭시 수량 변경, 비활성화
     $plusBtn.addEventListener('click', () => {
         let currentQuantity = parseInt($totalQuantity.value);
         if (currentQuantity < stock) {
@@ -79,11 +81,30 @@ import { AuthAPI } from `../auth.js`;
         }
     })
 
+    // 장바구니 담기, 중복 선택 방지
     $cartBtn.addEventListener('click', async () => {
         try {
-            
+            const cartItems = await AuthAPI.getCartList();
+            let isproduct = false;
+            for (const item of cartItems.results) {
+                if (item.product_id === id) {
+                    isproduct = true;
+                    break;
+                }
+            }
+            if (isproduct) {
+                alert('이미 장바구니에 담긴 상품입니다.');
+            } else {
+                const data = {
+                    product_id : id,
+                    quantity: parseInt($totalQuantity.value),
+                }
+                await AuthAPI.addCartItem(data);
+                alert('상품을 장바구니에 담았습니다.');
+            }
         } catch (error) {
-            
+            console.error('장바구니 처리 오류 발생:', error)
+            alert('장바구니를 사용하려면 로그인')
         }
     })
 
