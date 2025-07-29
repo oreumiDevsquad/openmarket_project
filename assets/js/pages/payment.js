@@ -82,6 +82,67 @@ import { formatPrice } from '../utils.js';
 
             frag.appendChild(tr);
         });
+    } else if (orderInfo.order_type === 'direct_order') {
+        const tr = document.createElement('tr');
+
+        let item = null;
+        try {
+            const response = await API.getProductDetail(orderInfo.product);
+            console.log(response);
+            item = response;
+        } catch (error) {
+            console.error('error:', error);
+        }
+        const amount = item.price * orderInfo.quantity;
+        const shipping_fee = item.shipping_fee;
+
+        total.amount += amount;
+        total.fee += shipping_fee;
+        total.price += shipping_fee + amount;
+
+        tr.innerHTML = `<td class="order-list__product-info">
+                                    <div class="order-list__item">
+                                        <img
+                                            src="${item.image}"
+                                            alt="${item.info}"
+                                            class="order-list__image"
+                                        />
+                                        <div class="order-list__details">
+                                            <p class="order-list__brand">
+                                                ${item.seller.store_name}
+                                            </p>
+                                            <h4 class="order-list__name">
+                                                ${item.info}
+                                            </h4>
+                                            <p class="order-list__quantity">
+                                                수량: ${orderInfo.quantity}개
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="order-list__discount">
+                                    <div class="order-list__wrapper">
+                                        <span class="order-list__discount-value"
+                                            >-</span
+                                        >
+                                    </div>
+                                </td>
+                                <td class="order-list__shipping">
+                                    <div class="order-list__wrapper">
+                                        <span class="order-list__shipping-value"
+                                            >${shipping_fee > 0 ? formatPrice(shipping_fee) + '원' : '무료배송'}</span
+                                        >
+                                    </div>
+                                </td>
+                                <td class="order-list__amount">
+                                    <div class="order-list__wrapper">
+                                        <strong class="order-list__price"
+                                            >${formatPrice(amount)}원</strong
+                                        >
+                                    </div>
+                                </td>`;
+
+        frag.appendChild(tr);
     }
 
     $orderListTbody.appendChild(frag);
@@ -177,7 +238,7 @@ import { formatPrice } from '../utils.js';
             console.log(response);
             if (response.order_status === 'payment_complete') {
                 localStorage.removeItem('order_info');
-                window.location('/');
+                window.location = '/';
             } else {
                 throw new Error();
             }

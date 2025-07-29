@@ -46,6 +46,9 @@ import { openModal } from '../common.js';
     const $totalQuantityLabel = document.querySelector(
         '.total-section__quantity-value'
     );
+    const $directBuyBtn = document.querySelector(
+        '.product-detail__button--primary'
+    );
     const $cartBtn = document.querySelector(
         '.product-detail__button--secondary'
     );
@@ -94,38 +97,60 @@ import { openModal } from '../common.js';
         }
     });
 
+    $directBuyBtn.addEventListener('click', async () => {
+        const quantity = parseInt($totalQuantity.value);
+        const orderInfo = {
+            order_type: 'direct_order',
+            product: id,
+            quantity: quantity,
+            total_price: totalPrice,
+        };
+        localStorage.setItem('order_info', JSON.stringify(orderInfo));
+        window.location = '/pages/payment.html';
+    });
+
     // 장바구니 담기, 중복 선택 방지
     $cartBtn.addEventListener('click', async () => {
-        try {
-            const cartItems = await AuthAPI.getCartList();
-            let isproduct = false;
-            for (const item of cartItems.results) {
-                if (item.product_id === id) {
-                    isproduct = true;
-                    break;
+        const isLoggedIn = AuthAPI.isLoggedIn();
+
+        if (isLoggedIn) {
+            try {
+                const cartItems = await AuthAPI.getCartList();
+                let isproduct = false;
+                for (const item of cartItems.results) {
+                    if (item.product_id === id) {
+                        isproduct = true;
+                        break;
+                    }
                 }
-            }
-            if (isproduct) {
+                if (isproduct) {
+                    openModal({
+                        type: 'duplicate_item',
+                        confirmAction: () => {
+                            window.location = '/pages/cart.html';
+                        },
+                    });
+                } else {
+                    const data = {
+                        product_id: id,
+                        quantity: parseInt($totalQuantity.value),
+                    };
+                    await AuthAPI.addCartItem(data);
+                    alert('상품을 장바구니에 담았습니다.');
+                }
+            } catch (error) {
+                console.error('장바구니 처리 오류 발생:', error);
                 openModal({
-                    type: 'duplicate_item',
-                    confirmAction: () => {
-                        window.location.href = '/pages/cart.html';
-                    },
+                    type: 'stock_exceeded',
+                    confirmAction: () => {},
                 });
-            } else {
-                const data = {
-                    product_id: id,
-                    quantity: parseInt($totalQuantity.value),
-                };
-                await AuthAPI.addCartItem(data);
-                alert('상품을 장바구니에 담았습니다.');
             }
-        } catch (error) {
-            console.error('장바구니 처리 오류 발생:', error);
+        } else {
+            console.error('로그인 필요');
             openModal({
                 type: 'login',
                 confirmAction: () => {
-                    window.location.href = '/pages/login.html';
+                    window.location = '/pages/login.html';
                 },
             });
         }
