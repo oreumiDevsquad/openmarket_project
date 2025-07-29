@@ -13,12 +13,15 @@
         <div class="login-page">
             <header class="login-page__header">
                 <div class="login-page__logo-wrapper">
-                    <h1 class="sr-only">로그인 창</h1>
-                    <img
-                        src="../assets/images/Logo-hodu.png"
-                        class="login-page__logo"
-                        alt="호두사이트 로고"
-                    />
+                    <h1 class="login-page__logo">
+                        <a href="/index.html" class="header__logo-link">
+                            <img
+                                src="../assets/images/Logo-hodu.png"
+                                class="login-page__logo"
+                                alt="호두사이트 로고"
+                            />
+                        </a>
+                    </h1>
                 </div>
             </header>
 
@@ -45,28 +48,36 @@
                         </ul>
                     </nav>
 
-                    <form action="" class="login-box__form">
-                        <label for="login-id" class="sr-only">아이디</label>
-                        <input
-                            type="text"
-                            id="login-id"
-                            name="login-id"
-                            class="login-box__input"
-                            placeholder="아이디"
-                            required
-                        />
+                    <form class="login-box__form">
+                        <div class="login-box__input-container">
+                            <div class="login-box__input-box">
+                                <label for="loginId" class="sr-only"
+                                    >아이디</label
+                                >
+                                <input
+                                    type="text"
+                                    id="loginId"
+                                    name="login-id"
+                                    class="login-box__input"
+                                    placeholder="아이디"
+                                    autocomplete="username"
+                                />
 
-                        <label for="login-password" class="sr-only"
-                            >비밀번호</label
-                        >
-                        <input
-                            type="password"
-                            id="login-password"
-                            name="login-password"
-                            class="login-box__input"
-                            placeholder="비밀번호"
-                            required
-                        />
+                                <label for="login-password" class="sr-only"
+                                    >비밀번호</label
+                                >
+                                <input
+                                    type="password"
+                                    id="loginPassword"
+                                    name="login-password"
+                                    class="login-box__input"
+                                    placeholder="비밀번호"
+                                    autocomplete="current-password"
+                                />
+                            </div>
+                            <!-- 에러 메시지 동적으로 구현 -->
+                            <span class="login-box__error"></span>
+                        </div>
                         <button type="submit" class="login-box__submit">
                             로그인
                         </button>
@@ -74,11 +85,13 @@
                 </section>
 
                 <div class="login-box__links">
-                    <a href="#" class="login-box__link">회원가입</a>
+                    <a href="./signup.html" class="login-box__link">회원가입</a>
                     <span class="login-box__divider">|</span>
                     <a href="#" class="login-box__link">비밀번호 찾기</a>
                 </div>
             </main>
         </div>
+
+        <script type="module" src="../assets/js/pages/login.js"></script>
     </body>
 </html>
