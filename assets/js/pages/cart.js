@@ -284,6 +284,8 @@ function initializeCartEvents() {
 // 렌더링 함수
 async function renderList() {
     const $productWrapper = document.querySelector('.cart__body');
+    // 초기화
+    $productWrapper.innerHTML = '';
     try {
         // 기존 하드코딩된 상품들 제거 (빈 장바구니 메시지 제외)
         const existingProducts =
