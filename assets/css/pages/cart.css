@@ -77,7 +77,7 @@ input[type='checkbox']:checked::after {
     width: 100%;
     text-align: center;
 
-    display: none;
+    display: table-row;
 }
 
 .cart__empty-content {
@@ -101,12 +101,14 @@ input[type='checkbox']:checked::after {
 .cart__product {
     /* display: none; */
 }
-.cart__footer-table {
-    /* display: none; */
+.cart__footer-table.disabled {
+    display: none;
 }
 .cart__order-all-btn {
-    /* display: none; */
     display: block;
+    &.disabled {
+        display: none;
+    }
 }
 
 .cart__product td {

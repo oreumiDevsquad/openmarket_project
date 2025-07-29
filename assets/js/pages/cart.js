@@ -225,26 +225,6 @@ async function confirmDelete() {
     productToDelete = null;
 }
 
-// 빈 장바구니 체크 //
-function checkEmptyCart() {
-    const remainingProducts = document.querySelectorAll('.cart__product');
-    const emptyMessage = document.querySelector('.cart__empty');
-    const footerTable = document.querySelector('.cart__footer-table');
-    const orderBtn = document.querySelector('.cart__order-all-btn');
-
-    if (remainingProducts.length === 0) {
-        // 빈 장바구니 메시지 표시
-        emptyMessage.style.display = 'table-row';
-
-        // 푸터와 주문 버튼 숨기기
-        footerTable.style.display = 'none';
-        orderBtn.style.display = 'none';
-
-        // 총 금액들을 0으로 설정
-        $totalPrice.innerHTML = '0<span>원</span>';
-        $finalAmount.innerHTML = '0<span>원</span>';
-    }
-}
 // 동적으로 생성된 상품들에 이벤트 리스너를 등록하는 함수
 function initializeCartEvents() {
     const cartProducts = getCartProducts();
@@ -322,111 +302,136 @@ async function renderList() {
 
         const response = await AuthAPI.getCartList();
         const frag = document.createDocumentFragment();
+        const $totalOrderBtn = document.querySelector('.cart__order-all-btn');
+        const $footerTable = document.querySelector('.cart__footer-table');
 
         console.log(response.results);
         console.log(response);
 
-        for (let cartItem of response.results) {
-            const $tr = document.createElement('tr');
-            const product = cartItem.product;
-            productIds.push(product.id);
-            $tr.classList.add('cart__product');
+        if (!response.results.length) {
+            $totalOrderBtn.classList.add('disabled');
+            $footerTable.classList.add('disabled');
 
-            $tr.dataset.id = product.id;
+            $productWrapper.innerHTML = `
+          <tr class="cart__empty">
+              <td colspan="4">
+                  <div class="cart__empty-content">
+                      <p class="cart__empty-text">
+                          장바구니에 담긴 상품이 없습니다.
+                      </p>
+                      <p class="cart__empty-sub-text">
+                          원하는 상품을 장바구니에 담아보세요!
+                      </p>
+                  </div>
+              </td>
+          </tr>
+          `;
+        } else {
+            for (let cartItem of response.results) {
+                const $tr = document.createElement('tr');
+                const product = cartItem.product;
+                productIds.push(product.id);
+                $tr.classList.add('cart__product');
 
-            $tr.innerHTML = `<td class="cart__product-checkbox">
-                                <label for="productCheck1" class="sr-only"
-                                    >${product.name} 선택</label
-                                >
-                                <input type="checkbox" id="productCheck${product.id}" />
-                            </td>
-                            <td class="cart__product-details">
-                                <img
-                                    src="${product.image}"
-                                    alt="${product.name}"
-                                />
+                $tr.dataset.id = product.id;
 
-                                <div class="cart__product-info">
-                                    <div class="cart__product-wapper">
-                                        <p class="cart__product-brand">
-                                            ${product.seller.store_name}
-                                        </p>
-                                        <h3 class="cart__product-title">
-                                            ${product.name}
-                                        </h3>
-                                        <p class="cart__product-price">
-                                        ${product.price.toLocaleString()}원
-                                        </p>
-                                    </div>
-                                    <p class="cart__product-delivery">
-                                        택배배송 / &nbsp;
-                                        ${product.shipping_fee > 0 ? `${formatPrice(product.shipping_fee)}원` : '무료배송'}
-                                    </p>
-                                </div>
-                            </td>
-                            <td class="cart__quantity">
-                                <div class="cart__quantity-control">
-                                    <button
-                                        type="button"
-                                        class="quantity-control__minus-btn"
-                                        aria-label="수량 감소"
-                                    >
-                                        <img
-                                            src="./../assets/icons/icon-minus-line.svg"
-                                            alt=""
-                                        />
-                                    </button>
-                                    <input
-                                        type="number"
-                                        value="${cartItem.quantity || 1}"
-                                        min="1"
-                                        max="99"
-                                        class="quantity-control__input"
-                                        aria-label="상품 수량"
-                                        readonly
-                                    />
-                                    <button
-                                        type="button"
-                                        class="quantity-control__plus-btn"
-                                        aria-label="수량 증가"
-                                    >
-                                        <img
-                                            src="./../assets/icons/icon-plus-line.svg"
-                                            alt=""
-                                        />
-                                    </button>
-                                </div>
-                            </td>
-                            <td class="cart__product-order">
-                                <button
-                                    type="button"
-                                    class="cart__delete-btn"
-                                    aria-label="상품 삭제"
-                                >
-                                    <img
-                                        src="./../assets/icons/icon-delete.svg"
-                                        alt=""
-                                    />
-                                </button>
+                $tr.innerHTML = `<td class="cart__product-checkbox">
+                                  <label for="productCheck1" class="sr-only"
+                                      >${product.name} 선택</label
+                                  >
+                                  <input type="checkbox" id="productCheck${product.id}" />
+                              </td>
+                              <td class="cart__product-details">
+                                  <img
+                                      src="${product.image}"
+                                      alt="${product.name}"
+                                  />
+  
+                                  <div class="cart__product-info">
+                                      <div class="cart__product-wapper">
+                                          <p class="cart__product-brand">
+                                              ${product.seller.store_name}
+                                          </p>
+                                          <h3 class="cart__product-title">
+                                              ${product.name}
+                                          </h3>
+                                          <p class="cart__product-price">
+                                          ${product.price.toLocaleString()}원
+                                          </p>
+                                      </div>
+                                      <p class="cart__product-delivery">
+                                          택배배송 / &nbsp;
+                                          ${product.shipping_fee > 0 ? `${formatPrice(product.shipping_fee)}원` : '무료배송'}
+                                      </p>
+                                  </div>
+                              </td>
+                              <td class="cart__quantity">
+                                  <div class="cart__quantity-control">
+                                      <button
+                                          type="button"
+                                          class="quantity-control__minus-btn"
+                                          aria-label="수량 감소"
+                                      >
+                                          <img
+                                              src="./../assets/icons/icon-minus-line.svg"
+                                              alt=""
+                                          />
+                                      </button>
+                                      <input
+                                          type="number"
+                                          value="${cartItem.quantity || 1}"
+                                          min="1"
+                                          max="99"
+                                          class="quantity-control__input"
+                                          aria-label="상품 수량"
+                                          readonly
+                                      />
+                                      <button
+                                          type="button"
+                                          class="quantity-control__plus-btn"
+                                          aria-label="수량 증가"
+                                      >
+                                          <img
+                                              src="./../assets/icons/icon-plus-line.svg"
+                                              alt=""
+                                          />
+                                      </button>
+                                  </div>
+                              </td>
+                              <td class="cart__product-order">
+                                  <button
+                                      type="button"
+                                      class="cart__delete-btn"
+                                      aria-label="상품 삭제"
+                                  >
+                                      <img
+                                          src="./../assets/icons/icon-delete.svg"
+                                          alt=""
+                                      />
+                                  </button>
+  
+                                  <p class="cart__product-total-price">
+                                  ${(product.price * (cartItem.quantity || 1)).toLocaleString()}원
+                                  </p>
+                                  <button
+                                      type="button"
+                                      class="cart__product-order-btn"
+                                      aria-label="개별 상품 주문"
+                                  >
+                                      주문하기
+                                  </button>
+                              </td>`;
 
-                                <p class="cart__product-total-price">
-                                ${(product.price * (cartItem.quantity || 1)).toLocaleString()}원
-                                </p>
-                                <button
-                                    type="button"
-                                    class="cart__product-order-btn"
-                                    aria-label="개별 상품 주문"
-                                >
-                                    주문하기
-                                </button>
-                            </td>`;
+                $tr.dataset.cartId = cartItem.id;
+                frag.appendChild($tr);
+            }
 
-            $tr.dataset.cartId = cartItem.id;
-            frag.appendChild($tr);
+            // DOM에 추가
+            $productWrapper.appendChild(frag);
+
+            $totalOrderBtn.classList.remove('disabled');
+            $footerTable.classList.remove('disabled');
         }
-
-        // DOM에 추가
-        $productWrapper.appendChild(frag);
 
         // 빈 장바구니 메시지 숨기기
         const $emptyMessage = document.querySelector('.cart__empty');
