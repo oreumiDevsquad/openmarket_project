@@ -1,3 +1,5 @@
+import { isLoggedIn, logout } from '../auth.js';
+
 export function mypageDropdown() {
     // HTML 요소 변수 저장
     const $dropdownBtn = document.querySelector(
@@ -18,8 +20,11 @@ export function mypageDropdown() {
 
     // 버튼 클릭시 드롭다운 기능 추가
     $dropdownBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // 클릭 이벤트 부모 요소 전달 방지
-        toggleDropdown();
+        if (isLoggedIn()) {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleDropdown();
+        }
     });
 
     // 다른 DOM 요소 클릭시 드롭다운 닫기
@@ -31,9 +36,8 @@ export function mypageDropdown() {
 
     // 로그아웃 버튼이 있을 때 로그아웃,메인 리다이렉트
     if ($logoutBtn) {
-        $logoutBtn.addEventListener('click', () => {
-            localStorage.removeItem('access');
-            localStorage.removeItem('refresh');
+        $logoutBtn.addEventListener('click', async () => {
+            await logout();
             window.location = '/';
         });
     }
