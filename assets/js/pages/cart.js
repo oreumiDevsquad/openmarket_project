@@ -1,4 +1,3 @@
-import { API } from './../api.js';
 import { AuthAPI } from './../auth.js';
 import { openModal } from './../common.js';
 import { formatPrice } from '../utils.js';
@@ -179,13 +178,22 @@ function openDeleteModal(productItem) {
     });
 }
 // 상품 삭제 확인
-function confirmDelete() {
+async function confirmDelete() {
     // 삭제할 상품이 없으면 함수 종료
     if (!productToDelete) return;
 
     // itemPrices에서 해당 상품 제거
-    const itemId = productToDelete.dataset.id;
+    try {
+        const response = await AuthAPI.deleteCartItem(
+            productToDelete.dataset.cartId
+        );
+        console.log(response);
+        return;
+    } catch (error) {
+        console.error('error:', error);
+    }
 
+    console.log(itemId);
     if (itemPrices[itemId]) {
         delete itemPrices[itemId];
     }
@@ -400,6 +408,7 @@ async function renderList() {
                                 </button>
                             </td>`;
 
+            $tr.dataset.cartId = cartItem.id;
             frag.appendChild($tr);
         }
 
@@ -429,12 +438,6 @@ async function renderList() {
         const allOrderInfo = {
             order_type: 'cart_order',
             cart_items: [...productIds],
-            total_price: 0,
-            receiver: '',
-            receiver_phone_number: '',
-            address: '',
-            address_message: '',
-            payment_method: '',
         };
         localStorage.setItem('order_info', JSON.stringify(allOrderInfo));
         window.location = '/pages/payment.html';
