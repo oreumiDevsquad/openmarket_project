@@ -328,7 +328,11 @@ input[type='checkbox']:checked::after {
 }
 
 /* modal창 */
-.modal {
+.modal-backup {
+    display: none;
+}
+
+#commonModal {
     position: fixed;
     inset: 0; /* 화면 전체 덮음 */
     background-color: rgba(0, 0, 0, 0.4);
@@ -336,22 +340,30 @@ input[type='checkbox']:checked::after {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    display: none;
 }
 
 /* modal창 display:none */
-.modal__quantity {
-    position: relative;
-    /* display: none; */
-}
-.modal__delete {
-    position: relative;
+.modal-backup .modal__quantity {
     display: none;
 }
-.modal__login-msg {
-    position: relative;
+.modal-backup .modal__delete {
     display: none;
+}
+.modal-backup .modal__login-msg {
+    display: none;
+}
+
+.modal-backup .modal__quantity.quantity-show {
+    position: relative;
+    display: block;
+}
+.modal-backup .modal__delete.delete-show {
+    position: relative;
+    display: block;
+}
+.modal-backup .modal__login-msg.login-msg-show {
+    position: relative;
+    display: block;
 }
 
 .modal-content {
@@ -409,6 +421,12 @@ input[type='checkbox']:checked::after {
     box-sizing: border-box;
     border: 1px solid #c4c4c4;
 }
+.quantity-btn:disabled {
+    background-color: #fbfbfb;
+}
+.quantity-btn:disabled img {
+    opacity: 0.4;
+}
 
 .modal__quantity .quantity-btn:first-child {
     border-radius: 5px 0 0 5px;
@@ -442,7 +460,8 @@ input[type='checkbox']:checked::after {
     color: var(--sub-color);
 }
 
-.modal__actions .btn--confirm {
+.modal__actions .btn--modification,
+.btn--confirm {
     color: #fff;
     background-color: var(--main-color);
 }
