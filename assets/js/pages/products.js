@@ -14,25 +14,27 @@ import { formatPrice, calculatePrice } from '../utils.js';
 
     // 요소 변수 선언
     const image = document.querySelector('.product-detail__image');
-    const sellerName = document.querySelector('.product-detail__seller-name');
+    const sellerStore = document.querySelector('.product-detail__seller-name');
     const productName = document.querySelector('.product-detail__name');
     const price = document.querySelector('.product-detail__price');
 
     // 총 상품 금액 및 총 수량 변수
-    const totalQuantity = document.querySelector('.quantity__input').value;
+    const $totalQuantity = document.querySelector('.quantity__input');
+    // 수량 -> 어떻게 불러오지?
     const totalPriceSection = document.querySelector('.total-section__price');
 
     // 가격 및 포맷 적용
-    const format = await formatPrice(targetProduct.price);
-    const totalPrice = await calculatePrice(targetProduct.price, totalQuantity);
-    const totalFormat = await formatPrice(totalPrice);
+    const format = formatPrice(targetProduct.price);
+    const totalPrice = calculatePrice(
+        targetProduct.price,
+        $totalQuantity.value
+    );
+    const totalFormat = formatPrice(totalPrice);
 
     // id와 일치상품 렌더링
     image.setAttribute('src', `${targetProduct.image}`);
-    // sellerName. => 이 부분 데이터에 x
+    sellerStore.textContent = targetProduct.seller.store_name;
     productName.textContent = targetProduct.name;
     price.textContent = format;
     totalPriceSection.textContent = totalFormat;
-
-    console.log(totalQuantity);
 })();

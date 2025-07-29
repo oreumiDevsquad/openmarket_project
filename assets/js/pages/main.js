@@ -11,7 +11,7 @@ import { formatPrice } from '../utils.js';
     const frag = document.createDocumentFragment();
 
     for (let product of products.results) {
-        const format = await formatPrice(product.price);
+        const format = formatPrice(product.price);
         const li = document.createElement('li');
         li.classList.add('product-list__item');
         li.innerHTML = '';
