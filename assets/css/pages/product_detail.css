@@ -49,15 +49,15 @@ body * {
     font-weight: 400;
 }
 
-.product-detail__price {
-    font-size: 36px;
-    font-weight: 700;
-}
-
-.product-detail__price-unit {
+.product-detail__price-box {
     font-size: 18px;
     font-weight: 400;
     margin-left: 2px;
+}
+
+.product-detail__price {
+    font-size: 36px;
+    font-weight: 700;
 }
 
 .product-detail__delivery {
@@ -159,17 +159,18 @@ body * {
     margin-left: 4px;
 }
 
-.total-section__price {
-    font-size: 36px;
-    color: var(--main-color);
-    font-weight: 700;
-    height: 45px;
-}
-
-.total-section__price-unit {
+.total-section__price-box {
     font-size: 18px;
     font-weight: 400;
     margin-left: 2px;
+    color: var(--main-color);
+}
+
+.total-section__price {
+    font-size: 36px;
+    font-weight: 700;
+    height: 45px;
+    color: var(--main-color);
 }
 
 /* 구매 버튼 */
