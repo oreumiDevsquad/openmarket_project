@@ -129,6 +129,14 @@ function updateCheckAllState() {
     }
 }
 
+// 실험적 체크리스트만 모아보는 함수
+function getCheckedProductList() {
+    const $checkedProductList = document.querySelectorAll(
+        'input[type=checkbox]:checked'
+    );
+    console.log($checkedProductList);
+}
+
 // 개별 체크박스 이벤트 실행 //
 function handleIndividualCheck() {
     updateCheckAllState();
@@ -284,6 +292,7 @@ function initializeCartEvents() {
 // 렌더링 함수
 async function renderList() {
     const $productWrapper = document.querySelector('.cart__body');
+    const productIds = [];
     // 초기화
     // $productWrapper.innerHTML = '';
     try {
@@ -300,6 +309,7 @@ async function renderList() {
 
         for (let cartItem of response.results) {
             const $tr = document.createElement('tr');
+            productIds.push(product.id);
             const product = cartItem.product;
             $tr.classList.add('cart__product');
 
@@ -411,4 +421,24 @@ async function renderList() {
         // 에러 발생 시 빈 장바구니 상태 표시
         checkEmptyCart();
     }
+
+    // 모든 주문 오더
+    const $allOrderBtn = document.querySelector('.cart__order-all-btn');
+
+    console.log($allOrderBtn);
+
+    $allOrderBtn.addEventListener('click', (e) => {
+        const allOrderInfo = {
+            order_type: 'cart_order',
+            cart_items: [...productIds],
+            total_price: 0,
+            receiver: '',
+            receiver_phone_number: '',
+            address: '',
+            address_message: '',
+            payment_method: '',
+        };
+        localStorage.setItem('order_info', JSON.stringify(allOrderInfo));
+        window.location = '/pages/payment.html';
+    });
 }
