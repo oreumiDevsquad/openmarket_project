@@ -94,10 +94,7 @@ export function openModal({
     confirmBtn.addEventListener('click', () => {
         if (type === 'quantity') confirmAction(count);
         else confirmAction();
-<<<<<<< HEAD
         modal.remove();
-=======
->>>>>>> ff0395f8f5b35ebd7f919f3678e149d2401469e9
     });
     cancelBtn.addEventListener('click', (e) => {
         modal.remove();
