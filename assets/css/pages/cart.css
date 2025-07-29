@@ -328,11 +328,11 @@ input[type='checkbox']:checked::after {
 }
 
 /* modal창 */
-.modal {
+.modal-backup {
     display: none;
 }
 
-.modal.modal-show {
+#commonModal {
     position: fixed;
     inset: 0; /* 화면 전체 덮음 */
     background-color: rgba(0, 0, 0, 0.4);
@@ -343,25 +343,25 @@ input[type='checkbox']:checked::after {
 }
 
 /* modal창 display:none */
-.modal__quantity {
+.modal-backup .modal__quantity {
     display: none;
 }
-.modal__delete {
+.modal-backup .modal__delete {
     display: none;
 }
-.modal__login-msg {
+.modal-backup .modal__login-msg {
     display: none;
 }
 
-.modal__quantity.quantity-show {
+.modal-backup .modal__quantity.quantity-show {
     position: relative;
     display: block;
 }
-.modal__delete.delete-show {
+.modal-backup .modal__delete.delete-show {
     position: relative;
     display: block;
 }
-.modal__login-msg.login-msg-show {
+.modal-backup .modal__login-msg.login-msg-show {
     position: relative;
     display: block;
 }
@@ -460,7 +460,8 @@ input[type='checkbox']:checked::after {
     color: var(--sub-color);
 }
 
-.modal__actions .btn--modification {
+.modal__actions .btn--modification,
+.btn--confirm {
     color: #fff;
     background-color: var(--main-color);
 }

@@ -1,22 +1,8 @@
-const modalBg = document.querySelector('.modal');
-const modalPlusBtn = document.querySelector('.modal-plus-btn');
-const modalMinusBtn = document.querySelector('.modal-minus-btn');
-const modalQuantity = document.querySelector('.modal__quantity');
-const modalDelete = document.querySelector('.modal__delete');
-const modalLoginMsg = document.querySelector('.modal__login-msg');
-const modificationBtn = document.querySelector('.btn--modification');
-const modalNumInput = document.getElementById('modalInput');
-const confirmBtn = document.querySelector('.delete-confirm-btn');
-const checkAllBox = document.getElementById('productCheckAll');
-// const modalCloseBtn = document.querySelector('.modal__close-btn');
-// const modalCancelBtn = document.querySelector('.btn--cancel');
-const allModalCloseBtns = document.querySelectorAll(
-    '.modal__close-btn, .btn--cancel'
-);
+import { openModal } from './../common.js';
 
+const checkAllBox = document.getElementById('productCheckAll');
 // 장바구니 여러 상품
 const cartProducts = document.querySelectorAll('.cart__product');
-
 // 총 상품금액 업데이트
 const totalPrice = document.getElementById('totalProduct');
 const finalAmount = document.getElementById('finalPrice');
@@ -24,15 +10,10 @@ const discount = document.getElementById('productDiscout');
 const deliveryFee = document.getElementById('deliveryFee');
 
 // 개별상품 삭제 버튼
-const deleteBtn = document.querySelector('.cart__delete-btn');
 let productToDelete = null;
 
 // 각 상품별 총금액 저장
 const itemPrices = {};
-
-// 현재 모달이 열린 상품을 추적할 변수
-let currentProductItem;
-let currentControlInput;
 
 //// 각 상품금액 업데이트 ////
 function updateIndividualPrice(productItem) {
@@ -52,7 +33,8 @@ function updateIndividualPrice(productItem) {
     const productPriceValue = productPrice.textContent.replace(/[^0-9]/g, '');
 
     // 총 상품금액 text 변경
-    individualPrice = Number(controlNumInput.value) * Number(productPriceValue);
+    const individualPrice =
+        Number(controlNumInput.value) * Number(productPriceValue);
     productPriceSum.innerHTML = `${individualPrice.toLocaleString()}원`;
     itemPrices[itemId] = individualPrice;
 
@@ -149,12 +131,42 @@ function handleIndividualCheck() {
     finalPrice();
 }
 
+//// 수량 버튼을 클릭했을 때 모달창 열기 ////
+function openQuantityModal(productItem) {
+    const controlInput = productItem.querySelector('.quantity-control__input');
+
+    // 클로저로 productItem과 controlInput을 캡처하는 함수 생성
+    const modifyQuantityForThisProduct = () => {
+        const modalInput = document.querySelector(
+            '#commonModal .modal-content input[type="number"]'
+        );
+        if (modalInput && controlInput) {
+            // 모달창의 수량을 해당 상품의 input에 반영
+            controlInput.value = modalInput.value;
+
+            // 해당 상품의 금액 다시 계산
+            updateIndividualPrice(productItem);
+        }
+    };
+
+    // common.js의 openModal 사용
+    openModal({
+        count: Number(controlInput.value),
+        type: 'quantity',
+        confirmAction: modifyQuantityForThisProduct,
+    });
+}
+
 //// 개별 상품 삭제 ////
 // 닫기 버튼 누르면 삭제모달 표시
 function openDeleteModal(productItem) {
     productToDelete = productItem;
-    modalBg.classList.add('modal-show');
-    modalDelete.classList.add('delete-show');
+
+    // common.js의 openModal 사용
+    openModal({
+        type: 'delete',
+        confirmAction: confirmDelete,
+    });
 }
 // 상품 삭제 확인
 function confirmDelete() {
@@ -182,8 +194,6 @@ function confirmDelete() {
 
     // 정리 작업
     productToDelete = null;
-    closeModal();
-    console.log('삭제 완료!');
 }
 
 // 빈 장바구니 체크 //
@@ -205,98 +215,6 @@ function checkEmptyCart() {
         totalPrice.innerHTML = '0<span>원</span>';
         finalAmount.innerHTML = '0<span>원</span>';
     }
-}
-
-//// 모달 버튼 상태 업데이트 ////
-function updateModalBtn() {
-    const currentValue = Number(modalNumInput.value);
-    modalPlusBtn.disabled = currentValue >= 10;
-    modalMinusBtn.disabled = currentValue <= 1;
-}
-
-//// 수량 버튼을 클릭했을 때 모달창 열기 ////
-function openModal(productItem) {
-    // 클릭된 상품 정보를 변수에 저장
-    currentProductItem = productItem;
-    currentControlInput = productItem.querySelector('.quantity-control__input');
-
-    // 모달에 현재 수량 설정
-    modalNumInput.value = currentControlInput.value;
-
-    // 모달표시
-    modalBg.classList.add('modal-show');
-    modalQuantity.classList.add('quantity-show');
-
-    // 모달 버튼 상태 초기화
-    updateModalBtn();
-}
-
-//// 모달창 닫기 ////
-function closeModal() {
-    modalBg.classList.remove('modal-show');
-    modalQuantity.classList.remove('quantity-show');
-    modalDelete.classList.remove('delete-show');
-    modalLoginMsg.classList.remove('login-msg-show');
-}
-// 모달창 닫기 이벤트리스너
-function closeEvents() {
-    allModalCloseBtns.forEach((btn) => {
-        btn.addEventListener('click', () => {
-            if (modalQuantity.classList.contains('quantity-show')) {
-                closeModal(); // 수량 모달 닫기
-            } else if (modalDelete.classList.contains('delete-show')) {
-                productToDelete = null; // 삭제 모달 닫기
-                closeModal();
-            }
-        });
-    });
-}
-
-//// 수량변경 ////
-// Plus 버튼
-function modalIncreaseBtn() {
-    let modalInputValue = Number(modalNumInput.value);
-
-    if (modalInputValue < 10) {
-        modalInputValue++;
-        modalNumInput.value = modalInputValue;
-        updateModalBtn();
-    }
-}
-// minus 버튼
-function modalDecreaseBtn() {
-    let modalInputValue = Number(modalNumInput.value);
-
-    if (modalInputValue > 1) {
-        modalInputValue--;
-        modalNumInput.value = modalInputValue;
-        updateModalBtn();
-    }
-}
-
-function ModalQuantityBtnEvents() {
-    modalPlusBtn.addEventListener('click', modalIncreaseBtn);
-    modalMinusBtn.addEventListener('click', modalDecreaseBtn);
-}
-
-////////////////////////////////////////////////////////////////////////////
-
-// 수정버튼을 누르면 수량변경
-function modification() {
-    // 모달창의 수량을 장바구니input에 반영
-    currentControlInput.value = modalNumInput.value;
-
-    // 개별상품 금액 다시 계산
-    updateIndividualPrice(currentProductItem);
-
-    // 모달창 닫기
-    closeModal();
-}
-modificationBtn.addEventListener('click', modification);
-
-// 삭제 확인 버튼 이벤트 등록
-if (confirmBtn) {
-    confirmBtn.addEventListener('click', confirmDelete);
 }
 
 // 전체 선택 체크박스 이벤트 등록
@@ -323,12 +241,12 @@ cartProducts.forEach((productItem, index) => {
     // 삭제 버튼 추가
     if (minusBtn) {
         minusBtn.addEventListener('click', () => {
-            openModal(productItem);
+            openQuantityModal(productItem);
         });
     }
     if (plusBtn) {
         plusBtn.addEventListener('click', () => {
-            openModal(productItem);
+            openQuantityModal(productItem);
         });
     }
 
@@ -338,11 +256,7 @@ cartProducts.forEach((productItem, index) => {
     }
     // 페이지 로드 시 초기 금액 설정
     updateIndividualPrice(productItem);
-    confirmDelete(productItem);
 });
-
-closeEvents();
-ModalQuantityBtnEvents();
 
 // 페이지 로드시 전체상품체크박스 선택
 if (checkAllBox) {
