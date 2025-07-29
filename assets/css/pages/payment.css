@@ -121,6 +121,7 @@ body {
                             font-weight: 400;
                             font-size: 14px;
                             color: #767676;
+                            text-align: start;
 
                             .order-list__name {
                                 color: #000;
@@ -407,11 +408,15 @@ body {
 .order-summary__submit {
     width: 220px;
     height: 68px;
-    background-color: var(--unactive-color);
+    background-color: var(--main-color);
     color: #fff;
     border-radius: 5px;
     font-weight: 700;
     font-size: 24px;
+
+    &:disabled {
+        background-color: var(--unactive-color);
+    }
 }
 
 /* checkbox 표시 시 색깔 변경 및 disable 속성 제거하기 */
