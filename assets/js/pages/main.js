@@ -1,5 +1,7 @@
 // Scripts for the main page
 
+// 캐러셀
+
 const $slideWarp = document.querySelector('.main-slide__wrapper');
 const $slide = document.querySelectorAll('.main-slide__item');
 const $pagination = document.querySelectorAll('.main-slide__nav-item');
