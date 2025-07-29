@@ -56,6 +56,7 @@ export function openModal({
     modal.setAttribute('aria-modal', 'true');
     modal.setAttribute('aria-labelledby', 'modal-title');
     modal.classList.add('modal');
+    modal.id = 'commonModal';
 
     // 모달 배경 누르면 삭제
     modal.addEventListener('click', (e) => {
@@ -64,7 +65,7 @@ export function openModal({
 
     // 모달 내용 컨테이너 생성
     const container = document.createElement('div');
-    container.classList.add('modal-content');
+    container.classList.add('modal-content', 'modal__quantity');
 
     // 닫기 버튼 생성
     const closeBtn = document.createElement('button');
@@ -90,7 +91,10 @@ export function openModal({
     confirmBtn.classList.add('btn', 'btn--confirm');
     cancelBtn.classList.add('btn', 'btn--cancel');
 
-    confirmBtn.addEventListener('click', confirmAction);
+    confirmBtn.addEventListener('click', () => {
+        confirmAction();
+        modal.remove();
+    });
     cancelBtn.addEventListener('click', (e) => {
         modal.remove();
     });
