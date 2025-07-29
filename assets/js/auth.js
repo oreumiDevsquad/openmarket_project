@@ -304,6 +304,18 @@ export const AuthAPI = {
     },
 
     /**
+     * 장바구니에 상품 추가
+     * @param {int} id - 수정할 상품의 cart id
+     * @param {int} quantity - 수정할 상품 수량
+     * @returns {Promise<any>} 추가 결과
+     */
+    editCartItem: async (id, quantity) => {
+        const token = await getValidAccessToken();
+        if (!token) throw new Error('인증이 필요합니다.');
+        return API.editCartItem(id, quantity, token);
+    },
+
+    /**
      * 장바구니에서 상품 삭제
      */
     deleteCartItem: async (id) => {

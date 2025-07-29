@@ -1,5 +1,7 @@
+import { API } from '../api.js';
 import { AuthAPI } from '../auth.js';
 import { formatPrice } from '../utils.js';
+
 (async () => {
     // 페이지 접속 시 한 번만 실행하는 장바구니 목록 불러오기라서 즉시 실행함수 사용
     const $orderListTbody = document.querySelector('.order-list__table tbody');
@@ -14,8 +16,6 @@ import { formatPrice } from '../utils.js';
     const myCartData = await AuthAPI.getCartList();
     const myCartList = myCartData.results;
 
-    const productIds = [];
-
     const total = {
         amount: 0,
         sale: 0,
@@ -25,60 +25,64 @@ import { formatPrice } from '../utils.js';
 
     const frag = document.createDocumentFragment();
 
-    myCartList.forEach((item) => {
-        const tr = document.createElement('tr');
-        const amount = item.product.price * item.quantity;
-        const shipping_fee = item.product.shipping_fee;
-        productIds.push(item.product.id);
+    const orderInfo = JSON.parse(localStorage.getItem('order_info'));
+    console.log(orderInfo);
 
-        total.amount += amount;
-        total.fee += shipping_fee;
-        total.price += shipping_fee + amount;
+    if (orderInfo.order_type === 'cart_order') {
+        myCartList.forEach((item) => {
+            const tr = document.createElement('tr');
+            const amount = item.product.price * item.quantity;
+            const shipping_fee = item.product.shipping_fee;
 
-        tr.innerHTML = `<td class="order-list__product-info">
-                                <div class="order-list__item">
-                                    <img
-                                        src="${item.product.image}"
-                                        alt="${item.product.info}"
-                                        class="order-list__image"
-                                    />
-                                    <div class="order-list__details">
-                                        <p class="order-list__brand">
-                                            ${item.product.seller.store_name}
-                                        </p>
-                                        <h4 class="order-list__name">
-                                            ${item.product.info}
-                                        </h4>
-                                        <p class="order-list__quantity">
-                                            수량: ${item.quantity}개
-                                        </p>
+            total.amount += amount;
+            total.fee += shipping_fee;
+            total.price += shipping_fee + amount;
+
+            tr.innerHTML = `<td class="order-list__product-info">
+                                    <div class="order-list__item">
+                                        <img
+                                            src="${item.product.image}"
+                                            alt="${item.product.info}"
+                                            class="order-list__image"
+                                        />
+                                        <div class="order-list__details">
+                                            <p class="order-list__brand">
+                                                ${item.product.seller.store_name}
+                                            </p>
+                                            <h4 class="order-list__name">
+                                                ${item.product.info}
+                                            </h4>
+                                            <p class="order-list__quantity">
+                                                수량: ${item.quantity}개
+                                            </p>
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                            <td class="order-list__discount">
-                                <div class="order-list__wrapper">
-                                    <span class="order-list__discount-value"
-                                        >-</span
-                                    >
-                                </div>
-                            </td>
-                            <td class="order-list__shipping">
-                                <div class="order-list__wrapper">
-                                    <span class="order-list__shipping-value"
-                                        >${shipping_fee > 0 ? formatPrice(shipping_fee) + '원' : '무료배송'}</span
-                                    >
-                                </div>
-                            </td>
-                            <td class="order-list__amount">
-                                <div class="order-list__wrapper">
-                                    <strong class="order-list__price"
-                                        >${formatPrice(amount)}원</strong
-                                    >
-                                </div>
-                            </td>`;
+                                </td>
+                                <td class="order-list__discount">
+                                    <div class="order-list__wrapper">
+                                        <span class="order-list__discount-value"
+                                            >-</span
+                                        >
+                                    </div>
+                                </td>
+                                <td class="order-list__shipping">
+                                    <div class="order-list__wrapper">
+                                        <span class="order-list__shipping-value"
+                                            >${shipping_fee > 0 ? formatPrice(shipping_fee) + '원' : '무료배송'}</span
+                                        >
+                                    </div>
+                                </td>
+                                <td class="order-list__amount">
+                                    <div class="order-list__wrapper">
+                                        <strong class="order-list__price"
+                                            >${formatPrice(amount)}원</strong
+                                        >
+                                    </div>
+                                </td>`;
 
-        frag.appendChild(tr);
-    });
+            frag.appendChild(tr);
+        });
+    }
 
     $orderListTbody.appendChild(frag);
     $totalPrice.textContent = formatPrice(total.price) + '원';
@@ -156,9 +160,9 @@ import { formatPrice } from '../utils.js';
         const receiverAddress =
             formData.get('postal-address') +
             [1, 2].map((i) => formData.get(`street-address-${i}`)).join('\n');
+
         const orderForm = {
-            order_type: 'cart_order',
-            cart_items: [...productIds],
+            ...orderInfo,
             total_price: total.price,
             receiver: formData.get('recipient-name'),
             receiver_phone_number: receiverPhonNumber,
@@ -172,6 +176,7 @@ import { formatPrice } from '../utils.js';
             const response = await AuthAPI.cartOrder(orderForm);
             console.log(response);
             if (response.order_status === 'payment_complete') {
+                localStorage.removeItem('order_info');
                 window.location('/');
             } else {
                 throw new Error();
