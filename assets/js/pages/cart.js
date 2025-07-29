@@ -293,8 +293,6 @@ function initializeCartEvents() {
 async function renderList() {
     const $productWrapper = document.querySelector('.cart__body');
     const productIds = [];
-    // 초기화
-    // $productWrapper.innerHTML = '';
     try {
         // 기존 하드코딩된 상품들 제거 (빈 장바구니 메시지 제외)
         const existingProducts =
@@ -309,8 +307,8 @@ async function renderList() {
 
         for (let cartItem of response.results) {
             const $tr = document.createElement('tr');
-            productIds.push(product.id);
             const product = cartItem.product;
+            productIds.push(product.id);
             $tr.classList.add('cart__product');
 
             $tr.dataset.id = product.id;
