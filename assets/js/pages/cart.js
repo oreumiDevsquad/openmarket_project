@@ -16,6 +16,7 @@ let productToDelete = null;
 
 // 각 상품별 총금액 저장
 const itemPrices = {};
+const itemFees = {};
 
 //// 각 상품금액 업데이트 ////
 function updateIndividualPrice(productItem) {
@@ -45,6 +46,7 @@ function updateIndividualPrice(productItem) {
 //// 총금액을 합산하여 화면에 출력 ////
 function updateTotalSum() {
     let totalSum = 0;
+    let totalFee = 0;
 
     // 동적으로 cartProducts를 가져와서 사용
     const cartProducts = getCartProducts();
@@ -58,11 +60,15 @@ function updateTotalSum() {
 
         // 체크박스가 체크되어 있고, 해당 상품의 가격이 존재하면 합산
         if ($checkbox && $checkbox.checked && itemPrices[itemId]) {
-            totalSum += itemPrices[itemId];
+            totalSum += itemPrices[itemId] + itemFees[itemId];
+            totalFee += itemFees[itemId];
         }
     });
 
-    $totalPrice.innerHTML = `${totalSum.toLocaleString()}<span>원</span>`;
+    $totalPrice.innerHTML = `${totalSum.toLocaleString()}
+    <span>원</span>`;
+    $deliveryFee.innerHTML = `${totalFee.toLocaleString()}
+    <span>원</span>`;
 }
 
 //// 결제예정금액 업데이트 ////
@@ -205,24 +211,6 @@ async function confirmDelete() {
     } catch (error) {
         console.error('error:', error);
     }
-
-    console.log(itemId);
-    if (itemPrices[itemId]) {
-        delete itemPrices[itemId];
-    }
-
-    // DOM에서 제거
-    productToDelete.remove();
-
-    // 금액 업데이트
-    updateTotalSum(); // 총 상품금액
-    finalPrice(); // 최종 결제금액 (배송비, 할인 포함)
-
-    // 빈 장바구니 체크
-    checkEmptyCart();
-
-    // 정리 작업
-    productToDelete = null;
 }
 
 // 동적으로 생성된 상품들에 이벤트 리스너를 등록하는 함수
@@ -334,6 +322,8 @@ async function renderList() {
                 $tr.classList.add('cart__product');
 
                 $tr.dataset.id = product.id;
+                // 배송비 데이터 추가
+                itemFees[product.id] = product.shipping_fee;
 
                 $tr.innerHTML = `<td class="cart__product-checkbox">
                                   <label for="productCheck1" class="sr-only"
