@@ -73,6 +73,7 @@ export function openModal({
     if (existingModal) return;
     // 모달 요소 생성
     const modal = document.createElement('div');
+    let increaseBtn = null;
     modal.setAttribute('role', 'dialog');
     modal.setAttribute('aria-modal', 'true');
     modal.setAttribute('aria-labelledby', 'modal-title');
@@ -113,8 +114,9 @@ export function openModal({
     cancelBtn.classList.add('btn', 'btn--cancel');
 
     confirmBtn.addEventListener('click', () => {
-        if (type === 'quantity') confirmAction(count);
-        else confirmAction();
+        if (type === 'quantity') {
+            confirmAction(count);
+        } else confirmAction();
         modal.remove();
     });
     cancelBtn.addEventListener('click', (e) => {
@@ -189,9 +191,25 @@ export function openModal({
             cancelBtn.textContent = '아니오';
             break;
 
+        case 'stock_exceeded':
+            container.classList.add('modal__delete');
+            contentBox.classList.add('modal__delete-con');
+            contentBox.innerHTML = `<p>재고 수량이 초과되었습니다.</p>`;
+            confirmBtn.textContent = '예';
+            cancelBtn.textContent = '아니오';
+            break;
+
+        case 'duplicate_item':
+            container.classList.add('modal__delete');
+            contentBox.classList.add('modal__delete-con');
+            contentBox.innerHTML = `<p>이미 장바구니에 있는 상품입니다.<br/>장바구니로 이동하시겠습니까?</p>`;
+            confirmBtn.textContent = '예';
+            cancelBtn.textContent = '아니오';
+            break;
+
         default:
             console.error(
-                '모달의 타입을 확인하세요, login, delete, quantity 중 하나여야 합니다.'
+                '모달의 타입을 확인하세요, login, delete, quantity, stock_exceeded, duplicate_item 중 하나여야 합니다.'
             );
             break;
     }

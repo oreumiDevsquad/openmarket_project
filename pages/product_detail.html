@@ -11,6 +11,7 @@
     </head>
 
     <body>
+        <div data-component="header"></div>
         <main class="product-detail">
             <section class="product-detail__main">
                 <figure class="product-detail__image-wrapper">
@@ -210,29 +211,24 @@
 
         <!-- 모달창 -->
 
-        <dialog class="modal" id="commonModal">
-            <div class="modal__content">
-                <button class="modal__close-button" type="button">
-                    <img src="../assets/icons/icon-delete.svg" alt="닫기" />
+        <!-- <dialog class="modal" id="commonModal">
+        <div class="modal__content">
+            <button class="modal__close-button" type="button">
+                <img src="../assets/icons/icon-delete.svg" alt="닫기" />
+            </button>
+            <p class="modal__message">문구는 변경됩니다.</p>
+            <div class="modal__button-group">
+                <button class="modal__button modal__button--cancel" type="button">
+                    아니오
                 </button>
-                <p class="modal__message">문구는 변경됩니다.</p>
-                <div class="modal__button-group">
-                    <button
-                        class="modal__button modal__button--cancel"
-                        type="button"
-                    >
-                        아니오
-                    </button>
-                    <button
-                        class="modal__button modal__button--confirm"
-                        type="button"
-                    >
-                        예
-                    </button>
-                </div>
+                <button class="modal__button modal__button--confirm" type="button">
+                    예
+                </button>
             </div>
-        </dialog>
-
+        </div>
+    </dialog> -->
+        <div data-component="footer"></div>
+        <script type="module" src="assets/js/common.js"></script>
         <script type="module" src="../assets/js/pages/products.js"></script>
     </body>
 </html>
