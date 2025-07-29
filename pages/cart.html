@@ -11,6 +11,7 @@
         <title>장바구니 | HODU</title>
     </head>
     <body>
+        <div data-component="header"></div>
         <main>
             <section class="cart">
                 <h2 class="cart__title">장바구니</h2>
@@ -53,7 +54,7 @@
                                 </div>
                             </td>
                         </tr>
-                        <tr class="cart__product">
+                        <!-- <tr class="cart__product">
                             <td class="cart__product-checkbox">
                                 <label for="productCheck1" class="sr-only"
                                     >딥러닝 개발자 무릎 담요 선택</label
@@ -139,7 +140,7 @@
                                     주문하기
                                 </button>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
 
@@ -148,19 +149,19 @@
                         <tr>
                             <td class="cart__footer-product">
                                 <strong>총 상품금액</strong>
-                                <p>46,500<span>원</span></p>
+                                <p id="totalProduct">46,500<span>원</span></p>
                             </td>
                             <td class="cart__footer-product">
                                 <strong>상품 할인</strong>
-                                <p>0<span>원</span></p>
+                                <p id="productDiscout">0<span>원</span></p>
                             </td>
                             <td class="cart__footer-product">
                                 <strong>배송비</strong>
-                                <p>0 <span>원</span></p>
+                                <p id="deliveryFee">0 <span>원</span></p>
                             </td>
                             <td class="cart__footer-product-total">
                                 <strong>결제 예정 금액</strong>
-                                <p>46,500<span>원</span></p>
+                                <p id="finalPrice">46,500<span>원</span></p>
                             </td>
                         </tr>
                     </tfoot>
@@ -173,7 +174,7 @@
 
         <!-- 모달 전체 오버레이 -->
         <div
-            class="modal"
+            class="modal-backup"
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-title"
@@ -190,7 +191,7 @@
                 <div class="modal__quantity-con">
                     <button
                         type="button"
-                        class="quantity-btn"
+                        class="modal-minus-btn quantity-btn"
                         aria-label="수량 감소"
                     >
                         <img
@@ -205,10 +206,11 @@
                         max="99"
                         readonly
                         aria-label="수량"
+                        id="modalInput"
                     />
                     <button
                         type="button"
-                        class="quantity-btn"
+                        class="modal-plus-btn quantity-btn"
                         aria-label="수량 증가"
                     >
                         <img
@@ -221,7 +223,9 @@
                 <!-- 하단 버튼 -->
                 <div class="modal__actions">
                     <button type="button" class="btn btn--cancel">취소</button>
-                    <button type="button" class="btn btn--confirm">수정</button>
+                    <button type="button" class="btn btn--modification">
+                        수정
+                    </button>
                 </div>
             </div>
 
@@ -241,7 +245,12 @@
                 <!-- 하단 버튼 -->
                 <div class="modal__actions">
                     <button type="button" class="btn btn--cancel">취소</button>
-                    <button type="button" class="btn btn--confirm">확인</button>
+                    <button
+                        type="button"
+                        class="btn btn--confirm delete-confirm-btn"
+                    >
+                        확인
+                    </button>
                 </div>
             </div>
 
@@ -266,9 +275,17 @@
                     <button type="button" class="btn btn--cancel">
                         아니오
                     </button>
-                    <button type="button" class="btn btn--confirm">예</button>
+                    <button
+                        type="button"
+                        class="btn btn--confirm login-move-btn"
+                    >
+                        예
+                    </button>
                 </div>
             </div>
         </div>
+
+        <script type="module" src="/assets/js/common.js"></script>
+        <script type="module" src="./../assets/js/pages/cart.js"></script>
     </body>
 </html>

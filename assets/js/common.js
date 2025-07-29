@@ -1,4 +1,5 @@
 import { mypageDropdown } from './pages/mypage.js';
+import { AuthAPI } from './auth.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. data-component 속성을 가진 모든 요소는 컴포넌트로 간주하고 모으기
@@ -32,6 +33,26 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
     mypageDropdown();
+
+    // 장바구니 버튼 로그인 여부 확인 및 모달 출력
+    const $cartBtn = document.querySelector('.header__nav-link:first-child');
+
+    $cartBtn.addEventListener('click', async function (e) {
+        try {
+            const response = AuthAPI.isLoggedIn();
+            console.log(response);
+
+            if (!response) {
+                e.preventDefault();
+                openModal({
+                    type: 'login',
+                    confirmAction: () => {
+                        window.location = '/pages/login.html';
+                    },
+                });
+            }
+        } catch (error) {}
+    });
 });
 
 /**
@@ -43,8 +64,8 @@ document.addEventListener('DOMContentLoaded', async () => {
  */
 export function openModal({
     count = 1,
-    type = 'message',
-    confirmAction = () => alert('confirm'),
+    type = 'quantity',
+    confirmAction = (count) => alert(`${count} confirm`),
 }) {
     console.log(type);
     // 이미 모달이 열려있다면 작동 안함
@@ -56,6 +77,7 @@ export function openModal({
     modal.setAttribute('aria-modal', 'true');
     modal.setAttribute('aria-labelledby', 'modal-title');
     modal.classList.add('modal');
+    modal.id = 'commonModal';
 
     // 모달 배경 누르면 삭제
     modal.addEventListener('click', (e) => {
@@ -64,7 +86,7 @@ export function openModal({
 
     // 모달 내용 컨테이너 생성
     const container = document.createElement('div');
-    container.classList.add('modal-content');
+    container.classList.add('modal-content', 'modal__quantity');
 
     // 닫기 버튼 생성
     const closeBtn = document.createElement('button');
@@ -90,7 +112,11 @@ export function openModal({
     confirmBtn.classList.add('btn', 'btn--confirm');
     cancelBtn.classList.add('btn', 'btn--cancel');
 
-    confirmBtn.addEventListener('click', confirmAction);
+    confirmBtn.addEventListener('click', () => {
+        if (type === 'quantity') confirmAction(count);
+        else confirmAction();
+        modal.remove();
+    });
     cancelBtn.addEventListener('click', (e) => {
         modal.remove();
     });
@@ -128,10 +154,16 @@ export function openModal({
                                 alt=""
                             />`;
             decreaseBtn.addEventListener('click', () => {
-                if (input.value > 1) input.value--;
+                if (input.value > 1) {
+                    count--;
+                    input.value = count;
+                }
             });
             increaseBtn.addEventListener('click', () => {
-                if (input.value < 99) input.value++;
+                if (input.value < 99) {
+                    count++;
+                    input.value = count;
+                }
             });
             confirmBtn.textContent = '수정';
             cancelBtn.textContent = '취소';

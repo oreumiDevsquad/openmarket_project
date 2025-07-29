@@ -152,6 +152,19 @@ export const API = {
         fetchAPI(URL.cart, options({ method: 'POST', data, token })),
 
     /**
+     * 장바구니에 상품 추가
+     * @param {int} id - 수정할 상품의 cart id
+     * @param {int} quantity - 수정할 상품 수량
+     * @param {string} token - 사용자 인증 토큰
+     * @returns {Promise<any>} 추가 결과
+     */
+    editCartItem: async (id, quantity, token) =>
+        fetchAPI(
+            URL.cart + `${id}/`,
+            options({ method: 'PUT', data: { quantity }, token })
+        ),
+
+    /**
      * 장바구니에서 특정 상품 삭제
      * @param {number|string} id - 삭제할 장바구니 항목 ID
      * @param {string} token - 사용자 인증 토큰

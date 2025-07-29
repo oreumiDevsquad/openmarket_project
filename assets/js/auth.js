@@ -177,11 +177,6 @@ const refreshAccessToken = async () => {
 const getValidAccessToken = async () => {
     let accessToken = getAccessToken();
 
-    if (!accessToken) {
-        console.log('액세스 토큰이 없습니다.');
-        return null;
-    }
-
     // 토큰이 만료되었거나 30초 이내에 만료될 예정이면 갱신
     const payload = decodeToken(accessToken);
     const currentTime = Math.floor(Date.now() / 1000);
@@ -306,6 +301,18 @@ export const AuthAPI = {
         const token = await getValidAccessToken();
         if (!token) throw new Error('인증이 필요합니다.');
         return API.addCartItem(data, token);
+    },
+
+    /**
+     * 장바구니에 상품 추가
+     * @param {int} id - 수정할 상품의 cart id
+     * @param {int} quantity - 수정할 상품 수량
+     * @returns {Promise<any>} 추가 결과
+     */
+    editCartItem: async (id, quantity) => {
+        const token = await getValidAccessToken();
+        if (!token) throw new Error('인증이 필요합니다.');
+        return API.editCartItem(id, quantity, token);
     },
 
     /**
