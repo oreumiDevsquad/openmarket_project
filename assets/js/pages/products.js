@@ -36,6 +36,8 @@ import { openModal } from '../common.js';
 
     // id와 일치상품 렌더링
     $image.setAttribute('src', `${targetProduct.image}`);
+    $image.classList.remove('hide');
+
     $sellerStore.textContent = targetProduct.seller.store_name;
     $productName.textContent = targetProduct.name;
     $price.textContent = format;
