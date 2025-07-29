@@ -1,6 +1,6 @@
 
-
-<img src="./assets/images/title.png" width=100%>
+<!--Banner-->
+![오픈마켓 프로젝트](./assets/images/title.png) 
 
 ## 📋 프로젝트 개요
 
