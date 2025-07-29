@@ -17,7 +17,7 @@ import { formatPrice } from '../utils.js';
         li.innerHTML = '';
 
         li.innerHTML = `
-            <a href="#" class="product-card">
+            <a href="./pages/product_detail.html?id=${product.id}" class="product-card">
                 <img
                     src="${product.image}"
                     alt="${product.name}"
