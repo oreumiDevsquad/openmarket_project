@@ -285,7 +285,7 @@ function initializeCartEvents() {
 async function renderList() {
     const $productWrapper = document.querySelector('.cart__body');
     // 초기화
-    $productWrapper.innerHTML = '';
+    // $productWrapper.innerHTML = '';
     try {
         // 기존 하드코딩된 상품들 제거 (빈 장바구니 메시지 제외)
         const existingProducts =
@@ -303,9 +303,11 @@ async function renderList() {
             const product = cartItem.product;
             $tr.classList.add('cart__product');
 
+            $tr.dataset.id = product.id;
+
             $tr.innerHTML = `<td class="cart__product-checkbox">
                                 <label for="productCheck1" class="sr-only"
-                                    >딥러닝 개발자 무릎 담요 선택</label
+                                    >${product.name} 선택</label
                                 >
                                 <input type="checkbox" id="productCheck${product.id}" />
                             </td>
@@ -347,7 +349,7 @@ async function renderList() {
                                     </button>
                                     <input
                                         type="number"
-                                        value="1"
+                                        value="${cartItem.quantity || 1}"
                                         min="1"
                                         max="99"
                                         class="quantity-control__input"
@@ -379,7 +381,7 @@ async function renderList() {
                                 </button>
 
                                 <p class="cart__product-total-price">
-                                  ${product.price.toLocaleString()}원
+                                ${(product.price * (cartItem.quantity || 1)).toLocaleString()}원
                                 </p>
                                 <button
                                     type="button"
@@ -404,8 +406,6 @@ async function renderList() {
 
         // 렌더링 완료 후 이벤트 초기화
         initializeCartEvents();
-
-        $productWrapper.appendChild(frag);
     } catch (error) {
         console.error('장바구니 데이터 로딩 실패:', error);
         // 에러 발생 시 빈 장바구니 상태 표시
