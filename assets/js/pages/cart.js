@@ -1,4 +1,7 @@
 import { openModal } from './../common.js';
+import { API } from './../api.js';
+import { AuthAPI } from '../auth.js';
+import { calculatePrice } from '../utils.js';
 
 const checkAllBox = document.getElementById('productCheckAll');
 // 장바구니 여러 상품
@@ -266,3 +269,114 @@ if (checkAllBox) {
 
 // 페이지 로드 시 초기 체크 상태 확인
 updateCheckAllState();
+
+// 렌더링 하는 부분
+(async () => {
+    const $cartBody = document.querySelector('.cart__body');
+    try {
+        const response = await AuthAPI.getCartList();
+        const frag = document.createDocumentFragment();
+
+        console.log(response.results);
+        console.log(response);
+
+        for (let cartItem of response.results) {
+            const product = cartItem.product;
+            const Quantity = document.querySelector('.quantity-control__input');
+            const tr = document.createElement('tr');
+            console.log(cartItem);
+
+            tr.classList.add('cart__product');
+
+            tr.innerHTML = `<td class="cart__product-checkbox">
+                                <label for="productCheck1" class="sr-only"
+                                    >딥러닝 개발자 무릎 담요 선택</label
+                                >
+                                <input type="checkbox" id="productCheck1" />
+                            </td>
+                            <td class="cart__product-details">
+                                <img
+                                    src="${product.image}"
+                                    alt="${product.name}"
+                                />
+
+                                <div class="cart__product-info">
+                                    <div class="cart__product-wapper">
+                                        <p class="cart__product-brand">
+                                            ${product.seller.store_name}
+                                        </p>
+                                        <h3 class="cart__product-title">
+                                            ${product.name}
+                                        </h3>
+                                        <p class="cart__product-price">
+                                            ${product.price.toLocaleString()}원
+                                        </p>
+                                    </div>
+                                    <p class="cart__product-delivery">
+                                        택배배송 / &nbsp;무료배송
+                                    </p>
+                                </div>
+                            </td>
+                            <td class="cart__quantity">
+                                <div class="cart__quantity-control">
+                                    <button
+                                        type="button"
+                                        class="quantity-control__minus-btn"
+                                        aria-label="수량 감소"
+                                    >
+                                        <img
+                                            src="./../assets/icons/icon-minus-line.svg"
+                                            alt=""
+                                        />
+                                    </button>
+                                    <input
+                                        type="number"
+                                        value="1"
+                                        min="1"
+                                        max="99"
+                                        class="quantity-control__input"
+                                        aria-label="상품 수량"
+                                        readonly
+                                    />
+                                    <button
+                                        type="button"
+                                        class="quantity-control__plus-btn"
+                                        aria-label="수량 증가"
+                                    >
+                                        <img
+                                            src="./../assets/icons/icon-plus-line.svg"
+                                            alt=""
+                                        />
+                                    </button>
+                                </div>
+                            </td>
+                            <td class="cart__product-order">
+                                <button
+                                    type="button"
+                                    class="cart__delete-btn"
+                                    aria-label="상품 삭제"
+                                >
+                                    <img
+                                        src="./../assets/icons/icon-delete.svg"
+                                        alt=""
+                                    />
+                                </button>
+
+                                <p class="cart__product-total-price">
+                                    ${calculatePrice(product.price, Quantity.value).toLocaleString()}원
+                                </p>
+                                <button
+                                    type="button"
+                                    class="cart__product-order-btn"
+                                    aria-label="개별 상품 주문"
+                                >
+                                    주문하기
+                                </button>
+                            </td>`;
+
+            frag.appendChild(tr);
+        }
+
+        $cartBody.appendChild(frag);
+    } catch (error) {}
+})();

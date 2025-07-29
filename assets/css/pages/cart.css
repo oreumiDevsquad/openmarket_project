@@ -122,6 +122,10 @@ input[type='checkbox']:checked::after {
 }
 .cart__product td:nth-child(2) {
     padding-left: 10px;
+    img {
+        width: 160px;
+        aspect-ratio: 1 / 1;
+    }
 }
 .cart__product td:nth-child(2),
 .cart__product td:nth-child(3) {
