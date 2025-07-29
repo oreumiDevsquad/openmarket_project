@@ -1,32 +1,6 @@
-<!-- <div align="center" style="margin:50px 0 30px">
-  <img src="./assets/images/Logo-hodu.png" alt="프로젝트 로고" width="280">
-  <div style="margin-top:50px;">
-  <strong align="center" style="display:block; font-size: 34px; color:#21bf48;">오픈마켓 프로젝트 (OpenMarket Project)</strong>
-  <p style="color:#555;">데브스쿼드팀이 개발한 웹 기반 오픈마켓 플랫폼입니다. 순수 HTML, CSS, JavaScript를 사용하여 구현된 전자상거래 웹사이트입니다.</p>
-  </div>
-</div>
 
----
 
-<div align="center" style="margin:30px 0 85px;">
-<img src="./assets/images/team.png" style="display:inline-block; margin:0;padding:0;">
-<img src="./assets/images/PR.png" style="display:inline-block; margin:0 10px;padding:0;">
-<img src="./assets/images/issues.png" style="display:inline-block; margin:0;padding:0;">
-</div> -->
-<p align="center">
-  <img src="https://raw.githubusercontent.com/oreumiDevsquad/openmarket_project/main/assets/images/Logo-hodu.png" alt="프로젝트 로고" width="320">
-</p>
-<p align="center" style="margin-top:50px;">
-  <strong style="display:block; font-size: 34px; color:#21bf48;">오픈마켓 프로젝트 (OpenMarket Project)</strong>
-  <span style="color:#555;">데브스쿼드팀이 개발한 웹 기반 오픈마켓 플랫폼입니다. 순수 HTML, CSS, JavaScript를 사용하여 구현된 전자상거래 웹사이트입니다.</span>
-</p>
-
----
-
-<br>
-<p align="center">
-<img src="./assets/images/team.png">&nbsp;&nbsp;&nbsp;<img src="./assets/images/PR.png">&nbsp;&nbsp;&nbsp;<img src="./assets/images/issues.png">
-</p>
+<img src="./assets/images/title.png">
 
 ## 📋 프로젝트 개요
 
