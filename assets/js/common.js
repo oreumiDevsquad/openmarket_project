@@ -1,4 +1,5 @@
 import { mypageDropdown } from './pages/mypage.js';
+import { AuthAPI } from './auth.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
     // 1. data-component 속성을 가진 모든 요소는 컴포넌트로 간주하고 모으기
@@ -32,6 +33,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
     mypageDropdown();
+
+    const $cartBtn = document.querySelector('.header__nav-link:first-child');
+
+    $cartBtn.addEventListener('click', async function (e) {
+        try {
+            const response = AuthAPI.isLoggedIn();
+            console.log(response);
+
+            if (!response) {
+                e.preventDefault();
+                openModal({
+                    type: 'login',
+                    confirmAction: () => {
+                        window.location = '/pages/login.html';
+                    },
+                });
+            }
+        } catch (error) {}
+    });
 });
 
 /**
