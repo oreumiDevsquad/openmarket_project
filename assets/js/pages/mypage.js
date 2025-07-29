@@ -1,4 +1,4 @@
-import { isLoggedIn } from '../auth.js';
+import { isLoggedIn, logout } from '../auth.js';
 
 export function mypageDropdown() {
     // HTML 요소 변수 저장
@@ -36,9 +36,8 @@ export function mypageDropdown() {
 
     // 로그아웃 버튼이 있을 때 로그아웃,메인 리다이렉트
     if ($logoutBtn) {
-        $logoutBtn.addEventListener('click', () => {
-            localStorage.removeItem('access');
-            localStorage.removeItem('refresh');
+        $logoutBtn.addEventListener('click', async () => {
+            await logout();
             window.location = '/';
         });
     }
