@@ -4,7 +4,7 @@ import { openModal } from './../common.js';
 
 const $checkAllBox = document.getElementById('productCheckAll');
 // 장바구니 여러 상품
-const cartProducts = () => document.querySelectorAll('.cart__product');
+const getCartProducts = () => document.querySelectorAll('.cart__product');
 // 총 상품금액 업데이트
 const $totalPrice = document.getElementById('totalProduct');
 const $finalAmount = document.getElementById('finalPrice');
@@ -279,9 +279,13 @@ function initializeCartEvents() {
 (async () => {
     const $productWrapper = document.querySelector('.cart__body');
     try {
+        // 기존 하드코딩된 상품들 제거 (빈 장바구니 메시지 제외)
+        const existingProducts =
+            $productWrapper.querySelectorAll('.cart__product');
+        existingProducts.forEach((product) => product.remove());
+
         const response = await AuthAPI.getCartList();
         const frag = document.createDocumentFragment();
-        const count = document.querySelector('quantity-control__input');
 
         console.log(response.results);
         console.log(response);
@@ -295,7 +299,7 @@ function initializeCartEvents() {
                                 <label for="productCheck1" class="sr-only"
                                     >딥러닝 개발자 무릎 담요 선택</label
                                 >
-                                <input type="checkbox" id="productCheck1" />
+                                <input type="checkbox" id="productCheck${product.id}" />
                             </td>
                             <td class="cart__product-details">
                                 <img
@@ -366,7 +370,7 @@ function initializeCartEvents() {
                                 </button>
 
                                 <p class="cart__product-total-price">
-                                  17,500원
+                                  ${product.price.toLocaleString()}원
                                 </p>
                                 <button
                                     type="button"
@@ -380,6 +384,22 @@ function initializeCartEvents() {
             frag.appendChild($tr);
         }
 
+        // DOM에 추가
         $productWrapper.appendChild(frag);
-    } catch (error) {}
+
+        // 빈 장바구니 메시지 숨기기
+        const $emptyMessage = document.querySelector('.cart__empty');
+        if ($emptyMessage && response.results.length > 0) {
+            $emptyMessage.style.display = 'none';
+        }
+
+        // 렌더링 완료 후 이벤트 초기화
+        initializeCartEvents();
+
+        $productWrapper.appendChild(frag);
+    } catch (error) {
+        console.error('장바구니 데이터 로딩 실패:', error);
+        // 에러 발생 시 빈 장바구니 상태 표시
+        checkEmptyCart();
+    }
 })();
