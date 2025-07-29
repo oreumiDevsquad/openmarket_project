@@ -16,9 +16,10 @@ main {
     display: flex;
     width: 500%;
     height: 100%;
+    position: relative;
 }
 .main-slide__item {
-    width: 100%;
+    width: calc(100% / 5);
     height: 100%;
 }
 
