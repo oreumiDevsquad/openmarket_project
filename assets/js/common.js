@@ -43,8 +43,8 @@ document.addEventListener('DOMContentLoaded', async () => {
  */
 export function openModal({
     count = 1,
-    type = 'message',
-    confirmAction = () => alert('confirm'),
+    type = 'quantity',
+    confirmAction = (count) => alert(`${count} confirm`),
 }) {
     console.log(type);
     // 이미 모달이 열려있다면 작동 안함
@@ -94,7 +94,10 @@ export function openModal({
     confirmBtn.addEventListener('click', () => {
         if (type === 'quantity') confirmAction(count);
         else confirmAction();
+<<<<<<< HEAD
         modal.remove();
+=======
+>>>>>>> ff0395f8f5b35ebd7f919f3678e149d2401469e9
     });
     cancelBtn.addEventListener('click', (e) => {
         modal.remove();
@@ -133,10 +136,16 @@ export function openModal({
                                 alt=""
                             />`;
             decreaseBtn.addEventListener('click', () => {
-                if (input.value > 1) input.value--;
+                if (input.value > 1) {
+                    count--;
+                    input.value = count;
+                }
             });
             increaseBtn.addEventListener('click', () => {
-                if (input.value < 99) input.value++;
+                if (input.value < 99) {
+                    count++;
+                    input.value = count;
+                }
             });
             confirmBtn.textContent = '수정';
             cancelBtn.textContent = '취소';

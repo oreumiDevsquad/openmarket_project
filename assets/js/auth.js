@@ -177,11 +177,6 @@ const refreshAccessToken = async () => {
 const getValidAccessToken = async () => {
     let accessToken = getAccessToken();
 
-    if (!accessToken) {
-        console.log('액세스 토큰이 없습니다.');
-        return null;
-    }
-
     // 토큰이 만료되었거나 30초 이내에 만료될 예정이면 갱신
     const payload = decodeToken(accessToken);
     const currentTime = Math.floor(Date.now() / 1000);
