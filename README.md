@@ -1,6 +1,6 @@
 <!--Banner-->
 
-![Image](https://github.com/user-attachments/assets/3823831d-0e16-422c-873e-296fc93e93d4)
+![Image](https://github.com/user-attachments/assets/6b3cf0c3-48b4-4893-ae1e-2317848c01b1)
 
 <h2> 프로젝트 개요</h2>
 
