@@ -1,5 +1,5 @@
 <!--Banner-->
-![오픈마켓 프로젝트(OpenMarket Project)](./assets/images/title.svg) 
+![Image](https://github.com/user-attachments/assets/393152f8-b7b8-4e2d-b878-b3d205717be9)
 
 
 ## 프로젝트 개요
@@ -103,77 +103,128 @@ AuthAPI
 프로젝트의 주요 과제는 프레임워크 없이, 다양한 역량을 가진 팀원들이 일관성 있는 코드를 작성할 수 있는 환경을 구축하는 것이었습니다. 이를 위해 저희는 **'기능의 모듈화'** 와 **'직관적인 인터페이스 제공'** 이라는 두 가지 원칙을 세웠습니다.
 
 #### 3.2. 핵심 아키텍처
-모든 API 통신을 관장하는 `api.js`의 `fetchAPI` 함수는 이러한 철학의 핵심 결과물입니다. 이 함수를 통해 모든 API 요청의 에러 처리와 응답 값 분석 로직을 중앙화했습니다. 그 결과, 각 페이지의 자바스크립트 파일에서는 데이터 통신의 복잡성을 고려할 필요 없이 비즈니스 로직 구현에만 집중할 수 있었습니다.
+`api.js`는 프로젝트의 모든 서버 HTTP 요청을 중앙에서 관리하는 API 통신 계층입니다. 이 모듈의 핵심 목표는 통신의 복잡성을 추상화하여, 다른 파일들이 비즈니스 로직에만 집중할 수 있도록 합니다.
+
+`fetchAPI(url, option)` 이 함수는 모든 fetch 요청이 거쳐가는 단일 관문(Gateway) 역할을 수행합니다.
 
 ```javascript
-// api.js - 모든 통신의 중심이 되는 fetchAPI 함수
+// api.js
 async function fetchAPI(url, option) {
-  try {
-    const response = await fetch(url, option);
-    if (response.status === 204) return { isSuccessful: true };
-    const data = await response.json();
-    if (!response.ok) {
-      const customError = new Error(/* ... */);
-      throw customError;
+    try {
+        const response = await fetch(url, option);
+
+        // 204 No Content와 같이 body가 없는 성공 응답을 별도 처리
+        if (response.status === 204) {
+            return { isSuccessful: true, detail: '삭제되었습니다.' };
+        }
+
+        const data = await response.json();
+
+        // 4xx, 5xx 에러 발생 시, 서버가 보낸 에러 메시지를 포함한 커스텀 에러 객체를 생성하여 전파
+        if (!response.ok) {
+            const customError = new Error(
+                `${data?.error || '통신 중 무언가 잘못됐습니다.'} `
+            );
+            customError.status = response.status;
+            // 서버 응답의 상세 에러 메시지를 messages 프로퍼티에 담아 디버깅 용이성을 높임
+            customError.messages = data;
+            throw customError;
+        }
+
+        return data;
+    } catch (error) {
+        // 네트워크 에러 등을 포함한 모든 예외는 여기서 잡아 상위로 전파
+        throw error;
     }
-    return data;
-  } catch (error) {
-    throw error;
-  }
+}
 ```
 
-auth.js는 JWT 인증의 복잡성을 완전히 감추는 것을 목표로 설계되었습니다. 특히 Access Token의 자동 갱신 로직은 이 모듈의 핵심 기능입니다. 핵심 로직인 `getValidAccessToken` 함수는 API 요청 전 토큰의 만료 시간을 미리 확인하고,
-만료가 임박했을 경우 refresh token을 사용하여 새로운 access token을 자동으로 재발급합니다. 다른 개발자는 토큰 갱신 과정을 전혀 신경 쓸 필요 없이, AuthAPI 객체를 통해 필요한 기능을 호출하기만 하면 됩니다.
+중앙화된 에러 처리: 모든 API 요청에서 발생할 수 있는 에러(네트워크, HTTP 상태 코드 등)를 이 함수 한 곳에서 일관되게 처리합니다. 이를 통해 각 페이지의 비즈니스 로직에서 반복적인 try...catch 구문을 제거할 수 있습니다.
+표준화된 응답: 204 No Content와 같은 특수한 성공 케이스를 처리하고, 에러 발생 시 일관된 구조의 에러 객체를 반환하여 호출부가 안정적으로 후속 처리를 할 수 있도록 돕습니다.
+
+---
+
+auth.js는 JWT(JSON Web Token) 기반 인증의 전체 생명주기를 관리합니다. 이 모듈의 가장 중요한 설계 목표는 토큰 갱신 과정을 자동화하여, 개발자가 토큰의 만료 여부를 전혀 신경 쓰지 않도록 만드는 것입니다.
+`getValidAccessToken()` 이 함수는 auth.js의 핵심 로직을 담고 있습니다. 인증이 필요한 API를 요청하기 직전에 호출되어, 현재 보유한 Access Token의 유효성을 보장합니다.
 
 ```javascript
-// auth.js - 토큰 유효성을 보장하고 API를 호출하는 인터페이스
-export const AuthAPI = {
-    /**
-     * 장바구니 목록 조회 (인증 필요)
-     */
-    getCartList: async () => {
-        // 1. 알아서 유효한 토큰을 가져온다 (필요 시 재발급)
-        const token = await getValidAccessToken();
-        if (!token) throw new Error('인증이 필요합니다.');
-        // 2. 유효한 토큰으로 실제 API를 호출한다
-        return API.getCartList(token);
-    },
-    // ... 다른 인증 필요한 API 함수들
-};
+// auth.js
+const getValidAccessToken = async () => {
+    let accessToken = getAccessToken();
 
-// 실제 사용 코드: 개발자는 토큰에 대해 전혀 신경쓰지 않아도 된다.
-import { AuthAPI } from './auth.js';
-const cartItems = await AuthAPI.getCartList();
+    // 토큰이 없거나, 디코딩이 불가능하거나, 만료 시간이 지났거나, 곧(30초 내) 만료될 예정인 경우
+    const payload = decodeToken(accessToken);
+    const currentTime = Math.floor(Date.now() / 1000);
+    const bufferTime = 30; // 만료 전 갱신을 시도할 시간
+
+    if (!payload || !payload.exp || payload.exp - currentTime < bufferTime) {
+        console.log('토큰이 만료되었거나 곧 만료됩니다. 갱신을 시도합니다.');
+        // 자동으로 토큰 갱신 API 호출
+        const refreshed = await refreshAccessToken();
+
+        if (refreshed) {
+            accessToken = getAccessToken(); // 성공 시 새로 발급된 토큰 반환
+        } else {
+            // 실패 시 null을 반환하여 후속 처리(예: 로그인 페이지로 리디렉트)를 유도
+            return null;
+        }
+    }
+
+    return accessToken;
+};
 ````
 
-common.js는 여러 페이지에서 반복적으로 사용되는 UI 로직을 모듈화하여 코드 중복을 방지하고, 프로젝트 전체의 UI 일관성을 유지하는 역할을 합니다.
-`openModal(options)` 함수는 options 객체에 따라 다양한 종류의 모달(수량 변경, 삭제 확인, 로그인 유도 등)을 생성하는 범용 함수입니다.
-향후 새로운 종류의 모달이 필요할 때 common.js파일에 case 하나만 추가하여 사용할 수 있게 하였습니다.
+---
+
+AuthAPI 래퍼 객체
+`getValidAccessToken`의 기능을 다른 개발자들이 더욱 편리하게 사용하도록, 인증이 필요한 API 함수들을 AuthAPI라는 객체로 한번 더 감쌌습니다.
+`AuthAPI.getCartList()`를 호출하는 개발자는 토큰의 존재 여부, 유효성, 갱신 타이밍 등 복잡한 인증 과정을 알 필요 없이 개발자가 비즈니스 로직에만 집중하게 하는 데 목적을 두었습니다.
 
 ```javascript
-// common.js - 다양한 타입의 모달을 생성하는 함수
+// auth.js
+export const AuthAPI = {
+    getCartList: async () => {
+        // 1. 알아서 유효한 토큰을 가져온다 (필요 시 자동 재발급).
+        const token = await getValidAccessToken();
+        if (!token) throw new Error('인증이 필요합니다.');
+        
+        // 2. 보장된 유효한 토큰으로 실제 API를 호출한다.
+        return API.getCartList(token);
+    },
+    // ...
+};
+````
+
+---
+
+common.js는 여러 페이지에서 반복적으로 사용되는 UI 로직을 모듈화하여 코드 중복을 방지하고, 프로젝트 전체의 UI 일관성을 유지하는 역할을 합니다.
+`openModal(options)` 함수는 프로젝트 내 모든 모달창을 생성하는 범용 함수입니다. options 객체를 통해 모달의 종류와 동작을 결정합니다.
+모달의 HTML 구조나 CSS를 신경 쓸 필요 없이, 팀원들은 `openModal({ type: 'delete' })`와 같이 필요한 모달의 종류를 '선언'하기만 하면 됩니다.
+향후 새로운 종류의 모달이 필요할 경우, 이 함수의 switch문에 case 하나만 추가하면 프로젝트 어디서든 해당 모달을 호출할 수 있습니다.
+
+
+```javascript
+// common.js
 export function openModal({
     count = 1,
-    type = 'quantity', // 'quantity', 'delete', 'login' 등
-    confirmAction = () => {},
+    type = 'quantity', // 'quantity', 'delete', 'login', 'stock_exceeded' 등
+    confirmAction = (result) => {}, // '확인' 버튼 클릭 시 실행될 콜백 함수
 }) {
-    // ... (모달 엘리먼트 생성 로직)
+    // ... (모달의 기본 틀 생성)
 
+    // type에 따라 모달의 내용(content)과 버튼(actions)을 다르게 구성
     switch (type) {
         case 'quantity':
-            // ... (수량 변경 모달 내용 생성)
+            // 수량 변경 UI 생성
             break;
         case 'delete':
-            // ... (삭제 확인 모달 내용 생성)
+            // 삭제 확인 메시지 생성
             break;
         // ...
     }
-    // ...
+    
+    // ... (이벤트 리스너 바인딩 및 모달을 body에 추가)
 }
-
-// 실제 사용 코드: 필요한 옵션만 전달하여 간단하게 모달 호출
-import { openModal } from './common.js';
-openModal({ type: 'delete', confirmAction: handleDeleteItem });
 ````
 
 #### 3.3. 주요 기능 흐름
