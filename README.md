@@ -52,19 +52,48 @@
 #### 2.3. API 명세
 본 프로젝트는 제공된 백엔드 서버의 API 명세를 기반으로 개발되었습니다. 주요 API 엔드포인트는 다음과 같습니다.
 
-| 기능 | HTTP Method | URL | 로그인 필요 |
-| :--- | :--- | :--- | :---: |
-| 회원가입 | `POST` | `/accounts/buyer/signup/` | |
-| 로그인 | `POST` | `/accounts/login/` | |
-| 토큰 재발급 | `POST` | `/accounts/token/refresh/` | |
-| **상품 목록** | **`GET`** | **`/products/`** | |
-| **상품 상세** | **`GET`** | **`/products/<product_id>/`** | |
-| **장바구니 목록** | **`GET`** | **`/cart/`** | **○** |
-| **장바구니 추가** | **`POST`** | **`/cart/`** | **○** |
-| **장바구니 수정** | **`PUT`** | **`/cart/<cart_item_id>/`** | **○** |
-| **장바구니 삭제** | **`DELETE`** | **`/cart/<cart_item_id>/`** | **○** |
+API
 
-참고: 로그아웃은 별도의 API 통신 없이 클라이언트 측의 localStorage에서 토큰을 제거하는 방식으로 처리됩니다.
+| 기능               | HTTP Method | URL                            | 인증 필요 여부 |
+| ---------------- | ----------- | ------------------------------ | -------- |
+| 전체 상품 목록 조회      | GET         | `/products/`                   | ❌        |
+| 상품 상세 정보 조회      | GET         | `/products/{product_id}/`      | ❌        |
+| 로그인              | POST        | `/accounts/login/`             | ❌        |
+| 액세스 토큰 재발급       | POST        | `/accounts/token/refresh/`     | ❌        |
+| 사용자 ID 중복 확인     | POST        | `/accounts/validate-username/` | ❌        |
+| 구매자 회원가입         | POST        | `/accounts/buyer/signup/`      | ❌        |
+| 장바구니 조회          | GET         | `/cart/`                       | ✅        |
+| 장바구니 항목 상세 조회    | GET         | `/cart/{id}/`                  | ✅        |
+| 장바구니에 상품 추가      | POST        | `/cart/`                       | ✅        |
+| 장바구니 항목 수정       | PUT         | `/cart/{id}/`                  | ✅        |
+| 장바구니 특정 항목 삭제    | DELETE      | `/cart/{id}`                   | ✅        |
+| 장바구니 전체 비우기      | DELETE      | `/cart/`                       | ✅        |
+| 상품 상세 → 직접 주문 요청 | POST        | `/order/`                      | ✅        |
+| 장바구니 기반 주문 요청    | POST        | `/order/`                      | ✅        |
+
+AuthAPI
+
+| 기능                | HTTP Method | URL                | 인증 필요 여부 |
+| ----------------- | ----------- | ------------------ | -------- |
+| 로그인               | POST        | `/accounts/login/` | ❌        |
+| 로그아웃              | -           | - (로컬에서 토큰 제거)     | ✅        |
+| 로그인 상태 확인         | -           | -                  | ✅        |
+| 토큰 상태 확인          | -           | -                  | ✅        |
+| 장바구니 목록 조회        | GET         | `/cart/`           | ✅        |
+| 장바구니 항목 상세 조회     | GET         | `/cart/{id}/`      | ✅        |
+| 장바구니에 상품 추가       | POST        | `/cart/`           | ✅        |
+| 장바구니 항목 수정        | PUT         | `/cart/{id}/`      | ✅        |
+| 장바구니 항목 삭제        | DELETE      | `/cart/{id}`       | ✅        |
+| 장바구니 전체 비우기       | DELETE      | `/cart/`           | ✅        |
+| 상품 상세 페이지 → 직접 주문 | POST        | `/order/`          | ✅        |
+| 장바구니 기반 전체 주문     | POST        | `/order/`          | ✅        |
+
+💡 AuthAPI 특징
+- 인증 토큰이 자동으로 관리됩니다.
+- 액세스 토큰이 만료되었거나 만료 직전이면 자동으로 리프레시 토큰을 통해 재발급합니다.
+- 리프레시 토큰이 없거나 만료되면 자동으로 로그아웃 처리됩니다.
+- `getValidAccessToken()`을 통해 인증이 필요한 요청에 항상 유효한 토큰을 전달합니다.
+- API 호출 전 인증 필요 여부 ✅인 경우 자동으로 Bearer 토큰이 포함됩니다.
 
 ---
 
