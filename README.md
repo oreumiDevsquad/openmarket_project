@@ -92,7 +92,7 @@ async function fetchAPI(url, option) {
   }
 ````
 
-#### 3.3. 주요 기능 흐름 (Sequence Diagram 대체)
+#### 3.3. 주요 기능 흐름
 **로그인 시퀀스 예시:**
 1.  **Client**: 사용자가 ID와 PW를 입력하고 '로그인' 버튼을 클릭합니다.
 2.  **Web (`login.js`)**: `login.js`가 입력값의 유효성을 검사한 후, `api.js`의 `login` 함수를 호출합니다.
