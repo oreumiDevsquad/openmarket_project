@@ -171,7 +171,7 @@ chore: 기타 작업
 
 <h2>Devsquad팀</h2>
 
-> [편상건](https://github.com/hubintheroot) &nbsp;|&nbsp; [이채준](https://github.com/MeinSchatzMeinSatz) &nbsp;|&nbsp; [고우리](https://github.com/naru0000) &nbsp;|&nbsp; [조은별](https://github.com/silverstar9482)
+> [편상건](https://github.com/hubintheroot) &nbsp; [이채준](https://github.com/MeinSchatzMeinSatz) &nbsp; [고우리](https://github.com/naru0000) &nbsp; [조은별](https://github.com/silverstar9482)
 
 <p>
 <img src="https://github-readme-stats.vercel.app/api?username=hubintheroot&theme=vue&show_icons=true" width=400/></a>
