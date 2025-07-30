@@ -43,9 +43,9 @@
 #### 2.1. 개발 환경
 
 - **언어**:
-    <div>
-    <img  width=58 src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img  width=45 src="https://img.shields.io/badge/CSS-0078D7?style=for-the-badge&logo=CSS&logoColor=white"> <img width=85 src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img  width=64 src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
-    </div>
+      <div>
+      <img  width=58 src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img  width=45 src="https://img.shields.io/badge/CSS-0078D7?style=for-the-badge&logo=CSS&logoColor=white"> <img width=85 src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img  width=64 src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+      </div>
 - **방식**: MPA (Multi-Page Application)
 - **협업 도구**: Git, GitHub, Discord, Notion
 - **코드 스타일**: Prettier
@@ -315,36 +315,20 @@ export function openModal({
 
 ### 5. 프로젝트 시연 영상
 
-- **캐러셀 작동**
 - **캐러셀 작동**  
-  <video width="1000" controls autoplay muted loop>
-  <source src="./assets/images/1_캐러셀작동.mp4" type="video/mp4">
-  해당 영상을 지원하지 않는 브라우저입니다.
-  </video>
+  <img width="1000" alt="Image" src="/assets/images/1_캐러셀작동.gif" />
 
 - **비로그인 상황(상품확인 / 상품 장바구니 / 상품구매)**  
-  <video width="1000" controls autoplay muted loop>
-  <source src="./assets/images/2_비회원상황.mp4" type="video/mp4">
-  해당 영상을 지원하지 않는 브라우저입니다.
-  </video>
+  <img width="1000" alt="Image" src="/assets/images/2_비회원상황.gif" />
 
 - **회원가입 및 로그인**  
-  <video width="1000" controls autoplay muted loop>
-  <source src="./assets/images/3_회원가입 및 로그인.mp4" type="video/mp4">
-  해당 영상을 지원하지 않는 브라우저입니다.
-  </video>
+  <img width="1000" alt="Image" src="/assets/images/3_회원가입 및 로그인.gif" />
 
 - **상품 확인(상품확인 / 재고확인 / 상품 장바구니)**  
-  <video width="1000" controls autoplay muted loop>
-  <source src="./assets/images/4_상품확인.mp4" type="video/mp4">
-  해당 영상을 지원하지 않는 브라우저입니다.
-  </video>
+  <img width="1000" alt="Image" src="/assets/images/4_상품확인.gif" />
 
 - **장바구니 수량 조절 후 상품결제**  
-  <video width="1000" controls autoplay muted loop>
-  <source src="./assets/images/5_장바구니주문결제.mp4" type="video/mp4">
-  해당 영상을 지원하지 않는 브라우저입니다.
-  </video>
+  <img width="1000" alt="Image" src="/assets/images/5_장바구니주문결제.gif" />
 
 ---
 
