@@ -42,8 +42,10 @@
 
 #### 2.1. 개발 환경
 
-- **언어**: 
-      <img  width=60 src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img  width=45 src="https://img.shields.io/badge/CSS-0078D7?style=for-the-badge&logo=CSS&logoColor=white"> <img width=85 src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img  width=65 src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+- **언어**:
+    <div>
+    <img  width=58 src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img  width=45 src="https://img.shields.io/badge/CSS-0078D7?style=for-the-badge&logo=CSS&logoColor=white"> <img width=85 src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img  width=65 src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+    </div>
 - **방식**: MPA (Multi-Page Application)
 - **협업 도구**: Git, GitHub, Discord, Notion
 - **코드 스타일**: Prettier
@@ -360,6 +362,28 @@ export function openModal({
 
 - 페이지 단위가 아닌 기능 단위(예: 모달, 유효성 검사)로 업무를 분담하다 보니, 특정 페이지의 전체적인 개발 진행 상황을 팀원들이 파악하기 어려운 점이 있었습니다. 이로 인해 불필요한 커뮤니케이션 비용이 발생하기도 했습니다. 차기 프로젝트에서는 역할 분담과 진행 상황 공유 방식을 개선할 필요가 있습니다.
 
-<div style="margin-top: 20px;">
+---
+
+### Devloper
+
+> [편상건](https://github.com/hubintheroot) [이채준](https://github.com/MeinSchatzMeinSatz) [고우리](https://github.com/naru0000) [조은별](https://github.com/silverstar9482)
+
+<p>
+<img src="https://github-readme-stats.vercel.app/api?username=hubintheroot&theme=vue&show_icons=true" width=400/></a>
+<img src="https://github-readme-stats.vercel.app/api?username=MeinSchatzMeinSatz&theme=defaulty&show_icons=true" width=400/></a>
+<img src="https://github-readme-stats.vercel.app/api?username=naru0000&theme=flag-india&show_icons=true" width=400/></a>
+<img src="https://github-readme-stats.vercel.app/api?username=silverstar9482&theme=buefy&show_icons=true" width=400/></a>
+
 <img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='40' style="display:inline-block; vertical-align:middle;margin-right:10px;"> <span style="display:inline-block; background-color:rgb(0,0,0,0.2); width:40px; text-align:center; border-radius:5px;">URL</span> https://github.com/oreumiDevsquad/openmarket_project.git
-</div>
+
+</p>
+
+<!--
+나중에 여기 들어가서 스탯 꾸미세용 다양하게 있어요 :)
+https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
+-->
+
+<!-- ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=hubintheroot&show_icons=true&theme=radical)
+[![Anurag's GitHub stats-Dark](https://github-readme-stats.vercel.app/api?username=MeinSchatzMeinSatz&show_icons=true&theme=dracula)](https://github.com/anuraghazra/github-readme-stats#gh-dark-mode-only)
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=naru0000&show_icons=true&theme=onedark)
+[![Anurag's GitHub stats-Dark](https://github-readme-stats.vercel.app/api?username=silverstar9482&show_icons=true&theme=tokyonight)](https://github.com/anuraghazra/github-readme-stats#gh-dark-mode-only) -->
