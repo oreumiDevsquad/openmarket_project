@@ -55,8 +55,9 @@ root/
 ```
 
 <h2>기술 스택</h2>
-
+<div>
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/CSS-0078D7?style=for-the-badge&logo=CSS&logoColor=white"> <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+</div>
 
 <!-- <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
 <img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=black"> -->
@@ -171,8 +172,20 @@ chore: 기타 작업
 이 프로젝트는 데브스쿼드팀의 교육용 프로젝트입니다.
 
 <h2>데브스쿼드 개발팀 (oreumiDevsquad)</h2>
+<p>
+<img src="https://github-readme-stats.vercel.app/api?username=hubintheroot&theme=vue&show_icons=true" width=400/></a>
+<img src="https://github-readme-stats.vercel.app/api?username=hubintheroot&theme=defaulty&show_icons=true" width=400/></a>
+<img src="https://github-readme-stats.vercel.app/api?username=hubintheroot&theme=flag-india&show_icons=true" width=400/></a>
+<img src="https://github-readme-stats.vercel.app/api?username=hubintheroot&theme=buefy&show_icons=true" width=400/></a>
 
-![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=hubintheroot&show_icons=true&theme=radical)
+</p>
+
+<!--
+나중에 여기 들어가서 스탯 꾸미세용 다양하게 있어요 :)
+https://github.com/anuraghazra/github-readme-stats/blob/master/themes/README.md
+-->
+
+<!-- ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=hubintheroot&show_icons=true&theme=radical)
 [![Anurag's GitHub stats-Dark](https://github-readme-stats.vercel.app/api?username=MeinSchatzMeinSatz&show_icons=true&theme=dracula)](https://github.com/anuraghazra/github-readme-stats#gh-dark-mode-only)
 ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=naru0000&show_icons=true&theme=onedark)
-[![Anurag's GitHub stats-Dark](https://github-readme-stats.vercel.app/api?username=silverstar9482&show_icons=true&theme=tokyonight)](https://github.com/anuraghazra/github-readme-stats#gh-dark-mode-only)
+[![Anurag's GitHub stats-Dark](https://github-readme-stats.vercel.app/api?username=silverstar9482&show_icons=true&theme=tokyonight)](https://github.com/anuraghazra/github-readme-stats#gh-dark-mode-only) -->
