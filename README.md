@@ -43,9 +43,9 @@
 #### 2.1. 개발 환경
 
 - **언어**:
-      <div>
-      <img  width=58 src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img  width=45 src="https://img.shields.io/badge/CSS-0078D7?style=for-the-badge&logo=CSS&logoColor=white"> <img width=85 src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img  width=64 src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
-      </div>
+    <div>
+    <img  width=58 src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img  width=45 src="https://img.shields.io/badge/CSS-0078D7?style=for-the-badge&logo=CSS&logoColor=white"> <img width=85 src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img  width=64 src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+    </div>
 - **방식**: MPA (Multi-Page Application)
 - **협업 도구**: Git, GitHub, Discord, Notion
 - **코드 스타일**: Prettier
@@ -313,7 +313,42 @@ export function openModal({
 
 ---
 
-### 5. 역할 분담
+### 5. 프로젝트 시연 영상
+
+- **캐러셀 작동**
+- **캐러셀 작동**  
+  <video width="1000" controls autoplay muted loop>
+  <source src="./assets/images/1_캐러셀작동.mp4" type="video/mp4">
+  해당 영상을 지원하지 않는 브라우저입니다.
+  </video>
+
+- **비로그인 상황(상품확인 / 상품 장바구니 / 상품구매)**  
+  <video width="1000" controls autoplay muted loop>
+  <source src="./assets/images/2_비회원상황.mp4" type="video/mp4">
+  해당 영상을 지원하지 않는 브라우저입니다.
+  </video>
+
+- **회원가입 및 로그인**  
+  <video width="1000" controls autoplay muted loop>
+  <source src="./assets/images/3_회원가입 및 로그인.mp4" type="video/mp4">
+  해당 영상을 지원하지 않는 브라우저입니다.
+  </video>
+
+- **상품 확인(상품확인 / 재고확인 / 상품 장바구니)**  
+  <video width="1000" controls autoplay muted loop>
+  <source src="./assets/images/4_상품확인.mp4" type="video/mp4">
+  해당 영상을 지원하지 않는 브라우저입니다.
+  </video>
+
+- **장바구니 수량 조절 후 상품결제**  
+  <video width="1000" controls autoplay muted loop>
+  <source src="./assets/images/5_장바구니주문결제.mp4" type="video/mp4">
+  해당 영상을 지원하지 않는 브라우저입니다.
+  </video>
+
+---
+
+### 6. 역할 분담
 
 각 팀원은 다음과 같은 목표와 의도를 가지고 역할을 수행했습니다.
 
@@ -324,19 +359,19 @@ export function openModal({
 
 ---
 
-### 6. 화면 설계
+### 7. 화면 설계
 
 프로젝트의 전체적인 UI/UX 디자인은 제공된 피그마(Figma) 시안을 기반으로 구현되었습니다.
 
 ---
 
-### 7. 데이터베이스 모델링(ERD)
+### 8. 데이터베이스 모델링(ERD)
 
 본 프로젝트는 백엔드 API가 이미 구축된 상태에서 시작되었으므로, 팀에서 직접 데이터베이스를 모델링하지 않았습니다. API 응답 데이터 구조 분석을 통해 `User`, `Product`, `CartItem` 등의 데이터 관계를 파악하여 개발을 진행했습니다.
 
 ---
 
-### 8. 협업 방식
+### 9. 협업 방식
 
 - **Git-flow Strategy**: `main`과 `dev` 브랜치를 중심으로, 기능 단위로 `feature` 브랜치를 생성하여 작업하는 Git-flow 전략을 사용했습니다. 모든 코드는 Pull Request와 동료 리뷰를 통해서만 `dev` 브랜치에 병합되었습니다.
 - **Commit Convention**: `feat:`, `fix:`, `style:` 등 정해진 커밋 컨벤션을 따라 커밋 히스토리의 가독성을 확보했습니다.
@@ -344,14 +379,14 @@ export function openModal({
 
 ---
 
-### 9. 개발하며 느낀점 (프로젝트 회고)
+### 10. 개발하며 느낀점 (프로젝트 회고)
 
-#### 9.1. 주요 성과
+#### 10.1. 주요 성과
 
 - JS 상급자와 초심자가 함께하는 환경에서 서로 가르쳐주고 배우는 문화를 통해 팀 전원의 기술적 성장을 이끌어냈습니다.
 - 프레임워크 없이도 모듈화 설계를 통해 재사용성과 유지보수성이 높은 코드를 작성하는 경험을 쌓았습니다.
 
-#### 9.2. 개선점
+#### 10.2. 개선점
 
 - 페이지 단위가 아닌 기능 단위(예: 모달, 유효성 검사)로 업무를 분담하다 보니, 특정 페이지의 전체적인 개발 진행 상황을 팀원들이 파악하기 어려운 점이 있었습니다. 이로 인해 불필요한 커뮤니케이션 비용이 발생하기도 했습니다. 차기 프로젝트에서는 역할 분담과 진행 상황 공유 방식을 개선할 필요가 있습니다.
 
