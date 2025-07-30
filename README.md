@@ -152,7 +152,13 @@ async function fetchAPI(url, option) {
 ```
 
 #### 4.2. 개발 일정 (WBS)
-프로젝트의 상세 일정 및 작업 분배는 Notion을 통해 관리되었습니다. 주차별 목표와 개인별 할당 작업 내역을 칸반 보드 형식으로 공유하며 진행 상황을 추적했습니다.
+프로젝트의 상세 일정 및 작업 분배는 Notion을 통해 관리되었습니다. 주차별 목표와 개인별 할당 작업 내역을 칸반 보드 형식으로 확인하고, 디스코드로 실시간 작업 상황을 공유하며 진행 상황을 추적했습니다.
+
+[🌐노션 TODOLIST 링크](https://oreumi.notion.site/TODOLIST-239ebaa8982b8090b647f13131fb3217)
+
+<img width="1000" alt="Image" src="https://github.com/user-attachments/assets/d354897f-e091-40d8-824b-f31cb371a34b" />
+<img width="1000" alt="Image" src="https://github.com/user-attachments/assets/c28f3893-f7a0-42cb-beab-d933c061860e" />
+<img width="1000" alt="Image" src="https://github.com/user-attachments/assets/68e7ed5e-f7a6-42fc-b15a-25e8069d208b" />
 
 ---
 
