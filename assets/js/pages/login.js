@@ -53,19 +53,23 @@ $form.addEventListener('submit', async function (e) {
             );
         }
 
-        if (window.history.length > 1) {
-            const referrer = document.referrer;
+        if (result) {
+            if (window.history.length > 1) {
+                const referrer = document.referrer;
 
-            // 이전 페이지가 회원가입 관련 페이지가 아닌 경우에만 뒤로가기
-            if (referrer && !isSignupRelatedPage(referrer)) {
-                window.history.back();
+                // 이전 페이지가 회원가입 관련 페이지가 아닌 경우에만 뒤로가기
+                if (referrer && !isSignupRelatedPage(referrer)) {
+                    window.history.back();
+                } else {
+                    // 회원가입 페이지에서 온 경우 메인 페이지로 이동
+                    window.location.href = '/';
+                }
             } else {
-                // 회원가입 페이지에서 온 경우 메인 페이지로 이동
+                // 히스토리가 없으면 메인 페이지로 이동
                 window.location.href = '/';
             }
         } else {
-            // 히스토리가 없으면 메인 페이지로 이동
-            window.location.href = '/';
+            throw new Error();
         }
     } catch (error) {
         console.error('에러가 발생했습니다 :', error.message);
