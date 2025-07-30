@@ -291,6 +291,7 @@ export function openModal({
 
 [🌐노션 TODOLIST 링크](https://oreumi.notion.site/TODOLIST-239ebaa8982b8090b647f13131fb3217)
 
+<img width="842" height="669" alt="Image" src="https://github.com/user-attachments/assets/a7e4b35a-3501-4cae-b698-585d15d4a90e" />
 <img width="1000" alt="Image" src="https://github.com/user-attachments/assets/d354897f-e091-40d8-824b-f31cb371a34b" />
 <img width="1000" alt="Image" src="https://github.com/user-attachments/assets/c28f3893-f7a0-42cb-beab-d933c061860e" />
 <img width="1000" alt="Image" src="https://github.com/user-attachments/assets/68e7ed5e-f7a6-42fc-b15a-25e8069d208b" />
