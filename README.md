@@ -1,18 +1,18 @@
 <!--Banner-->
-![오픈마켓 프로젝트(OpenMarket Project)](./assets/images/title.svg) 
 
+![Image](https://github.com/user-attachments/assets/393152f8-b7b8-4e2d-b878-b3d205717be9)
 
-## 📋 프로젝트 개요
+<h2> 프로젝트 개요</h2>
 
 이 프로젝트는 온라인 쇼핑몰의 핵심 기능들을 구현한 웹 애플리케이션입니다. 사용자는 상품을 검색하고, 상세 정보를 확인하며, 장바구니에 담고 구매할 수 있습니다.
 
-## ✨ 주요 기능
+<h2>주요 기능</h2>
 
 - **상품 상세 페이지**: 개별 상품의 자세한 정보 확인
 - **회원 관리**: 로그인/회원가입 기능
 - **장바구니**: 선택한 상품들을 담고 관리
 
-## 🏗️ 프로젝트 구조
+<h2>프로젝트 구조</h2>
 
 ```
 root/
@@ -54,15 +54,23 @@ root/
 └── README.md                     # 프로젝트 설명서
 ```
 
-## 🛠️ 기술 스택
+<h2>기술 스택</h2>
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+<img src="https://img.shields.io/badge/CSS-0078D7?style=for-the-badge&logo=CSS&logoColor=white">
+<img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+<img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<!-- <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
+<img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=black"> -->
+
+<br>
+
 - **스타일링**: BEM 방식의 CSS 클래스 네이밍
 - **버전 관리**: Git/GitHub
 
-## 📐 코딩 컨벤션
+<h2>코딩 컨벤션</h2>
 
-### 네이밍 규칙
+<h2>네이밍 규칙</h2>
 
 | 대상                 | 규칙             | 예시                                   |
 | -------------------- | ---------------- | -------------------------------------- |
@@ -72,7 +80,7 @@ root/
 | JavaScript 상수      | UPPER_SNAKE_CASE | `API_BASE_URL`, `MAX_ITEMS`            |
 | 파일명               | kebab-case       | `product-detail.html`, `user-utils.js` |
 
-### 커밋 메시지 규칙
+<h2>커밋 메시지 규칙</h2>
 
 ```
 type: 간단한 설명 (50자 이내)
@@ -91,7 +99,7 @@ chore: 기타 작업
 - `fix: 모바일에서 네비게이션 메뉴 오류 수정`
 - `style: 메인 페이지 반응형 CSS 개선`
 
-## 🌿 브랜치 전략
+<h2>브랜치 전략</h2>
 
 | 브랜치명         | 용도                       |
 | ---------------- | -------------------------- |
@@ -99,7 +107,7 @@ chore: 기타 작업
 | `dev`            | 개발 작업의 통합 브랜치    |
 | `feature/기능명` | 새로운 기능 개발용         |
 
-### 개발 워크플로우
+<h3>개발 워크플로우</h3>
 
 1. **브랜치 생성**
 
@@ -123,7 +131,7 @@ chore: 기타 작업
 4. **배포 준비**
     - `develop` → `main`으로 최종 머지
 
-## 🚀 시작하기
+<h2>시작하기</h2>
 
 1. **저장소 클론**
 
@@ -139,14 +147,14 @@ chore: 기타 작업
 3. **브라우저에서 확인**
     - `http://localhost:3000` (또는 설정한 포트)에서 확인
 
-## 🤝 기여하기
+<h2>기여하기</h2>
 
 1. 이슈를 생성하거나 기존 이슈를 확인합니다
 2. 새로운 브랜치를 생성합니다
 3. 변경 사항을 커밋합니다
 4. Pull Request를 생성합니다
 
-### 이슈 템플릿
+<h3>이슈 템플릿</h3>
 
 **🐞 버그 리포트**
 
@@ -160,17 +168,10 @@ chore: 기타 작업
 - 어떤 기능인가요?
 - 왜 필요한가요?
 
-## 📄 라이선스
+<h2>라이선스</h2>
 
 이 프로젝트는 데브스쿼드팀의 교육용 프로젝트입니다.
 
-## 👥 개발팀
+<h2>데브스쿼드 개발팀 (oreumiDevsquad)</h2>
 
-- **데브스쿼드 개발팀 (oreumiDevsquad)**
-- 프론트엔드 개발 교육 프로젝트
-
----
-
-<div style="margin-top: 20px;">
-<img src='https://cdn.jsdelivr.net/npm/simple-icons@3.0.1/icons/github.svg' alt='github' height='40' style="display:inline-block; vertical-align:middle;margin-right:10px;"> <span style="display:inline-block; background-color:rgb(0,0,0,0.2); width:40px; text-align:center; border-radius:5px;">URL</span> https://github.com/oreumiDevsquad/openmarket_project.git
-</div>
+![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=hubintheroot&show_icons=true&theme=radical) &nbsp;&nbsp; [![Anurag's GitHub stats-Dark](https://github-readme-stats.vercel.app/api?username=MeinSchatzMeinSatz&show_icons=true&theme=dracula)](https://github.com/anuraghazra/github-readme-stats#gh-dark-mode-only) &nbsp;&nbsp; ![Anurag's GitHub stats](https://github-readme-stats.vercel.app/api?username=naru0000&show_icons=true&theme=onedark) &nbsp;&nbsp; [![Anurag's GitHub stats-Dark](https://github-readme-stats.vercel.app/api?username=silverstar9482&show_icons=true&theme=tokyonight)](https://github.com/anuraghazra/github-readme-stats#gh-dark-mode-only)
