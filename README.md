@@ -43,9 +43,9 @@
 #### 2.1. 개발 환경
 
 - **언어**:
-      <div>
-      <img  width=58 src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img  width=45 src="https://img.shields.io/badge/CSS-0078D7?style=for-the-badge&logo=CSS&logoColor=white"> <img width=85 src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img  width=65 src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
-      </div>
+  <div>
+  <img  width=58 src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img  width=45 src="https://img.shields.io/badge/CSS-0078D7?style=for-the-badge&logo=CSS&logoColor=white"> <img width=85 src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black"> <img  width=64 src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+  </div>
 - **방식**: MPA (Multi-Page Application)
 - **협업 도구**: Git, GitHub, Discord, Notion
 - **코드 스타일**: Prettier
