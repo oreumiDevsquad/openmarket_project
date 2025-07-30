@@ -1,10 +1,11 @@
 <!--Banner-->
 
-![Image](https://github.com/user-attachments/assets/393152f8-b7b8-4e2d-b878-b3d205717be9)
+![Image](https://github.com/user-attachments/assets/3823831d-0e16-422c-873e-296fc93e93d4)
 
 <h2> 프로젝트 개요</h2>
 
-이 프로젝트는 온라인 쇼핑몰의 핵심 기능들을 구현한 웹 애플리케이션입니다. 사용자는 상품을 검색하고, 상세 정보를 확인하며, 장바구니에 담고 구매할 수 있습니다.
+이 프로젝트는 온라인 쇼핑몰의 핵심 기능들을 구현한 웹 애플리케이션입니다.<br>
+사용자는 상품을 검색하고, 상세 정보를 확인하며, 장바구니에 담고 구매할 수 있습니다.
 
 <h2>주요 기능</h2>
 
@@ -61,7 +62,6 @@ root/
 
 <!-- <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
 <img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=black"> -->
-
 
 - **스타일링**: BEM 방식의 CSS 클래스 네이밍
 - **버전 관리**: Git/GitHub
@@ -154,23 +154,22 @@ chore: 기타 작업
 
 <h3>이슈 템플릿</h3>
 
-**🐞 버그 리포트**
+**버그 리포트**
 
 - 어떤 버그인가요?
 - 재현 방법
 - 기대했던 결과
 - 스크린샷 (필요시)
 
-**✨ 기능 제안**
+**기능 제안**
 
 - 어떤 기능인가요?
 - 왜 필요한가요?
 
-<h2>라이선스</h2>
+<h2>프로젝트 소개</h2>
+이 프로젝트는 Devsquad팀의 교육용 프로젝트입니다.
 
-이 프로젝트는 데브스쿼드팀의 교육용 프로젝트입니다.
-
-<h2>데브스쿼드 개발팀 (oreumiDevsquad)</h2>
+<h2>Devsquad팀</h2>
 <p>
 <img src="https://github-readme-stats.vercel.app/api?username=hubintheroot&theme=vue&show_icons=true" width=400/></a>
 <img src="https://github-readme-stats.vercel.app/api?username=MeinSchatzMeinSatz&theme=defaulty&show_icons=true" width=400/></a>
