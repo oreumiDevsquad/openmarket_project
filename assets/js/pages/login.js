@@ -44,18 +44,29 @@ $form.addEventListener('submit', async function (e) {
     try {
         const result = await AuthAPI.login(loginId, loginPw);
         console.log(result);
-        // 성공 시
-        // if (window.history.length > 1) {
-        //     window.history.back();
-        // } else {
-        //     window.location = '/';
-        // }
+
+        // 회원가입 관련 페이지인지 확인 함수
+        function isSignupRelatedPage(url) {
+            const signupKeywords = ['signup', 'register'];
+            return signupKeywords.some((keyword) =>
+                url.toLowerCase().includes(keyword)
+            );
+        }
 
         if (result) {
             if (window.history.length > 1) {
-                window.history.back();
+                const referrer = document.referrer;
+
+                // 이전 페이지가 회원가입 관련 페이지가 아닌 경우에만 뒤로가기
+                if (referrer && !isSignupRelatedPage(referrer)) {
+                    window.history.back();
+                } else {
+                    // 회원가입 페이지에서 온 경우 메인 페이지로 이동
+                    window.location.href = '/';
+                }
             } else {
-                window.location = '/';
+                // 히스토리가 없으면 메인 페이지로 이동
+                window.location.href = '/';
             }
         } else {
             throw new Error();
