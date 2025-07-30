@@ -56,7 +56,6 @@
 | :--- | :--- | :--- | :---: |
 | 회원가입 | `POST` | `/accounts/buyer/signup/` | |
 | 로그인 | `POST` | `/accounts/login/` | |
-| 로그아웃 | `POST` | `/accounts/logout/` | ○ |
 | 토큰 재발급 | `POST` | `/accounts/token/refresh/` | |
 | **상품 목록** | **`GET`** | **`/products/`** | |
 | **상품 상세** | **`GET`** | **`/products/<product_id>/`** | |
@@ -64,6 +63,8 @@
 | **장바구니 추가** | **`POST`** | **`/cart/`** | **○** |
 | **장바구니 수정** | **`PUT`** | **`/cart/<cart_item_id>/`** | **○** |
 | **장바구니 삭제** | **`DELETE`** | **`/cart/<cart_item_id>/`** | **○** |
+
+참고: 로그아웃은 별도의 API 통신 없이 클라이언트 측의 localStorage에서 토큰을 제거하는 방식으로 처리됩니다.
 
 ---
 
@@ -90,6 +91,60 @@ async function fetchAPI(url, option) {
   } catch (error) {
     throw error;
   }
+```
+
+auth.js는 JWT 인증의 복잡성을 완전히 감추는 것을 목표로 설계되었습니다. 특히 Access Token의 자동 갱신 로직은 이 모듈의 핵심 기능입니다. 핵심 로직인 `getValidAccessToken` 함수는 API 요청 전 토큰의 만료 시간을 미리 확인하고,
+만료가 임박했을 경우 refresh token을 사용하여 새로운 access token을 자동으로 재발급합니다. 다른 개발자는 토큰 갱신 과정을 전혀 신경 쓸 필요 없이, AuthAPI 객체를 통해 필요한 기능을 호출하기만 하면 됩니다.
+
+```javascript
+// auth.js - 토큰 유효성을 보장하고 API를 호출하는 인터페이스
+export const AuthAPI = {
+    /**
+     * 장바구니 목록 조회 (인증 필요)
+     */
+    getCartList: async () => {
+        // 1. 알아서 유효한 토큰을 가져온다 (필요 시 재발급)
+        const token = await getValidAccessToken();
+        if (!token) throw new Error('인증이 필요합니다.');
+        // 2. 유효한 토큰으로 실제 API를 호출한다
+        return API.getCartList(token);
+    },
+    // ... 다른 인증 필요한 API 함수들
+};
+
+// 실제 사용 코드: 개발자는 토큰에 대해 전혀 신경쓰지 않아도 된다.
+import { AuthAPI } from './auth.js';
+const cartItems = await AuthAPI.getCartList();
+````
+
+common.js는 여러 페이지에서 반복적으로 사용되는 UI 로직을 모듈화하여 코드 중복을 방지하고, 프로젝트 전체의 UI 일관성을 유지하는 역할을 합니다.
+`openModal(options)` 함수는 options 객체에 따라 다양한 종류의 모달(수량 변경, 삭제 확인, 로그인 유도 등)을 생성하는 범용 함수입니다.
+향후 새로운 종류의 모달이 필요할 때 common.js파일에 case 하나만 추가하여 사용할 수 있게 하였습니다.
+
+```javascript
+// common.js - 다양한 타입의 모달을 생성하는 함수
+export function openModal({
+    count = 1,
+    type = 'quantity', // 'quantity', 'delete', 'login' 등
+    confirmAction = () => {},
+}) {
+    // ... (모달 엘리먼트 생성 로직)
+
+    switch (type) {
+        case 'quantity':
+            // ... (수량 변경 모달 내용 생성)
+            break;
+        case 'delete':
+            // ... (삭제 확인 모달 내용 생성)
+            break;
+        // ...
+    }
+    // ...
+}
+
+// 실제 사용 코드: 필요한 옵션만 전달하여 간단하게 모달 호출
+import { openModal } from './common.js';
+openModal({ type: 'delete', confirmAction: handleDeleteItem });
 ````
 
 #### 3.3. 주요 기능 흐름
