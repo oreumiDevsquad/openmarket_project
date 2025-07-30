@@ -62,7 +62,6 @@ root/
 <!-- <img src="https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black">
 <img src="https://img.shields.io/badge/typescript-3178C6?style=for-the-badge&logo=typescript&logoColor=black"> -->
 
-<br>
 
 - **스타일링**: BEM 방식의 CSS 클래스 네이밍
 - **버전 관리**: Git/GitHub
@@ -174,9 +173,9 @@ chore: 기타 작업
 <h2>데브스쿼드 개발팀 (oreumiDevsquad)</h2>
 <p>
 <img src="https://github-readme-stats.vercel.app/api?username=hubintheroot&theme=vue&show_icons=true" width=400/></a>
-<img src="https://github-readme-stats.vercel.app/api?username=hubintheroot&theme=defaulty&show_icons=true" width=400/></a>
-<img src="https://github-readme-stats.vercel.app/api?username=hubintheroot&theme=flag-india&show_icons=true" width=400/></a>
-<img src="https://github-readme-stats.vercel.app/api?username=hubintheroot&theme=buefy&show_icons=true" width=400/></a>
+<img src="https://github-readme-stats.vercel.app/api?username=MeinSchatzMeinSatz&theme=defaulty&show_icons=true" width=400/></a>
+<img src="https://github-readme-stats.vercel.app/api?username=naru0000&theme=flag-india&show_icons=true" width=400/></a>
+<img src="https://github-readme-stats.vercel.app/api?username=silverstar9482&theme=buefy&show_icons=true" width=400/></a>
 
 </p>
 
