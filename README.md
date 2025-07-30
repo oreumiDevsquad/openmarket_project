@@ -316,19 +316,19 @@ export function openModal({
 ### 5. 프로젝트 시연 영상
 
 - **캐러셀 작동**  
-  <img width="1000" alt="Image" src="/assets/images/1_캐러셀작동.gif" />
+  <img width="800" alt="Image" src="/assets/images/1_캐러셀작동.gif" />
 
 - **비로그인 상황(상품확인 / 상품 장바구니 / 상품구매)**  
-  <img width="1000" alt="Image" src="/assets/images/2_비회원상황.gif" />
+  <img width="800" alt="Image" src="/assets/images/2_비회원상황.gif" />
 
 - **회원가입 및 로그인**  
-  <img width="1000" alt="Image" src="/assets/images/3_회원가입 및 로그인.gif" />
+  <img width="800" alt="Image" src="/assets/images/3_회원가입 및 로그인.gif" />
 
 - **상품 확인(상품확인 / 재고확인 / 상품 장바구니)**  
-  <img width="1000" alt="Image" src="/assets/images/4_상품확인.gif" />
+  <img width="800" alt="Image" src="/assets/images/4_상품확인.gif" />
 
 - **장바구니 수량 조절 후 상품결제**  
-  <img width="1000" alt="Image" src="/assets/images/5_장바구니주문결제.gif" />
+  <img width="800" alt="Image" src="/assets/images/5_장바구니주문결제.gif" />
 
 ---
 
