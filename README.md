@@ -170,6 +170,9 @@ chore: 기타 작업
 이 프로젝트는 Devsquad팀의 교육용 프로젝트입니다.
 
 <h2>Devsquad팀</h2>
+
+> [편상건](https://github.com/hubintheroot) &nbsp;|&nbsp; [이채준](https://github.com/MeinSchatzMeinSatz) &nbsp;|&nbsp; [고우리](https://github.com/naru0000) &nbsp;|&nbsp; [조은별](https://github.com/silverstar9482)
+
 <p>
 <img src="https://github-readme-stats.vercel.app/api?username=hubintheroot&theme=vue&show_icons=true" width=400/></a>
 <img src="https://github-readme-stats.vercel.app/api?username=MeinSchatzMeinSatz&theme=defaulty&show_icons=true" width=400/></a>
