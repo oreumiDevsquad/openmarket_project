@@ -109,6 +109,7 @@ input[type='checkbox']:checked::after {
     &.disabled {
         display: none;
     }
+    text-align: center;
 }
 
 .cart__product td {
