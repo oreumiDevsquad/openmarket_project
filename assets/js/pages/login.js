@@ -45,7 +45,7 @@ $form.addEventListener('submit', async function (e) {
         const result = await AuthAPI.login(loginId, loginPw);
         console.log(result);
 
-        // 회원가입 관련 페이지인지 확인하는 함수
+        // 회원가입 관련 페이지인지 확인 함수
         function isSignupRelatedPage(url) {
             const signupKeywords = ['signup', 'register'];
             return signupKeywords.some((keyword) =>
